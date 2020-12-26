@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.2 -->
+<interface>
+  <object class="GtkWindow" id="window">
+    <property name="width_request">1024</property>
+    <property name="height_request">480</property>
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center</property>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkStack" id="main_stack">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="transition_type">crossfade</property>
+        <child>
+          <object class="GtkFixed" id="fixed_login">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="width_request">140</property>
+                <property name="height_request">100</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">UCHAT</property>
+                <attributes>
+                  <attribute name="font-desc" value="Sawasdee 17"/>
+                  <attribute name="foreground" value="#000000000000"/>
+                </attributes>
+              </object>
+            </child>
+            <child>
+              <object class="GtkEntry" id="login_username">
+                <property name="width_request">170</property>
+                <property name="height_request">30</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="max_length">11</property>
+                <property name="shadow_type">etched-out</property>
+                <property name="secondary_icon_stock">gtk-media-rewind</property>
+                <property name="placeholder_text" translatable="yes">input login</property>
+                <property name="input_purpose">alpha</property>
+              </object>
+              <packing>
+                <property name="x">420</property>
+                <property name="y">200</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="login_password">
+                <property name="width_request">170</property>
+                <property name="height_request">30</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="max_length">25</property>
+                <property name="visibility">False</property>
+                <property name="invisible_char">•</property>
+                <property name="shadow_type">etched-out</property>
+                <property name="secondary_icon_stock">gtk-media-rewind</property>
+                <property name="placeholder_text" translatable="yes">input password</property>
+                <property name="input_purpose">alpha</property>
+              </object>
+              <packing>
+                <property name="x">420</property>
+                <property name="y">250</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="login_btn">
+                <property name="label" translatable="yes">login</property>
+                <property name="width_request">120</property>
+                <property name="height_request">30</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_login_btn_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="x">420</property>
+                <property name="y">300</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="reg_toggle">
+                <property name="label" translatable="yes">new user</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">False</property>
+                <property name="draw_indicator">True</property>
+                <signal name="toggled" handler="on_reg_toggle_toggled" swapped="no"/>
+              </object>
+              <packing>
+                <property name="x">550</property>
+                <property name="y">305</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="login_err_empty">
+                <property name="width_request">360</property>
+                <property name="height_request">90</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="has_default">True</property>
+              </object>
+              <packing>
+                <property name="x">330</property>
+                <property name="y">70</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="name">login_page0</property>
+            <property name="title" translatable="yes">login_page0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFixed" id="fixed_uchat">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="name">uchat_page0</property>
+            <property name="title" translatable="yes">uchat_page0</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="uchat_btn">
+            <property name="label" translatable="yes">back</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="on_logout_btn_clicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="name">register_page0</property>
+            <property name="title" translatable="yes">register_page0</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
