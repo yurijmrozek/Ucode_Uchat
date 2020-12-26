@@ -1,7 +1,7 @@
-Uchat project. Not done already)
-Work only on osX
-You need to install gtk+3 for this app.
-:
+Uchat project. Not done already)\n
+Work only on osX\n
+You need to install gtk+3 for this app.\n
+:\n\t
    brew install gtk+3
 
 ````bash
