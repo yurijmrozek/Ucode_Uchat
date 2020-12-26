@@ -1,8 +1,8 @@
 Uchat project. Not done already)<br>
 Work only on osX<br>
 You need to install gtk+3 for this app.<br>
-:<br>
-   brew install gtk+3
+
+<br>brew install gtk+3
 
 ````bash
 zsh install all - install client and server
