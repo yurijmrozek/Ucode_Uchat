@@ -19,12 +19,30 @@
 //sys
 
 //libs
+#include <sqlite3.h>
 #include <glib.h>
 #include "../../libraries/include/cJSON.h"
 //libs
 
+//enum
+typedef enum e_type_db {
+    DB_NEW_MESSAGE = 0,
+    DB_OLD_MESSAGE,
+    DB_SECOND,
+    DB_MILISECOND,
+    DB_MICROSECOND
+}            t_type_db;
+//enum
+
 //struct
+typedef struct s_database {
+    sqlite3 *db;
+    gint64 u_id;
+    int u_date;
+}              t_database;
+
 typedef struct s_uchat_server {
+    t_database *t_db;
     int flag;
     int result;
     int socket0;
@@ -34,15 +52,28 @@ typedef struct s_uchat_server {
 }              t_server;
 //struct
 
+//db
+int mx_oc_db();
+int mx_find_logpass_db(t_database *t_db, char *username, char *password);
+int mx_find_login_db(t_database *t_db, char *username);
+void mx_insert_user(t_database *t_db, char *username, char *password);
+void mx_log_out(t_server *server, cJSON *j_request, int socket1);
+int mx_setactive_user(t_database *t_db, const gchar *username, int flag);
+guint64 mx_get_time(gint8 type);
+int mx_create_user_table(t_database *t_db);
+//db
+
 //server
 int mx_create_server(t_server *server);
 int mx_thread_create(t_server *server);
 int mx_valid_argv(t_server *server);
 void *mx_accept_user(void *data);
+void mx_daemon(void);
 //server
 
 //responce
-void mx_login_responce(cJSON *j_request, int socket1);
+void mx_register_user(t_server *server, cJSON *j_request, int socket1);
+void mx_login_responce(t_server *server, cJSON *j_request, int socket1);
 void mx_recv_client(t_server *server, int socket1);
 //responce
 

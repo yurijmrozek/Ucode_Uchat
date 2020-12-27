@@ -5,11 +5,12 @@ void mx_register_request(t_chat *chat) {
                                    (chat->builder, "login_username"));
     GtkEntry *pass_entry = GTK_ENTRY(gtk_builder_get_object
                                    (chat->builder, "login_password"));
-    const gchar *lbuffer = gtk_entry_get_text(log_entry);
+    chat->username = strdup(gtk_entry_get_text(log_entry));
     const gchar *pbuffer = gtk_entry_get_text(pass_entry);
     cJSON *j_login = cJSON_CreateObject();
     cJSON_AddItemToObject(j_login, "action", cJSON_CreateString("register"));
-    cJSON_AddItemToObject(j_login, "username", cJSON_CreateString(lbuffer));
+    cJSON_AddItemToObject(j_login, "username",
+                          cJSON_CreateString(chat->username));
     cJSON_AddItemToObject(j_login, "password", cJSON_CreateString(pbuffer));
     char *jdata = cJSON_Print(j_login);
     write(chat->sockfd, jdata, strlen(jdata));

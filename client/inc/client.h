@@ -28,15 +28,19 @@ typedef struct s_chat {
     int sockfd;
     char *con_ip;
     int con_port;
+    char *username;
     GtkWidget *window;
     GtkBuilder *builder;
 }              t_chat;
+//struct
 
 //autorization
-void mx_login_handl_res(cJSON *j_responce, t_chat *chat);
 void mx_register_request(t_chat *chat);
-void autorized_accept(t_chat *chat);
 void mx_login_request(t_chat *chat);
+void mx_login_handl_res(cJSON *j_responce, t_chat *chat);
+void autorized_accept(t_chat *chat);
+void autorized_decline(t_chat *chat, char flag);
+void mx_send_logout(t_chat *chat);
 //autorization
 
 //gui

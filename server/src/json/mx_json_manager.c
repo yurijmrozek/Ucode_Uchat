@@ -6,10 +6,11 @@ void mx_json_manager(char Buffer[1024], t_server *server, int socket1) {
     j_request = cJSON_Parse(Buffer);
     cJSON *json_type = cJSON_GetObjectItemCaseSensitive(j_request, "action");
     char *action = strdup(json_type->valuestring);
-
-    if (!strcmp(action, "login")) {
-        mx_login_responce(j_request, socket1);
-    }
+    printf("%s\n", action);
+    if (!strcmp(action, "login"))
+        mx_login_responce(server, j_request, socket1);
     if (!strcmp(action, "register"))
-        mx_register_user(j_request, socket1);
+        mx_register_user(server, j_request, socket1);
+    if (!strcmp(action, "log_out"))
+        mx_log_out(server, j_request, socket1);
 }

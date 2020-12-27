@@ -11,7 +11,7 @@ INCD_SERVER = -Iinc/
 GTK_INC = `pkg-config --cflags gtk+-3.0`
 GTK_LIBS = -rdynamic `pkg-config --cflags --libs gtk+-3.0`
 
-SRCD = src src/main src/autorization src/json
+SRCD = src src/main src/autorization src/json src/db
 INCD = inc
 SRCS = $(foreach dir, $(SRCD), $(wildcard $(dir)/*.c))
 OBJS = $(addprefix $(OBJD)/, $(notdir $(SRCS:%.c=%.o)))
