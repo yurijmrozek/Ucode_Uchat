@@ -47,6 +47,8 @@ void mx_send_logout(t_chat *chat);
 int mx_valid_login_gui(t_chat *chat);
 void mx_create_window(t_chat *chat);
 void mx_init_gui(t_chat *chat);
+void destroy(t_chat *chat);
+void mx_close_client(cJSON *j_responce, t_chat *chat);
 //gui
 
 //client

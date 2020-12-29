@@ -11,7 +11,7 @@ void mx_register_user(t_server *server, cJSON *j_request, int socket1) {
     cJSON_AddItemToObject(j_responce, "action", cJSON_CreateString("login_r"));
     if (mx_find_login_db(server->t_db, username) == 2) {
         mx_insert_user(server->t_db, username, password);
-        mx_setactive_user(server->t_db, username, 1);
+        mx_manage_socket_db(server->t_db, username, socket1);
         cJSON_AddItemToObject(j_responce, "valid", cJSON_CreateString("true"));
     }
     else

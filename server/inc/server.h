@@ -57,10 +57,14 @@ int mx_oc_db();
 int mx_find_logpass_db(t_database *t_db, char *username, char *password);
 int mx_find_login_db(t_database *t_db, char *username);
 void mx_insert_user(t_database *t_db, char *username, char *password);
-void mx_log_out(t_server *server, cJSON *j_request, int socket1);
-int mx_setactive_user(t_database *t_db, const gchar *username, int flag);
+void mx_log_out(t_server *server, int socket1);
+int mx_setactive_user(t_database *t_db, char *username, int flag);
 guint64 mx_get_time(gint8 type);
+int mx_manage_socket_db(t_database *t_db, char *username,
+                         int socket1);
+int mx_clean_socket_db(t_database *t_db, int socket1);
 int mx_create_user_table(t_database *t_db);
+int mx_user_online(t_database *t_db, char *username);
 //db
 
 //server

@@ -12,5 +12,5 @@ void mx_json_manager(char Buffer[1024], t_server *server, int socket1) {
     if (!strcmp(action, "register"))
         mx_register_user(server, j_request, socket1);
     if (!strcmp(action, "log_out"))
-        mx_log_out(server, j_request, socket1);
+        mx_log_out(server, socket1);
 }

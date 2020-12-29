@@ -9,5 +9,7 @@ void mx_cjson_parser(char recvBuff[1024], t_chat *chat) {
 
     if (!strcmp(action, "login_r"))
         mx_login_handl_res(j_responce, chat);
+    if (!strcmp(action, "log_out"))
+        mx_close_client(j_responce, chat);
     
 }

@@ -11,8 +11,14 @@ void mx_login_responce(t_server *server, cJSON *j_request, int socket1) {
     cJSON_AddItemToObject(j_responce, "action", cJSON_CreateString("login_r"));
 
     if (mx_find_logpass_db(server->t_db, username, password) == 1) {
-        mx_setactive_user(server->t_db, username, 1);
-        cJSON_AddItemToObject(j_responce, "valid", cJSON_CreateString("true"));
+        if (mx_user_online(server->t_db, username) == 1) {
+            mx_manage_socket_db(server->t_db, username, socket1);
+            cJSON_AddItemToObject(j_responce, "valid",
+                                  cJSON_CreateString("true"));
+        }
+        else
+            cJSON_AddItemToObject(j_responce, "valid",
+                                  cJSON_CreateString("busy"));
     }
     else
         cJSON_AddItemToObject(j_responce, "valid", cJSON_CreateString("false"));

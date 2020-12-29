@@ -6,7 +6,9 @@ void mx_login_request(t_chat *chat) {
     GtkEntry *pass_entry = GTK_ENTRY(gtk_builder_get_object
                                    (chat->builder, "login_password"));
     chat->username = strdup(gtk_entry_get_text(log_entry));
-    const gchar *pbuffer = gtk_entry_get_text(pass_entry);
+    for (int i = 0; chat->username[i]; i++)
+        chat->username[i] = tolower(chat->username[i]);
+    char *pbuffer = strdup(gtk_entry_get_text(pass_entry));
     cJSON *j_login = cJSON_CreateObject();
     cJSON_AddItemToObject(j_login, "action", cJSON_CreateString("login"));
     cJSON_AddItemToObject(j_login, "username",

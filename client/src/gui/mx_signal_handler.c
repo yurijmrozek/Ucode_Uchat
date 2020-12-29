@@ -1,8 +1,7 @@
 #include "client.h"
 
-void quit_chat(t_chat *chat) {
+void destroy(t_chat *chat) {
     mx_send_logout(chat);
-    write(chat->sockfd, chat->username, strlen(chat->username));
     gtk_main_quit();
 }
 
@@ -15,6 +14,8 @@ void autorized_decline(t_chat *chat, char flag) {
                                       "to register.\n");            \
     if (flag == 'e')
         gtk_label_set_text(err_label, "Login was already taken. Try other!\n");
+    if (flag == 'b')
+        gtk_label_set_text(err_label, "User is currently busy.\n");
 }
 
 void autorized_accept(t_chat *chat) {
