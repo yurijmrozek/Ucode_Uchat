@@ -23,11 +23,15 @@ void autorized_accept(t_chat *chat) {
     if (chat->builder) {
         GtkStack *stk = GTK_STACK(gtk_builder_get_object(chat->builder,
                                                          "main_stack"));
-        gtk_stack_set_visible_child_name(stk, "register_page0");
+        gtk_stack_set_visible_child_name(stk, "uchat_page0");
     }
 }
 
-void on_logout_btn_clicked(GtkButton *btn_back, t_chat *chat) {
+void on_contact_btn_add_clicked(void *data, t_chat *chat) {
+    mx_valid_csearch(chat);
+}
+
+void on_logout_btn_clicked(void *data, t_chat *chat) {
     GtkStack *stk = GTK_STACK(gtk_builder_get_object(chat->builder,
                                                      "main_stack"));
     mx_send_logout(chat);

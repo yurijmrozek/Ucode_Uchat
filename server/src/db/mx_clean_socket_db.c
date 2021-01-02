@@ -8,7 +8,7 @@ int mx_clean_socket_db(t_database *t_db, int socket1) {
                                       "SET SOCKET = ?1"     \
                                       "WHERE SOCKET = ?2",
                        -1, &stmt, 0);
-    sqlite3_bind_int(stmt, 1, 0);
+    sqlite3_bind_int(stmt, 1, -1);
     sqlite3_bind_int(stmt, 2, socket1);
 
     if ((rv = sqlite3_step(stmt)) == SQLITE_ROW) {

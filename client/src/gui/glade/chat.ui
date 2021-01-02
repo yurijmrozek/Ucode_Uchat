@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.22.2 -->
 <interface>
+  <requires lib="gtk+" version="3.20"/>
   <object class="GtkWindow" id="window">
     <property name="width_request">1024</property>
     <property name="height_request">480</property>
@@ -41,7 +42,6 @@
                 <property name="can_focus">True</property>
                 <property name="max_length">11</property>
                 <property name="shadow_type">etched-out</property>
-                <property name="secondary_icon_stock">gtk-media-rewind</property>
                 <property name="placeholder_text" translatable="yes">input login</property>
                 <property name="input_purpose">alpha</property>
               </object>
@@ -60,7 +60,6 @@
                 <property name="visibility">False</property>
                 <property name="invisible_char">•</property>
                 <property name="shadow_type">etched-out</property>
-                <property name="secondary_icon_stock">gtk-media-rewind</property>
                 <property name="placeholder_text" translatable="yes">input password</property>
                 <property name="input_purpose">alpha</property>
               </object>
@@ -105,6 +104,9 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="has_default">True</property>
+                <attributes>
+                  <attribute name="foreground" value="#cccc00000000"/>
+                </attributes>
               </object>
               <packing>
                 <property name="x">330</property>
@@ -121,25 +123,125 @@
           <object class="GtkFixed" id="fixed_uchat">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <child>
+              <object class="GtkListBox" id="contact_list">
+                <property name="width_request">200</property>
+                <property name="height_request">410</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="events"/>
+                <signal name="row-activated" handler="on_contact_list_row_activated" swapped="no"/>
+                <signal name="row-selected" handler="on_contact_list_row_selected" swapped="no"/>
+              </object>
+              <packing>
+                <property name="x">5</property>
+                <property name="y">45</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="contact_entry_search">
+                <property name="width_request">200</property>
+                <property name="height_request">35</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="max_length">20</property>
+              </object>
+              <packing>
+                <property name="x">5</property>
+                <property name="y">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="contact_btn_add">
+                <property name="label" translatable="yes">add</property>
+                <property name="width_request">50</property>
+                <property name="height_request">35</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_contact_btn_add_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="x">210</property>
+                <property name="y">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="yes">thing</property>
+                <property name="width_request">50</property>
+                <property name="height_request">35</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+              </object>
+              <packing>
+                <property name="x">575</property>
+                <property name="y">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="yes">thing</property>
+                <property name="width_request">50</property>
+                <property name="height_request">35</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+              </object>
+              <packing>
+                <property name="x">500</property>
+                <property name="y">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="yes">logout</property>
+                <property name="width_request">50</property>
+                <property name="height_request">35</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_logout_btn_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="x">425</property>
+                <property name="y">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkListBox" id="message_list">
+                <property name="width_request">600</property>
+                <property name="height_request">410</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="events"/>
+              </object>
+              <packing>
+                <property name="x">210</property>
+                <property name="y">45</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="contact_lbl_err">
+                <property name="width_request">145</property>
+                <property name="height_request">35</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <attributes>
+                  <attribute name="foreground" value="#cccc00000000"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="x">275</property>
+                <property name="y">5</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="name">uchat_page0</property>
             <property name="title" translatable="yes">uchat_page0</property>
             <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="uchat_btn">
-            <property name="label" translatable="yes">back</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="on_logout_btn_clicked" swapped="no"/>
-          </object>
-          <packing>
-            <property name="name">register_page0</property>
-            <property name="title" translatable="yes">register_page0</property>
-            <property name="position">2</property>
           </packing>
         </child>
       </object>

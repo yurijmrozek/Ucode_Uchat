@@ -12,6 +12,7 @@
 #include <errno.h>
 #include <time.h> 
 #include <locale.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <ctype.h>
@@ -23,16 +24,6 @@
 #include <glib.h>
 #include "../../libraries/include/cJSON.h"
 //libs
-
-//enum
-typedef enum e_type_db {
-    DB_NEW_MESSAGE = 0,
-    DB_OLD_MESSAGE,
-    DB_SECOND,
-    DB_MILISECOND,
-    DB_MICROSECOND
-}            t_type_db;
-//enum
 
 //struct
 typedef struct s_database {
@@ -59,11 +50,10 @@ int mx_find_login_db(t_database *t_db, char *username);
 void mx_insert_user(t_database *t_db, char *username, char *password);
 void mx_log_out(t_server *server, int socket1);
 int mx_setactive_user(t_database *t_db, char *username, int flag);
-guint64 mx_get_time(gint8 type);
 int mx_manage_socket_db(t_database *t_db, char *username,
                          int socket1);
 int mx_clean_socket_db(t_database *t_db, int socket1);
-int mx_create_user_table(t_database *t_db);
+void mx_create_user_table(t_database *t_db);
 int mx_user_online(t_database *t_db, char *username);
 //db
 
@@ -78,6 +68,7 @@ void mx_daemon(void);
 //responce
 void mx_register_user(t_server *server, cJSON *j_request, int socket1);
 void mx_login_responce(t_server *server, cJSON *j_request, int socket1);
+void mx_add_contact(t_server *server, cJSON *j_request, int socket1);
 void mx_recv_client(t_server *server, int socket1);
 //responce
 

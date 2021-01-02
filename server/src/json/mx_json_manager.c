@@ -13,4 +13,6 @@ void mx_json_manager(char Buffer[1024], t_server *server, int socket1) {
         mx_register_user(server, j_request, socket1);
     if (!strcmp(action, "log_out"))
         mx_log_out(server, socket1);
+    if (!strcmp(action, "add_cont"))
+        mx_add_contact(server, j_request, socket1);
 }

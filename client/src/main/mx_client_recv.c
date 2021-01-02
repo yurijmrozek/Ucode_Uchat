@@ -12,6 +12,8 @@ void *mx_client_recv(void *data) {
     
     while (1) {
         result = read(chat->sockfd, recvBuff, 1023);
+        recvBuff[result] = '\0';
+
         if (result > 0) {
             if (cJSON_Parse(recvBuff))
                 mx_cjson_parser(recvBuff, chat);
@@ -22,6 +24,7 @@ void *mx_client_recv(void *data) {
             break;
         }
         printf("\n\nReceived %d bytes:\n\n%s\n\n", result, recvBuff);
+        bzero(recvBuff, 1024);
     }
     return data;
 }
