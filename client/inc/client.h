@@ -52,6 +52,7 @@ void mx_close_client(cJSON *j_responce, t_chat *chat);
 void mx_valid_csearch(t_chat *chat);
 void mx_create_contact(t_chat *chat, char *login);
 void mx_addcont_handl_res(cJSON *j_responce, t_chat *chat);
+void mx_getup_contact(cJSON *j_responce, t_chat *chat);
 //gui
 
 //client

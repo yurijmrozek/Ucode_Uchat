@@ -13,4 +13,6 @@ void mx_cjson_parser(char recvBuff[1024], t_chat *chat) {
         mx_close_client(j_responce, chat);
     if (!strcmp(action, "add_cont"))
         mx_addcont_handl_res(j_responce, chat);
+    if (!strcmp(action, "getup_contact"))
+        mx_getup_contact(j_responce, chat);
 }

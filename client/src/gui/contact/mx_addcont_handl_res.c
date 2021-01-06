@@ -5,6 +5,7 @@ void mx_addcont_handl_res(cJSON *j_responce, t_chat *chat) {
                                        (chat->builder, "contact_lbl_err"));
     cJSON *j_valid = cJSON_GetObjectItemCaseSensitive(j_responce, "valid");
     cJSON *j_login = cJSON_GetObjectItemCaseSensitive(j_responce, "login");
+
     char *valid = strdup(j_valid->valuestring);
     char *login = strdup(j_login->valuestring);
     if (!strcmp(valid, "true")) {

@@ -12,11 +12,12 @@ void mx_login_responce(t_server *server, cJSON *j_request, int socket1) {
     if (mx_find_logpass_db(server->t_db, username, password) == 1) {
         if (mx_user_online(server->t_db, username) == 1) {
             mx_manage_socket_db(server->t_db, username, socket1);
-            char *cont = mx_send_contact(server->t_db, socket1);
+            // char *contact = mx_send_contacts(server->t_db, socket1);
             cJSON_AddItemToObject(j_responce, "valid",
                                   cJSON_CreateString("true"));
-            cJSON_AddItemToObject(j_responce, "contacts",
-                                  cJSON_CreateString(cont));
+            // if (contact)
+            //     cJSON_AddItemToObject(j_responce, "contacts",
+            //                           cJSON_CreateString(contact));
         }
         else
             cJSON_AddItemToObject(j_responce, "valid",
