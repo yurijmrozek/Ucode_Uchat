@@ -23,7 +23,7 @@ CFLAGS = -std=c11 $(addprefix -W, all extra pedantic)
 CPPFLAGS = -DMX_SERVER='"$(SERVER_WD)"' $(UTILS_INC) \
 $(INCD_SERVER) -D_GNU_SOURCE $(INCD_LIBS) $(GTK_INC) -I/usr/local/opt/openssl/include
 LIBS = $(LIBD_LIBS) $(GTK_LIBS) -L/usr/local/opt/openssl/lib \
--lssl -lcjson -lcrypto -lsqlite3 -lpthread -ldl
+-lcjson -lsqlite3 -lpthread -ldl
 
 all: $(SERVER)
 

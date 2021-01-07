@@ -12,9 +12,9 @@ void autorized_decline(t_chat *chat, char flag) {
         gtk_label_set_text(err_label, "Invalid login or password."  \
                                       "\nSwitch toggle 'new user' " \
                                       "to register.\n");            \
-    if (flag == 'e')
+    else if (flag == 'e')
         gtk_label_set_text(err_label, "Login was already taken. Try other!\n");
-    if (flag == 'b')
+    else if (flag == 'b')
         gtk_label_set_text(err_label, "User is currently busy.\n");
 }
 
