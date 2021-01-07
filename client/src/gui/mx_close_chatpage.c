@@ -1,6 +1,6 @@
 #include "client.h"
 
-void mx_close_client(cJSON *j_responce, t_chat *chat) {
+void mx_close_chatpage(cJSON *j_responce, t_chat *chat) {
     cJSON *j_valid = cJSON_GetObjectItemCaseSensitive(j_responce, "valid");
     char *valid = strdup(j_valid->valuestring);
     if (!strcmp(valid, "true")) {

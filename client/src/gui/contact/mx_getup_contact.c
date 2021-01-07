@@ -37,6 +37,9 @@ static char **strsplit(const char *s, char c) {
 }
 
 void mx_getup_contact(cJSON *j_responce, t_chat *chat) {
+    GtkListBox *cont_list = GTK_LIST_BOX
+                            (gtk_builder_get_object(chat->builder,
+                             "contact_list"));
     cJSON *j_cont;
     char **contarr;
 
