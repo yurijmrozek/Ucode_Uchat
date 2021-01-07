@@ -5,7 +5,6 @@ void mx_create_contact(t_chat *chat, char *login) {
                             (gtk_builder_get_object(chat->builder,
                                                     "contact_list"));
     GtkWidget *label1, *label2, *hbox, *row;
-
     row = gtk_list_box_row_new();
     hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
     label1 = gtk_label_new(login);
@@ -16,5 +15,5 @@ void mx_create_contact(t_chat *chat, char *login) {
     gtk_box_pack_start(GTK_BOX(hbox), label2, TRUE, TRUE, 0);
 
     gtk_container_add(GTK_CONTAINER(cont_list), row);
-    gtk_widget_show_all(chat->window);
+    gtk_widget_show_all(row);
 }
