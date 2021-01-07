@@ -37,12 +37,14 @@ static char **strsplit(const char *s, char c) {
 }
 
 void mx_getup_contact(cJSON *j_responce, t_chat *chat) {
-    cJSON *j_cont = cJSON_GetObjectItemCaseSensitive(j_responce, "contacts");
-    char *cont = strdup(j_cont->valuestring);
+    cJSON *j_cont;
+    char **contarr;
 
-    char **contarr = strsplit(cont, ',');
-    for (int i = 0; contarr[i]; i++) {
-        mx_create_contact(chat, contarr[i]);
-        printf("contarr[%d]: %s\n", i, contarr[i]);
+    if ((j_cont = cJSON_GetObjectItemCaseSensitive(j_responce, "contacts"))) {
+        contarr = strsplit(j_cont->valuestring, ',');
+        for (int i = 0; contarr[i]; i++) {
+            mx_create_contact(chat, contarr[i]);
+            printf("contarr[%d]: %s\n", i, contarr[i]);
+        }
     }
 }

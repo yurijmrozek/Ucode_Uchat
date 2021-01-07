@@ -55,7 +55,7 @@ int mx_get_id_login(t_database *t_db, char *login);
 char *mx_get_login_id(t_database *t_db, int id);
 int mx_find_similar_cont(t_database *t_db, char *login, int socket1);
 void mx_add_contact_db(t_database *t_db, char *login, int socket1);
-// char *mx_send_contacts(t_database *t_db, int socket1);
+void mx_send_contacts(t_database *t_db, int socket1);
 int mx_manage_socket_db(t_database *t_db, char *username,
                          int socket1);
 int mx_clean_socket_db(t_database *t_db, int socket1);
@@ -73,6 +73,7 @@ void mx_daemon(void);
 
 //responce
 void mx_register_user(t_server *server, cJSON *j_request, int socket1);
+void mx_init_client_db(t_database *t_db, int socket1);
 void mx_login_responce(t_server *server, cJSON *j_request, int socket1);
 void mx_add_contact(t_server *server, cJSON *j_request, int socket1);
 void mx_recv_client(t_server *server, int socket1);

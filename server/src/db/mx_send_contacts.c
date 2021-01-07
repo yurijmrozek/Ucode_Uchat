@@ -46,13 +46,12 @@ static char *get_contacts(t_database *t_db, int socket1) {
     return contacts;
 }
 
-// char *mx_send_contacts(t_database *t_db, int socket1) {
+void mx_send_contacts(t_database *t_db, int socket1) {
     cJSON *j_responce = cJSON_CreateObject();
 
     cJSON_AddItemToObject(j_responce, "action",
                           cJSON_CreateString("getup_contact"));
     char *contacts = get_contacts(t_db, socket1);
-    return contacts;
     if (contacts)
         cJSON_AddItemToObject(j_responce, "contacts",
                               cJSON_CreateString(contacts));
