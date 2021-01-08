@@ -30,7 +30,6 @@ typedef struct s_chat {
     int con_port;
     char *username;
     GtkWidget *window;
-    GtkWidget *cont_row;
     GtkBuilder *builder;
 }              t_chat;
 //struct
@@ -54,6 +53,8 @@ void mx_valid_csearch(t_chat *chat);
 void mx_create_contact(t_chat *chat, char *login);
 void mx_addcont_handl_res(cJSON *j_responce, t_chat *chat);
 void mx_getup_contact(cJSON *j_responce, t_chat *chat);
+void mx_clear_cont_row(t_chat *chat);
+void mx_clear_chat(t_chat *chat);
 //gui
 
 //client

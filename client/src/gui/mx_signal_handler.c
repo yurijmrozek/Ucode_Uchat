@@ -19,7 +19,7 @@ void autorized_decline(t_chat *chat, char flag) {
 }
 
 void autorized_accept(t_chat *chat) {
-    printf("login accepted\n");
+    sleep(0.5);
     if (chat->builder) {
         GtkStack *stk = GTK_STACK(gtk_builder_get_object(chat->builder,
                                                          "main_stack"));

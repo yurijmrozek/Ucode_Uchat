@@ -37,17 +37,14 @@ static char **strsplit(const char *s, char c) {
 }
 
 void mx_getup_contact(cJSON *j_responce, t_chat *chat) {
-    GtkListBox *cont_list = GTK_LIST_BOX
-                            (gtk_builder_get_object(chat->builder,
-                             "contact_list"));
     cJSON *j_cont;
     char **contarr;
 
+    mx_clear_cont_row(chat);
     if ((j_cont = cJSON_GetObjectItemCaseSensitive(j_responce, "contacts"))) {
         contarr = strsplit(j_cont->valuestring, ',');
         for (int i = 0; contarr[i]; i++) {
             mx_create_contact(chat, contarr[i]);
-            printf("contarr[%d]: %s\n", i, contarr[i]);
         }
     }
 }
