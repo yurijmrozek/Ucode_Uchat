@@ -6,7 +6,7 @@ void mx_init_gui(t_chat *chat) {
 
     chat->builder = gtk_builder_new();
     if (!gtk_builder_add_from_file(chat->builder, "client/src/gui/glade/"
-                                             "chat.ui", &error)) {
+                                             "uchat.ui", &error)) {
         g_critical("error load file: %s", error->message);
         g_error_free(error);
         gtk_main_quit();

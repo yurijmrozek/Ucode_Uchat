@@ -1,6 +1,6 @@
 #include "server.h"
 
-void mx_json_manager(char Buffer[2048], t_server *server, int socket1) {
+void mx_json_manager(char Buffer[], t_server *server, int socket1) {
     cJSON *j_request = cJSON_CreateObject();
 
     if ((j_request = cJSON_Parse(Buffer))) {

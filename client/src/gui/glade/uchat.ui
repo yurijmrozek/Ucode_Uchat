@@ -22,26 +22,14 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkLabel">
-                <property name="width_request">140</property>
-                <property name="height_request">100</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">UCHAT</property>
-                <attributes>
-                  <attribute name="font-desc" value="Sawasdee 17"/>
-                  <attribute name="foreground" value="#000000000000"/>
-                </attributes>
-              </object>
-            </child>
-            <child>
               <object class="GtkEntry" id="login_username">
                 <property name="width_request">170</property>
                 <property name="height_request">30</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="max_length">11</property>
+                <property name="max_length">10</property>
                 <property name="shadow_type">etched-out</property>
+                <property name="primary_icon_name">x-office-address-book</property>
                 <property name="placeholder_text" translatable="yes">input login</property>
                 <property name="input_purpose">alpha</property>
               </object>
@@ -56,10 +44,11 @@
                 <property name="height_request">30</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="max_length">25</property>
+                <property name="max_length">10</property>
                 <property name="visibility">False</property>
                 <property name="invisible_char">•</property>
                 <property name="shadow_type">etched-out</property>
+                <property name="primary_icon_name">emblem-readonly</property>
                 <property name="placeholder_text" translatable="yes">input password</property>
                 <property name="input_purpose">alpha</property>
               </object>
@@ -113,6 +102,19 @@
                 <property name="y">70</property>
               </packing>
             </child>
+            <child>
+              <object class="GtkImage">
+                <property name="width_request">100</property>
+                <property name="height_request">80</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="pixbuf">Main_logo.png</property>
+              </object>
+              <packing>
+                <property name="x">5</property>
+                <property name="y">5</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="name">login_page0</property>
@@ -124,27 +126,14 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkListBox" id="contact_list">
-                <property name="width_request">200</property>
-                <property name="height_request">410</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="events"/>
-                <signal name="row-activated" handler="on_contact_list_row_activated" swapped="no"/>
-                <signal name="row-selected" handler="on_contact_list_row_selected" swapped="no"/>
-              </object>
-              <packing>
-                <property name="x">5</property>
-                <property name="y">45</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkEntry" id="contact_entry_search">
                 <property name="width_request">200</property>
                 <property name="height_request">35</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="max_length">20</property>
+                <property name="max_length">10</property>
+                <property name="primary_icon_name">contact-new</property>
+                <property name="placeholder_text" translatable="yes">search contact</property>
               </object>
               <packing>
                 <property name="x">5</property>
@@ -168,34 +157,6 @@
             </child>
             <child>
               <object class="GtkButton">
-                <property name="label" translatable="yes">thing</property>
-                <property name="width_request">50</property>
-                <property name="height_request">35</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-              </object>
-              <packing>
-                <property name="x">575</property>
-                <property name="y">5</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
-                <property name="label" translatable="yes">thing</property>
-                <property name="width_request">50</property>
-                <property name="height_request">35</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-              </object>
-              <packing>
-                <property name="x">500</property>
-                <property name="y">5</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
                 <property name="label" translatable="yes">logout</property>
                 <property name="width_request">50</property>
                 <property name="height_request">35</property>
@@ -207,19 +168,6 @@
               <packing>
                 <property name="x">425</property>
                 <property name="y">5</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkListBox" id="message_list">
-                <property name="width_request">600</property>
-                <property name="height_request">410</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="events"/>
-              </object>
-              <packing>
-                <property name="x">210</property>
-                <property name="y">45</property>
               </packing>
             </child>
             <child>
@@ -235,6 +183,46 @@
               <packing>
                 <property name="x">275</property>
                 <property name="y">5</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="cont_box">
+                <property name="width_request">265</property>
+                <property name="height_request">325</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkScrolledWindow" id="cont_scroll">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="shadow_type">in</property>
+                    <child>
+                      <object class="GtkViewport" id="cont_viewport">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <child>
+                          <object class="GtkListBox" id="contact_list">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="events"/>
+                            <signal name="row-activated" handler="on_contact_list_row_activated" swapped="no"/>
+                            <signal name="row-selected" handler="on_contact_list_row_selected" swapped="no"/>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="x">5</property>
+                <property name="y">45</property>
               </packing>
             </child>
           </object>

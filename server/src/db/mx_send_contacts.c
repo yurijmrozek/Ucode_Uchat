@@ -41,7 +41,7 @@ static char *get_contacts(t_database *t_db, int socket1) {
         printf("contarr[%d]: %s\n", j, contarr[j]);
         contacts = strjoin(contacts, contarr[j]);
         contacts = strjoin(contacts, ",");
-        contarr[j] = NULL;
+        free(contarr[j]);
     }
     free(contarr);
     printf("contact: %s\n", contacts);
