@@ -5,6 +5,6 @@ void mx_start_chat(t_chat *chat) {
     
     mx_init_gui(chat);
     pthread_create(&recv_t, NULL, mx_client_recv, (void *)chat);
-    gtk_widget_show(chat->window);
+    g_idle_add ((int (*)(void *))mx_show_widget, chat->window);
     gtk_main();
 }

@@ -17,8 +17,8 @@
 
 //frameworks/libraries
 #include <sqlite3.h>
-#include <gtk/gtk.h>
 #include <glib.h>
+#include <gtk/gtk.h>
 #include <gio/gio.h>
 #include "../../libraries/include/cJSON.h"
 //frameworks/libraries
@@ -54,6 +54,7 @@ void mx_create_contact(t_chat *chat, char *login);
 void mx_addcont_handl_res(cJSON *j_responce, t_chat *chat);
 void mx_getup_contact(cJSON *j_responce, t_chat *chat);
 void mx_clear_cont_row(t_chat *chat);
+int mx_show_widget(GtkWidget *widget);
 void mx_clear_chat(t_chat *chat);
 //gui
 

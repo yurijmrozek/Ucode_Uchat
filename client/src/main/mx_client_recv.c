@@ -8,10 +8,10 @@ static void disconnect_user(int sockfd) {
 void *mx_client_recv(void *data) {
     t_chat *chat = (t_chat *)data;
     int result;
-    char recvBuff[1024];
+    char recvBuff[2048];
     
     while (1) {
-        result = read(chat->sockfd, recvBuff, 1023);
+        result = read(chat->sockfd, recvBuff, 2047);
         recvBuff[result] = '\0';
         if (result > 0) {
             mx_cjson_parser(recvBuff, chat);
@@ -22,7 +22,7 @@ void *mx_client_recv(void *data) {
             disconnect_user(chat->sockfd);
             break;
         }
-        bzero(recvBuff, 1024);
+        bzero(recvBuff, 2048);
     }
     return data;
 }

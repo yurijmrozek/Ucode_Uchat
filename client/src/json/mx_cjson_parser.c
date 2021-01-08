@@ -1,6 +1,6 @@
 #include "client.h"
 
-void mx_cjson_parser(char recvBuff[1024], t_chat *chat) {
+void mx_cjson_parser(char recvBuff[2048], t_chat *chat) {
     cJSON *j_responce = cJSON_CreateObject();
     cJSON *json_type;
     if ((j_responce = cJSON_Parse(recvBuff))) {

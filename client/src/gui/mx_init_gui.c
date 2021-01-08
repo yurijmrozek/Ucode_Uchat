@@ -17,7 +17,6 @@ void mx_init_gui(t_chat *chat) {
         g_critical("error getting window");
         gtk_main_quit();
     }
-
     g_signal_connect(G_OBJECT(chat->window),
                                 "destroy", G_CALLBACK(destroy), chat);
 }

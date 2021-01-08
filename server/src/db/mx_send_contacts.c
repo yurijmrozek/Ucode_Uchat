@@ -25,7 +25,7 @@ static char *strjoin(char const *s1, char const *s2) {
 }
 
 static char *get_contacts(t_database *t_db, int socket1) {
-    char **contarr = (char **)malloc(sizeof(char *));
+    char **contarr = (char **)malloc(sizeof(char *) * 10);
     char *contacts = NULL;
     int j = -1;
     sqlite3_stmt *stmt;

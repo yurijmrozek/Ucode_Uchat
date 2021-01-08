@@ -22,9 +22,10 @@ void mx_register_user(t_server *server, cJSON *j_request, int socket1) {
     
     char *jdata = cJSON_Print(j_responce);
     printf("\n\nTo responce:\n\n%s\n\n", jdata);
-    write(socket1, jdata, strlen(jdata));
     if (valid)
         mx_init_client_db(server->t_db, socket1);
+    sleep(1);
+    write(socket1, jdata, strlen(jdata));
     cJSON_Delete(j_responce);
     free(jdata);
     free(username);
