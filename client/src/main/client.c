@@ -9,5 +9,6 @@ int main(int argc, char *argv[]) {
         mx_start_chat(chat);
     }
     close(chat->sockfd);
+    free(chat);
     return 0;
 }

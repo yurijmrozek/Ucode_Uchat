@@ -9,8 +9,7 @@ void mx_recv_client(t_server *server, int socket1) {
         Buffer[result] = '\0';
         
         if (result > 0) {
-            if (cJSON_Parse(Buffer))
-                mx_json_manager(Buffer, server, socket1);
+            mx_json_manager(Buffer, server, socket1);
             printf("\n\nReceived %d bytes:\n\n%s\n\n", result, Buffer);
         }
         else {

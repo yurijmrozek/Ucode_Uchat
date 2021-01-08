@@ -30,4 +30,6 @@ void mx_login_responce(t_server *server, cJSON *j_request, int socket1) {
         mx_init_client_db(server->t_db, socket1);
     cJSON_Delete(j_responce);
     free(jdata);
+    free(username);
+    free(password);
 }

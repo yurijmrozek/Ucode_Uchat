@@ -20,5 +20,6 @@ void mx_login_request(t_chat *chat) {
     gtk_entry_set_text(log_entry, "");
     gtk_entry_set_text(pass_entry, "");
     cJSON_Delete(j_login);
+    free(pbuffer);
     free(jdata);
 }

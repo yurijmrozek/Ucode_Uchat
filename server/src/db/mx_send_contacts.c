@@ -25,7 +25,7 @@ static char *strjoin(char const *s1, char const *s2) {
 }
 
 static char *get_contacts(t_database *t_db, int socket1) {
-    char **contarr = (char **)malloc(sizeof(char *) * 10);
+    char **contarr = (char **)malloc(sizeof(char *));
     char *contacts = NULL;
     int j = -1;
     sqlite3_stmt *stmt;
@@ -41,7 +41,9 @@ static char *get_contacts(t_database *t_db, int socket1) {
         printf("contarr[%d]: %s\n", j, contarr[j]);
         contacts = strjoin(contacts, contarr[j]);
         contacts = strjoin(contacts, ",");
+        contarr[j] = NULL;
     }
+    free(contarr);
     printf("contact: %s\n", contacts);
     return contacts;
 }
@@ -60,4 +62,5 @@ void mx_send_contacts(t_database *t_db, int socket1) {
     write(socket1, jdata, strlen(jdata));
     cJSON_Delete(j_responce);
     free(jdata);
+    free(contacts);
 }

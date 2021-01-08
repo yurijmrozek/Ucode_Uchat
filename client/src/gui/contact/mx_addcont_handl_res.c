@@ -18,4 +18,6 @@ void mx_addcont_handl_res(cJSON *j_responce, t_chat *chat) {
     if (!strcmp(valid, "exist")) {
         gtk_label_set_text(err_label, "User exist!");
     }
+    free(valid);
+    free(login);
 }

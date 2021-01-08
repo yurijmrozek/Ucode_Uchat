@@ -34,4 +34,5 @@ void mx_add_contact(t_server *server, cJSON *j_request, int socket1) {
     write(socket1, jdata, strlen(jdata));
     cJSON_Delete(j_responce);
     free(jdata);
+    free(login);
 }

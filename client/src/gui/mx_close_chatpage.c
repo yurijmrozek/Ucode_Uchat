@@ -9,4 +9,5 @@ void mx_close_chatpage(cJSON *j_responce, t_chat *chat) {
                                                      "main_stack"));
         gtk_stack_set_visible_child_name(stk, "login_page0");
     }
+    free(valid);
 }

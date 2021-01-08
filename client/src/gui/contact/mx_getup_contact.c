@@ -37,14 +37,19 @@ static char **strsplit(const char *s, char c) {
 }
 
 void mx_getup_contact(cJSON *j_responce, t_chat *chat) {
+    GtkLabel *err_label = GTK_LABEL(gtk_builder_get_object
+                                   (chat->builder, "contact_lbl_err"));
     cJSON *j_cont;
-    char **contarr;
+    char **contarr = NULL;
 
+    gtk_label_set_text(err_label, "");
     mx_clear_cont_row(chat);
     if ((j_cont = cJSON_GetObjectItemCaseSensitive(j_responce, "contacts"))) {
         contarr = strsplit(j_cont->valuestring, ',');
         for (int i = 0; contarr[i]; i++) {
             mx_create_contact(chat, contarr[i]);
+            free(contarr[i]);
         }
     }
+    free(contarr);
 }

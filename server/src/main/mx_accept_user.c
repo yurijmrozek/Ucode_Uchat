@@ -1,7 +1,7 @@
 #include "server.h"
 
 void *mx_accept_user(void *data) {
-    t_server *server = data;
+    t_server *server = (t_server *)data;
     struct sockaddr_in PeerAddr;
     socklen_t PeerAddrLen = sizeof(PeerAddr);
     int socket1 = accept(server->socket0, (struct sockaddr*)

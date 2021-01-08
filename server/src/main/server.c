@@ -14,4 +14,7 @@ int main(int argc, char *argv[]) {
     mx_oc_db(server->t_db);
     printf("Server created\n");
     mx_thread_create(server);
+    sqlite3_close(server->t_db->db);
+    free(server->t_db);
+    free(server);
 }

@@ -12,4 +12,6 @@ void mx_login_handl_res(cJSON *j_responce, t_chat *chat) {
         autorized_decline(chat, 'b');
     else
         autorized_decline(chat, 'n');
+    free(chat->username);
+    free(valid);
 }
