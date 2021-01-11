@@ -25,12 +25,14 @@ typedef struct {
     int con_port;
     char *con_ip;
     GtkWidget *awindow;
-    GtkBuilder *builder;
+    GtkWidget *cwindow;
+    GtkBuilder *builder;    
 }               client_t;
 
 void mx_valid_argv(int argc, char **argv, client_t *cli);
 void mx_create_connection(client_t *cli);
-void mx_init_autoriz_gui(client_t *cli);
+void mx_init_authoriz_gui(client_t *cli);
+void mx_init_chat_gui(client_t *cli);
 void *mx_read_server(void *arg);
 void destroy(client_t *cli);
 bool mx_valid_reg_creden(client_t *cli);
@@ -38,3 +40,7 @@ bool mx_valid_log_creden(client_t *cli);
 void mx_login_request(client_t *cli);
 void mx_register_request(client_t *cli);
 void send_message_self(const char *s, int sockfd);
+void mx_json_manager(char buff_in[], client_t *cli);
+void mx_login_responce(cJSON *j_responce, client_t *cli);
+void mx_register_responce(cJSON *j_responce, client_t *cli);
+void mx_creden_accepted(cJSON *j_responce, client_t *cli);

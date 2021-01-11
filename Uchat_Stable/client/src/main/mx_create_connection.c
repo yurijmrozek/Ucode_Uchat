@@ -22,7 +22,7 @@ void mx_create_connection(client_t *cli) {
 
     gdk_threads_init();
     gtk_init(NULL, NULL);
-    mx_init_autoriz_gui(cli);
+    mx_init_authoriz_gui(cli);
     g_thread_new("mx_read_server", mx_read_server, (void *)cli);
     gtk_main();
     gdk_threads_leave();

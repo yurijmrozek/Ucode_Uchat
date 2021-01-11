@@ -44,9 +44,24 @@ void on_reg_btn_clicked_reg(GtkWidget *button, gpointer data) {
         mx_register_request(cli);
 }
 
-void on_lgb_btn_clicked_log(GtkWidget *button, gpointer data) {
+void on_lgn_btn_clicked_log(GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
 
     if (mx_valid_log_creden(cli))
         mx_login_request(cli);
+}
+
+void on_log_out_btn_clicked(GtkWidget *button, gpointer data) {
+    client_t *cli = (client_t *)data;
+    cJSON *j_request = cJSON_CreateObject();
+
+    cJSON_AddItemToObject(j_request, "action",//////////////
+                         cJSON_CreateString("logout_user"));
+    char *jdata = cJSON_Print(j_request);
+    send_message_self(jdata, cli->sockfd);
+    free(jdata);
+    cJSON_Delete(j_request);
+    // mx_clear_chat();
+    gtk_widget_hide(cli->cwindow);
+    gtk_widget_show(cli->awindow);
 }

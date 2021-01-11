@@ -20,6 +20,7 @@ void mx_register_request(client_t *cli) {
     send_message_self(jdata, cli->sockfd);
     gtk_entry_set_text(log_entry, "");
     gtk_entry_set_text(pass_entry, "");
+    free(jdata);
     free(username);
     free(password);
     cJSON_Delete(j_request);
