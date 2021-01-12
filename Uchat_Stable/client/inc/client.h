@@ -43,4 +43,7 @@ void send_message_self(const char *s, int sockfd);
 void mx_json_manager(char buff_in[], client_t *cli);
 void mx_login_responce(cJSON *j_responce, client_t *cli);
 void mx_register_responce(cJSON *j_responce, client_t *cli);
-void mx_creden_accepted(cJSON *j_responce, client_t *cli);
+void mx_creden_accepted(client_t *cli);
+void mx_add_cntc_request(client_t *cli, char *username);
+void mx_sending_invite_dialog(client_t *cli, char valid);
+void mx_add_new_cntc_responce(cJSON *j_responce, client_t *cli);

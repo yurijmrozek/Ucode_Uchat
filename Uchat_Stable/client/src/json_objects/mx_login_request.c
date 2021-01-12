@@ -10,7 +10,7 @@ void mx_login_request(client_t *cli) {
     for (int i = 0; username[i]; i++)
         username[i] = tolower(username[i]);
     cJSON *j_request = cJSON_CreateObject();
-    cJSON_AddItemToObject(j_request, "action",//////////////
+    cJSON_AddItemToObject(j_request, "action",////////////////
                           cJSON_CreateString("signin_user"));
     cJSON_AddItemToObject(j_request, "username",//////////////
                           cJSON_CreateString(username));

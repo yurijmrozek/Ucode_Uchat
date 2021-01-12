@@ -897,7 +897,7 @@ you have an account?</property>
             <property name="margin_right">20</property>
             <property name="margin_top">20</property>
             <attributes>
-              <attribute name="font-desc" value="Chilanka Bold 13"/>
+              <attribute name="font-desc" value="Chilanka Bold 16"/>
               <attribute name="foreground" value="#ffff5d5c5554"/>
             </attributes>
           </object>
@@ -915,7 +915,7 @@ you have an account?</property>
             <property name="margin_right">20</property>
             <property name="margin_top">20</property>
             <attributes>
-              <attribute name="font-desc" value="Chilanka Bold 13"/>
+              <attribute name="font-desc" value="Chilanka Bold 16"/>
               <attribute name="foreground" value="#8a8ae2e23434"/>
             </attributes>
           </object>

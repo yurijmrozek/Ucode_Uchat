@@ -11,7 +11,7 @@ INCD_CLIENT = -Iinc/
 GTK_LIBS = -rdynamic `pkg-config --cflags --libs gtk+-3.0`
 GTK_INC = `pkg-config --cflags gtk+-3.0`
 
-SRCD = src src/main src/gui src/gui/authorization src/json_objects
+SRCD = src src/main src/gui src/gui/authorization src/json_objects src/gui/contact
 INCD = inc
 SRCS = $(foreach dir, $(SRCD), $(wildcard $(dir)/*.c))
 OBJS = $(addprefix $(OBJD)/, $(notdir $(SRCS:%.c=%.o)))
