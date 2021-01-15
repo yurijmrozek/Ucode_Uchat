@@ -11,5 +11,7 @@ void mx_json_manager(char buff_in[], client_t *cli) {
         mx_register_responce(j_responce, cli);
     if (!strcmp(j_action->valuestring, "add_new_cntc_responce"))
         mx_add_new_cntc_responce(j_responce, cli);
+    if (!strcmp(j_action->valuestring, "getup_cntc"))
+        mx_getup_cntc(j_responce, cli);
     cJSON_Delete(j_responce);
 }

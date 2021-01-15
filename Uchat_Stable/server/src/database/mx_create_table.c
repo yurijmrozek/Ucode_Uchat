@@ -3,8 +3,9 @@
 static void contact_table(sqlite3 *tmp_db) {
     sqlite3_exec(tmp_db,   "CREATE TABLE IF NOT EXISTS contact("             \
                            "ID          INTEGER      NOT NULL, "             \
-                           "CONT        INTEGER      NOT NULL);",
-                 0, 0, 0);/////////////////////////////////////////
+                           "CONT        INTEGER      NOT NULL, "
+                           "STATE       INTEGER      NOT NULL);",
+                 0, 0, 0);//////////////////////////////////////
 }
 
 static void user_table(sqlite3 *tmp_db) {

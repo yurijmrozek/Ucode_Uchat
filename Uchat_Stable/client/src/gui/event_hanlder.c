@@ -61,7 +61,7 @@ void on_log_out_btn_clicked(GtkWidget *button, gpointer data) {
     send_message_self(jdata, cli->sockfd);
     free(jdata);
     cJSON_Delete(j_request);
-    // mx_clear_chat();
+    mx_clear_chat(cli);
     gtk_widget_hide(cli->cwindow);
     gtk_widget_show(cli->awindow);
 }

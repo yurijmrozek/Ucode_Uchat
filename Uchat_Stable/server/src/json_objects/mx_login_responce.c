@@ -5,6 +5,7 @@ void mx_login_responce(cJSON *j_request, int connfd, sqlite3 *db) {
     cJSON *j_password = cJSON_GetObjectItemCaseSensitive(j_request, "password");
     char *username = strdup(j_username->valuestring);
     char *password = strdup(j_password->valuestring);
+    bool valid = false;
 
     cJSON *j_responce = cJSON_CreateObject();
     cJSON_AddItemToObject(j_responce, "action",/////////////////
@@ -16,6 +17,7 @@ void mx_login_responce(cJSON *j_request, int connfd, sqlite3 *db) {
                                   cJSON_CreateString("true"));
             cJSON_AddItemToObject(j_responce, "reason",/////////
                                   cJSON_CreateString("true_credentials"));
+            valid = true;
         }
         else {
             cJSON_AddItemToObject(j_responce, "valid",//////////
@@ -31,8 +33,9 @@ void mx_login_responce(cJSON *j_request, int connfd, sqlite3 *db) {
     }
     char *jdata = cJSON_Print(j_responce);
     printf("To responce:\n\n %s\n\n", jdata);
-    // mx_init_client_db(server->t_db, socket1);
     send_message_self(jdata, connfd);
+    if (valid)
+        mx_init_client_db(db, connfd);
     free(jdata);
     free(username);
     free(password);

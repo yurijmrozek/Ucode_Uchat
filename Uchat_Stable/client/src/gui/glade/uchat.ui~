@@ -614,94 +614,6 @@ you have an account?</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkScrolledWindow">
-                <property name="width_request">150</property>
-                <property name="height_request">380</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="shadow_type">in</property>
-                <child>
-                  <object class="GtkViewport">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="border_width">5</property>
-                    <child>
-                      <object class="GtkListBox" id="cntc _list">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="border_width">5</property>
-                        <child>
-                          <object class="GtkListBoxRow">
-                            <property name="width_request">100</property>
-                            <property name="height_request">80</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="margin_left">6</property>
-                                    <property name="margin_right">83</property>
-                                    <property name="label" translatable="yes">ymrozek</property>
-                                    <property name="max_width_chars">11</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="opacity">0.59999999999999998</property>
-                                    <property name="margin_left">5</property>
-                                    <property name="margin_right">52</property>
-                                    <property name="label" translatable="yes">hello, ymro</property>
-                                    <property name="max_width_chars">10</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkImage">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="margin_left">93</property>
-                                    <property name="margin_top">2</property>
-                                    <property name="margin_bottom">3</property>
-                                    <property name="icon_name">contact-new</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">2</property>
-                                  </packing>
-                                </child>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="x">10</property>
-                <property name="y">50</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkButton" id="log_out_btn">
                 <property name="label" translatable="yes">log out</property>
                 <property name="width_request">85</property>
@@ -746,6 +658,33 @@ you have an account?</property>
               <packing>
                 <property name="x">110</property>
                 <property name="y">10</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow">
+                <property name="width_request">150</property>
+                <property name="height_request">380</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="shadow_type">in</property>
+                <child>
+                  <object class="GtkViewport">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="border_width">5</property>
+                    <child>
+                      <object class="GtkListBox" id="cntc_list">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="border_width">5</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="x">10</property>
+                <property name="y">50</property>
               </packing>
             </child>
           </object>
@@ -897,7 +836,7 @@ you have an account?</property>
             <property name="margin_right">20</property>
             <property name="margin_top">20</property>
             <attributes>
-              <attribute name="font-desc" value="Chilanka Bold 16"/>
+              <attribute name="font-desc" value="Chilanka Bold 13"/>
               <attribute name="foreground" value="#ffff5d5c5554"/>
             </attributes>
           </object>
@@ -915,7 +854,7 @@ you have an account?</property>
             <property name="margin_right">20</property>
             <property name="margin_top">20</property>
             <attributes>
-              <attribute name="font-desc" value="Chilanka Bold 16"/>
+              <attribute name="font-desc" value="Chilanka Bold 13"/>
               <attribute name="foreground" value="#8a8ae2e23434"/>
             </attributes>
           </object>

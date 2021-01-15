@@ -9,6 +9,7 @@ int mx_confirm_ucredentials(sqlite3 *db, char *username, char *password) {
                             -1, &stmt, 0);////////////////////////////////
     sqlite3_bind_text(stmt, 1, username, -1, SQLITE_STATIC);
     sqlite3_bind_text(stmt, 2, password, -1, SQLITE_STATIC);
+    
     if ((rv = sqlite3_step(stmt)) == SQLITE_ROW) {
         sqlite3_finalize(stmt);
         return 1;

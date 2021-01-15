@@ -4,8 +4,8 @@ int mx_get_id_socket(sqlite3 *db, int connfd) {
     sqlite3_stmt *stmt;
     int rv = 0;
 
-    rv = sqlite3_prepare16_v3(db, "SELECT ID FROM users "  \
-                                  "WHERE SOCKET = ?1",
+    rv = sqlite3_prepare_v3(db, "SELECT ID FROM users "  \
+                                "WHERE SOCKET = ?1",//////
                               -1, 0, &stmt, NULL);
     sqlite3_bind_int64(stmt, 1, connfd);
     sqlite3_step(stmt);

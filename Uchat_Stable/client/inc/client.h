@@ -47,3 +47,7 @@ void mx_creden_accepted(client_t *cli);
 void mx_add_cntc_request(client_t *cli, char *username);
 void mx_sending_invite_dialog(client_t *cli, char valid);
 void mx_add_new_cntc_responce(cJSON *j_responce, client_t *cli);
+void mx_insert_cntc_list(char *username, client_t *cli, char *icon);
+void mx_clear_cntc_list(client_t *cli);
+void mx_clear_chat(client_t *cli);
+void mx_getup_cntc(cJSON *j_responce, client_t *cli);
