@@ -59,7 +59,7 @@ int mx_find_similar_cntc_db(sqlite3 *db, char *username, int connfd);
 int mx_get_id_login(sqlite3 *db, char *username);
 int mx_get_id_socket(sqlite3 *db, int connfd);
 char *mx_get_login_id(sqlite3 *db, int id);
-int mx_get_socket_login(sqlite3 *db, char *username);
+int mx_get_socket_id(sqlite3 *db, int id);
 int mx_manage_cntc_db(sqlite3 *db, int connfd,//////////////
                       char *username, int state, int action);
 void mx_init_client_db(sqlite3 *db, int connfd);
