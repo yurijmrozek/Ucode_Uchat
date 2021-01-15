@@ -3,20 +3,21 @@
 void mx_add_new_cntc_responce(cJSON *j_request, int connfd, sqlite3 *db) {
     cJSON *j_username = cJSON_GetObjectItemCaseSensitive(j_request, "username");
     char *username = strdup(j_username->valuestring);
-
+    bool valid = false;
     cJSON *j_responce = cJSON_CreateObject();
+
     cJSON_AddItemToObject(j_responce, "action",///////////////////////
                           cJSON_CreateString("add_new_cntc_responce"));
     if (mx_find_similar_cntc_db(db, username, connfd) != 1) {
         if (mx_search_user(db, username) == 1) {
             mx_manage_cntc_db(db, connfd, username, 0, 1);
-            mx_send_friend_invite(db, username, connfd);
             cJSON_AddItemToObject(j_responce, "username",//////
                                   cJSON_CreateString(username));
             cJSON_AddItemToObject(j_responce, "valid",///////
                                   cJSON_CreateString("true"));
             cJSON_AddItemToObject(j_responce, "reason",//////
                                   cJSON_CreateString("true_credentials"));
+            valid = true;
         }
         else {
             cJSON_AddItemToObject(j_responce, "username",//////
@@ -39,6 +40,8 @@ void mx_add_new_cntc_responce(cJSON *j_request, int connfd, sqlite3 *db) {
     char *jdata = cJSON_Print(j_responce);
     printf("To responce:\n\n %s\n\n", jdata);
     send_message_self(jdata, connfd);
+    if (valid)
+        mx_send_friend_invite(db, username, connfd);
     free(jdata);
     free(username);
     cJSON_Delete(j_responce);
