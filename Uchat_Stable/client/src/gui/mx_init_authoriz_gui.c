@@ -4,10 +4,10 @@ void mx_init_authoriz_gui(client_t *cli) {
     gdk_threads_enter();
     cli->builder = gtk_builder_new();
     gtk_builder_add_from_file(cli->builder, "client/src/gui/glade"///////////
-                                            "/uchat.ui", NULL);//////////////
+                                            "/chat.ui", NULL);///////////////
     gtk_builder_connect_signals(cli->builder, cli);
     cli->awindow = GTK_WIDGET(gtk_builder_get_object(cli->builder,///////////
-                                                     "authoriz_window"));////
+                                                     "signin_window"));////
     GtkCssProvider *cssProvider = gtk_css_provider_new();
     gtk_css_provider_load_from_path(cssProvider,/////////////////////////////
                                     "client/src/gui/glade/style.css",
