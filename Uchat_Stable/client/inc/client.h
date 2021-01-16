@@ -51,3 +51,4 @@ void mx_insert_cntc_list(char *username, client_t *cli, char *icon);
 void mx_clear_cntc_list(client_t *cli);
 void mx_clear_chat(client_t *cli);
 void mx_getup_cntc(cJSON *j_responce, client_t *cli);
+void mx_friend_invite_from_user(cJSON *j_responce, client_t *cli);

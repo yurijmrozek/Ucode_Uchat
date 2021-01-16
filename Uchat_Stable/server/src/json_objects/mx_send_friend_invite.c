@@ -8,7 +8,6 @@ void mx_send_friend_invite(sqlite3 *db, char *username, int connfd) {
     int cid = mx_get_id_login(db, username);
     int sockfd = mx_get_socket_id(db, cid);
 
-    printf("SOCKET: %d\n\n", sockfd);
     cJSON_AddItemToObject(j_responce, "action",//////////////////////////
                           cJSON_CreateString("friend_invite_from_user"));
     cJSON_AddItemToObject(j_responce, "username",////////////////////////

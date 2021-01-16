@@ -34,8 +34,9 @@ void mx_login_responce(cJSON *j_request, int connfd, sqlite3 *db) {
     char *jdata = cJSON_Print(j_responce);
     printf("To responce:\n\n %s\n\n", jdata);
     send_message_self(jdata, connfd);
+    usleep(500);
     if (valid)
-        mx_init_client_db(db, connfd);
+        mx_init_client_db(db, connfd);  
     free(jdata);
     free(username);
     free(password);

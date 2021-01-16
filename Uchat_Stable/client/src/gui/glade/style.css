@@ -2,6 +2,10 @@
 	background-color: white;
 }
 
+.chat_window {
+	background-color: rgb(255, 239, 241);
+}
+
 .lgn_entry_reg {
 	box-shadow: none;
 }
@@ -12,6 +16,57 @@
 
 .pass_entry_log {
 	box-shadow: none;
+}
+
+.cntc_notebook {
+	border-top: none;
+	border-radius: 10px;
+	border-color: black;
+}
+
+.cntc_notebook header {
+	border: none;
+}
+
+.cntc_notebook tab{
+    outline: none;
+}
+
+.cntc_notebook tab {
+	box-shadow: 0 -3px rgba(56, 4, 58, 0.6) inset;
+	
+}
+
+.cntc_notebook tab:hover {
+	box-shadow: 0 -3px rgba(190, 0, 105, 0.8) inset;
+}
+
+.cntc_notebook tab:checked {
+    box-shadow: none;
+	box-shadow: 0 -3px rgb(255, 0, 149) inset;
+}
+
+.cntc_notebook tab label {
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(56, 4, 58, 0.6);
+}
+
+.cntc_notebook tab:hover label {
+	margin-top: 2px;
+    color: rgba(190, 0, 105, 0.8);
+}
+
+.cntc_notebook tab:checked label {
+	margin-top: 4px;
+    color: rgb(255, 0, 149);
+}
+
+button:hover {
+	color:rgb(255, 0, 191);
+	border-radius: 100%;
+	border-color: rgb(255, 0, 255);
+	border-width: 2px;
 }
 
 .back_btn_reg:hover, active:hover, checked:hover {
