@@ -15,5 +15,9 @@ void mx_json_manager(char buff_in[], client_t *cli) {
         mx_getup_cntc(j_responce, cli);
     if (!strcmp(j_action->valuestring, "getup_inv"))
         mx_getup_inv(j_responce, cli);
+    if (!strcmp(j_action->valuestring, "invite_answer"))
+        mx_invite_answer_responce(j_responce, cli);
+    if (!strcmp(j_action->valuestring, "recieved_friend_invite"))
+        mx_notification_dialog(cli, NULL, 'i');
     cJSON_Delete(j_responce);
 }

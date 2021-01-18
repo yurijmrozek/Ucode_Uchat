@@ -54,3 +54,5 @@ void mx_getup_cntc(cJSON *j_responce, client_t *cli);
 void mx_remove_cntc_request(client_t *cli, char *username);
 void mx_accept_cntc_request(client_t *cli, char *login);
 void mx_getup_inv(cJSON *j_responce, client_t *cli);
+void mx_invite_answer_responce(cJSON *j_responce, client_t *cli);
+void mx_notification_dialog(client_t *cli, char *username, char flag);

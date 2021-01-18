@@ -2,7 +2,7 @@
 
 void mx_sending_invite_dialog(client_t *cli, char valid) {
     GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object
-                                   (cli->builder, "notification_dialog"));
+                                   (cli->builder, "invite_dialog"));
     GtkLabel *err_label = GTK_LABEL(gtk_builder_get_object/////
                                     (cli->builder, "err_lbl"));
     GtkLabel *succ_label = GTK_LABEL(gtk_builder_get_object/////

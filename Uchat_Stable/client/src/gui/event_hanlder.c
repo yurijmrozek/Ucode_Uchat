@@ -39,13 +39,15 @@ void on_cntc_incoming_allow_btn_clicked(GtkWidget *button, gpointer data) {
     GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
                                          (cli->builder, "cntc_incoming_list"));
     GtkListBoxRow *row = gtk_list_box_get_selected_row(cntc_list);
-    GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
-    GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
-    GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
-    char *login = (char *)gtk_label_get_text(lbl);
-    
-    gtk_widget_hide(GTK_WIDGET(row));
-    mx_accept_cntc_request(cli, login);
+    if (row) {
+        GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
+        GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
+        GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
+        char *login = (char *)gtk_label_get_text(lbl);
+        
+        gtk_widget_hide(GTK_WIDGET(row));
+        mx_accept_cntc_request(cli, login);
+    }
 }
 
 void on_cntc_incoming_decline_btn_clicked(GtkWidget *button, gpointer data) {
@@ -53,13 +55,14 @@ void on_cntc_incoming_decline_btn_clicked(GtkWidget *button, gpointer data) {
     GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
                                          (cli->builder, "cntc_incoming_list"));
     GtkListBoxRow *row = gtk_list_box_get_selected_row(cntc_list);
-    GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
-    GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
-    GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
-    char *login = (char *)gtk_label_get_text(lbl);
-    
-    gtk_widget_hide(GTK_WIDGET(row));
-    // mx_decline_cntc_request(cli, login);
+    if (row) {
+        GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
+        GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
+        GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
+        char *login = (char *)gtk_label_get_text(lbl);
+        
+        gtk_widget_hide(GTK_WIDGET(row));
+    }
 }
 
 void on_cntc_outgoing_remove_btn_clicked(GtkWidget *button, gpointer data) {
@@ -67,13 +70,15 @@ void on_cntc_outgoing_remove_btn_clicked(GtkWidget *button, gpointer data) {
     GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
                                          (cli->builder, "cntc_outgoing_list"));
     GtkListBoxRow *row = gtk_list_box_get_selected_row(cntc_list);
-    GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
-    GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
-    GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
-    char *login = (char *)gtk_label_get_text(lbl);
-    
-    gtk_widget_hide(GTK_WIDGET(row));
-    // mx_remove_cntc_request(cli, login);
+    if (row) {
+        GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
+        GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
+        GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
+        char *login = (char *)gtk_label_get_text(lbl);
+        
+        gtk_widget_hide(GTK_WIDGET(row));
+        // mx_remove_cntc_request(cli, login);
+    }
 }
 
 void on_cntc_remove_btn_clicked(GtkWidget *button, gpointer data) {
@@ -86,25 +91,27 @@ void on_cntc_remove_btn_clicked(GtkWidget *button, gpointer data) {
     GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object///////////////
                                    (cli->builder, "remove_cntc_dialog"));
     GtkListBoxRow *row = gtk_list_box_get_selected_row(cntc_list);
-    GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
-    GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
-    GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
-    char *login = (char *)gtk_label_get_text(lbl);
-    gtk_label_set_text(GTK_LABEL(lgnlbl), login);
+    if (row) {
+        GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
+        GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
+        GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
+        char *login = (char *)gtk_label_get_text(lbl);
+        gtk_label_set_text(GTK_LABEL(lgnlbl), login);
 
-    gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(cli->cwindow));
-    gtk_widget_show_all(dialog);
+        gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(cli->cwindow));
+        gtk_widget_show_all(dialog);
 
-    int responce = gtk_dialog_run(GTK_DIALOG(dialog));
-    if (responce == 1) {
-        gtk_widget_hide(GTK_WIDGET(row));
-        // mx_remove_cntc_request(cli, login);
-        gtk_label_set_text(GTK_LABEL(lgnlbl), "");
-        gtk_widget_hide(dialog);
-    }
-    else {
-        gtk_label_set_text(GTK_LABEL(lgnlbl), "");
-        gtk_widget_hide(dialog);
+        int responce = gtk_dialog_run(GTK_DIALOG(dialog));
+        if (responce == 1) {
+            gtk_widget_hide(GTK_WIDGET(row));
+            gtk_label_set_text(GTK_LABEL(lgnlbl), "");
+            gtk_widget_hide(dialog);
+            // mx_remove_cntc_request(cli, login);
+        }
+        else {
+            gtk_label_set_text(GTK_LABEL(lgnlbl), "");
+            gtk_widget_hide(dialog);
+        }
     }
 }
 

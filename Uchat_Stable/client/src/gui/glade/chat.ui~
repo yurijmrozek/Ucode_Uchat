@@ -360,7 +360,7 @@
                                 <property name="receives_default">True</property>
                                 <property name="margin_top">5</property>
                                 <property name="relief">none</property>
-                                <signal name="clicked" handler="on_cntc_remove_btn_clicked" swapped="no"/>
+                                <signal name="clicked" handler="on_cntc_outgoing_remove_btn_clicked" swapped="no"/>
                                 <child>
                                   <object class="GtkImage">
                                     <property name="visible">True</property>
@@ -470,7 +470,7 @@
                                 <property name="receives_default">True</property>
                                 <property name="margin_top">5</property>
                                 <property name="relief">none</property>
-                                <signal name="clicked" handler="on_cntc_remove_btn_clicked" swapped="no"/>
+                                <signal name="clicked" handler="on_cntc_incoming_decline_btn_clicked" swapped="no"/>
                                 <style>
                                   <class name="chat_btn"/>
                                 </style>
@@ -725,7 +725,7 @@
           <object class="GtkLabel" id="err_lbl">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_top">20</property>
+            <property name="margin_top">40</property>
             <attributes>
               <attribute name="font-desc" value="Chilanka Bold 13"/>
               <attribute name="foreground" value="#ffff5d5c5554"/>
@@ -744,6 +744,7 @@
           <object class="GtkLabel" id="succ_lbl">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_bottom">50</property>
             <style>
               <class name="dialog_lbl"/>
             </style>
@@ -759,6 +760,9 @@
     <action-widgets>
       <action-widget response="1">err_dialog_ok_btn</action-widget>
     </action-widgets>
+    <style>
+      <class name="chat_window"/>
+    </style>
   </object>
   <object class="GtkDialog" id="remove_cntc_dialog">
     <property name="can_focus">False</property>
@@ -820,7 +824,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="remove_cntc_dialog_lgb_label">
+          <object class="GtkLabel" id="remove_cntc_dialog_lgn_label">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_top">40</property>
@@ -839,7 +843,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_bottom">30</property>
+            <property name="margin_bottom">50</property>
             <property name="label" translatable="yes">are you sure you want to remove
 	him from your friend-list?</property>
             <style>
@@ -858,6 +862,9 @@
       <action-widget response="1">button1</action-widget>
       <action-widget response="2">button2</action-widget>
     </action-widgets>
+    <style>
+      <class name="chat_window"/>
+    </style>
   </object>
   <object class="GtkWindow" id="signin_window">
     <property name="width_request">400</property>
@@ -991,6 +998,84 @@
     </child>
     <style>
       <class name="signin_window"/>
+    </style>
+  </object>
+  <object class="GtkDialog" id="user_do_dialog">
+    <property name="can_focus">False</property>
+    <property name="type_hint">dialog</property>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="margin_left">120</property>
+            <property name="margin_right">120</property>
+            <property name="margin_bottom">10</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="yes">Ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <style>
+                  <class name="dialog_btn"/>
+                </style>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="username_do_lbl_dialog">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_top">40</property>
+            <property name="margin_bottom">10</property>
+            <style>
+              <class name="dialog_lbl"/>
+            </style>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="user_do_lbl_dialog">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_bottom">50</property>
+            <style>
+              <class name="dialog_lbl"/>
+            </style>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <style>
+      <class name="chat_window"/>
     </style>
   </object>
 </interface>
