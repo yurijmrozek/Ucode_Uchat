@@ -109,6 +109,7 @@ void send_inv(sqlite3 *db, int connfd) {
         cJSON_AddItemToObject(j_responce, "cntc_inv_list",
                               cJSON_CreateString(cntcinv));
         char *jdata = cJSON_Print(j_responce);
+        sleep(1);
         send_message_self(jdata, connfd);
         free(jdata);
     }

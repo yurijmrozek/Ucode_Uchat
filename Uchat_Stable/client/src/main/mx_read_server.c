@@ -2,7 +2,7 @@
 
 void *mx_read_server(void *arg) {
     client_t *cli = (client_t *)arg;
-    char buff_in[1024];
+    char buff_in[300];
     int rlen;
 
     while((rlen = read(cli->sockfd, buff_in, sizeof(buff_in) - 1)) > 0) {
@@ -16,7 +16,6 @@ void *mx_read_server(void *arg) {
         gdk_threads_enter();
         printf("\n\n<< Recieved %d bytes:\n\n%s\n\n<<", rlen, buff_in);
         mx_json_manager(buff_in, cli);
-        bzero(buff_in, 1024);
         gdk_threads_leave();
     }
 

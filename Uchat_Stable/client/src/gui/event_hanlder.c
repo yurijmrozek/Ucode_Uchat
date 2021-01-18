@@ -79,11 +79,7 @@ void on_cntc_outgoing_remove_btn_clicked(GtkWidget *button, gpointer data) {
         char *login = (char *)gtk_label_get_text(lbl);
         
         gtk_widget_hide(GTK_WIDGET(row));
-<<<<<<< HEAD
-        mx_remove_cntc_request(cli, login, "outgoing");
-=======
-        mx_remove_cntc_request(cli, login);
->>>>>>> 362fc53b3134ed81fabb4f5be9246112b6c5b010
+        mx_remove_cntc_request(cli, login, "outgoing_list");
     }
 }
 
@@ -112,11 +108,7 @@ void on_cntc_remove_btn_clicked(GtkWidget *button, gpointer data) {
             gtk_widget_hide(GTK_WIDGET(row));
             gtk_label_set_text(GTK_LABEL(lgnlbl), "");
             gtk_widget_hide(dialog);
-<<<<<<< HEAD
-            mx_remove_cntc_request(cli, login, "removed");
-=======
-            mx_remove_cntc_request(cli, login);
->>>>>>> 362fc53b3134ed81fabb4f5be9246112b6c5b010
+            mx_remove_cntc_request(cli, login, "cntc_list");
         }
         else {
             gtk_label_set_text(GTK_LABEL(lgnlbl), "");
