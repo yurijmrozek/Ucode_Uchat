@@ -10,6 +10,7 @@ void mx_notification_dialog(client_t *cli, char *username, char flag) {
                                  (cli->builder, "do_lbl_dialog"));
 
     gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(cli->cwindow));
+    
     if (flag == 'i')
         gtk_label_set_text(do_lbl, "You recieved new invite");
     else if (flag == 'a') {
@@ -33,4 +34,7 @@ void mx_notification_dialog(client_t *cli, char *username, char flag) {
         gtk_label_set_text(do_lbl, "");
         gtk_widget_hide(dialog);
     }
+    gtk_label_set_text(username_lbl, "");
+    gtk_label_set_text(do_lbl, "");
+    gtk_widget_hide(dialog);
 }
