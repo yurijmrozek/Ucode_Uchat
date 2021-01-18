@@ -56,4 +56,7 @@ void mx_getup_inv(cJSON *j_responce, client_t *cli);
 void mx_invite_answer_responce(cJSON *j_responce, client_t *cli);
 void mx_notification_dialog(client_t *cli, char *username, char flag);
 void mx_decline_cntc_request(client_t *cli, char *username);
+<<<<<<< HEAD
 void mx_remove_cntc_request(client_t *cli, char *username, char *flag);
+=======
+>>>>>>> 362fc53b3134ed81fabb4f5be9246112b6c5b010
