@@ -1,5 +1,9 @@
-window {
-    background-image: linear-gradient(145deg, rgb(0, 0, 0) 55%, rgb(50, 200, 200));
+.signin_window {
+    background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(17, 78, 75), rgb(0, 255, 255));
+}
+
+.chat_window {
+    background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(17, 78, 75), rgb(0, 255, 255));  
 }
 
 *:active, *:focus {
@@ -10,13 +14,166 @@ label {
     font-weight: bold;
 }
 
-button {
+/* listbox */
+
+scrollbar.trough, scrollbar.trough.vertical {
+    border: 0;
+    background: none;
+}
+
+.scrolled_window {
+    border-color: cyan;
+    border-width: 3px;
+}
+
+list row label {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+list row {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: 0px -3px darkcyan inset;
+    color: darkcyan;
+}
+
+list row:hover {
+    box-shadow: 0px -3px darkcyan inset;
+    margin-right: 15px;
+    color: rgb(1, 179, 179);
+    text-shadow: 0px 0px 10px rgb(1, 179, 179);
+}
+
+list row:active {
+    background-color: transparent;
+    background-image: none;
+    margin-right: 15px;
+    color:cyan;
+    text-shadow: 0px 0px 10px cyan;
+}
+
+list row:focus {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: 0px -3px rgb(0, 255, 255) inset; 
+    color:cyan;
+    text-shadow: 0px 0px 10px cyan;
+}
+
+/* notebook */
+
+.cntc_notebook {
+    background-color: black;
+    border-width: 2px;
+    border-color: cyan;
+}
+
+.cntc_notebook tab {
+    outline: none;
+}
+
+.cntc_notebook tab:hover {
+    box-shadow: 0 -3px rgb(8, 150, 140) inset;
+    color:darkcyan;
+}
+
+.cntc_notebook tab:checked {
+	box-shadow: 0 -3px rgb(0, 255, 255) inset;
+    color:cyan;
+    margin-top: 5px;
+}
+
+/* button */
+
+.chat_btn {
+    border-radius: 0%;
+    border-color: darkcyan;
+    border-width: 3px;
+    color: rgb(50, 200, 200);
+}
+
+.chat_btn:hover, active:hover {
+    box-shadow: 0 0 10px cyan;
+    border-radius: 0%;
+    border-color: cyan;
+    border-width: 3px;
+    color:cyan;
+    background-image: none;
+}
+
+.chat_btn:active {
+    border-color: rgb(50, 200, 200);
+    background: rgba(0, 255, 255, 0.5);
+    color:cyan;
+}
+
+/* widget */
+
+list {
+    background-color: black;
+}
+
+box {
+    background-color: black;
+}
+
+/* dialog */
+
+.dialog_err_lbl {
+    color: red;
+    text-shadow: 0px 0px 3px red;
+}
+
+.dialog_lbl {
+    color: cyan;
+    text-shadow: 0px 0px 3px cyan;
+}
+
+.dialog_entry {
+    border-radius: 0%;
+    border-color: rgb(0, 32, 32);
+    border-width: 3px;
+}
+
+.dialog_entry:focus {
+    font-weight: bold;
+    border-radius: 0%;
+    box-shadow: 0px 0px 5px cyan;
+}
+
+.dialog_btn {
+    border-radius: 0%;
+    border-color: rgb(0, 32, 32);
+    border-width: 3px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.dialog_btn:hover, active:hover {
+    box-shadow: 0 0 10px cyan;
+    border-radius: 0%;
+    border-color: cyan;
+    border-width: 3px;
+    color:cyan;
+    background-image: none;
+}
+
+.dialog_btn:active {
+    border-color: rgb(50, 200, 200);
+    background-color: rgba(0, 255, 255, 0.5);
+    color:cyan;
+}
+
+/* login */
+
+.log_btn {
     border-radius: 0%;
     border-color: rgb(0, 0, 0);
     border-width: 3px;
 }
 
-button:hover, active:hover {
+.log_btn:hover, active:hover {
     box-shadow: 0 0 10px rgb(50, 200, 200);
     border-radius: 0%;
     border-color: rgb(55, 200, 205);
@@ -26,7 +183,7 @@ button:hover, active:hover {
     margin-top: 5px;
 }
 
-button:active {
+.log_btn:active {
     border-color: rgb(50, 200, 200);
     background-color: rgba(0, 255, 255, 0.5);
     color:cyan;
@@ -44,6 +201,7 @@ button:active {
 }
 
 .signin_entry:focus {
+    font-weight: bold;
     border-radius: 0%;
     margin: 3px;
 }

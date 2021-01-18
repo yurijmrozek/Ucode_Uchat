@@ -2,11 +2,11 @@
 
 bool mx_valid_log_creden(client_t *cli) {
     GtkEntry *log_entry = GTK_ENTRY(gtk_builder_get_object
-                                   (cli->builder, "lgn_entry_log"));
+                                   (cli->builder, "username_log"));
     GtkEntry *pass_entry = GTK_ENTRY(gtk_builder_get_object//////////
-                                   (cli->builder, "pass_entry_log"));
+                                   (cli->builder, "password_log"));
     GtkLabel *err_label = GTK_LABEL(gtk_builder_get_object///////////
-                                   (cli->builder, "err_label_log"));
+                                   (cli->builder, "err_lbl_log"));
     char *lbuffer = strdup(gtk_entry_get_text(log_entry));
     char *pbuffer = strdup(gtk_entry_get_text(pass_entry));
     bool valid = true;
@@ -22,7 +22,7 @@ bool mx_valid_log_creden(client_t *cli) {
     free(pbuffer);
     if (!valid) {
         gtk_label_set_text (err_label,////////////////////////////////////////
-                            "Invalid syntax [abc123][6ch min]\n");///////////
+                            "Invalid syntax [abc123][6ch min]");///////////
         return false;
     }
     gtk_label_set_text(err_label, "");

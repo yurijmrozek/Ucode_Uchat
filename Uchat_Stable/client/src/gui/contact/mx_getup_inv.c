@@ -1,5 +1,4 @@
 #include "client.h"
-
 static char *strnew(const int size) {
     char *strnew = malloc(size < 0 ? size : size + 1);
     for (int i = 0; strnew && i <= size; ++i)
@@ -31,24 +30,16 @@ static char **strsplit(const char *s, char c) {
     return split;
 }
 
-void mx_getup_cntc(cJSON *j_responce, client_t *cli) {
-    cJSON *j_cont;
-    cJSON *j_cont_state;
-    char **cntcarr = NULL;
-    char **cntcstate = NULL;
+void mx_getup_inv(cJSON *j_responce, client_t *cli) {
+    cJSON *j_cont_inv;
+    char **cntcinv = NULL;
 
-    j_cont = cJSON_GetObjectItemCaseSensitive(j_responce, "cntc_list");
-    j_cont_state = cJSON_GetObjectItemCaseSensitive(j_responce,///////
-                                                    "cntc_list_state");
-    
-    mx_clear_cntc_list(cli);
-    cntcarr = strsplit(j_cont->valuestring, ',');
-    cntcstate = strsplit(j_cont_state->valuestring, ',');
-    for (int i = 0; cntcarr[i]; i++) {
-        mx_insert_cntc_list(cntcarr[i], cli, cntcstate[i]);
-        free(cntcarr[i]);
-        free(cntcstate[i]);
+    j_cont_inv = cJSON_GetObjectItemCaseSensitive(j_responce, "cntc_inv_list");
+
+    cntcinv = strsplit(j_cont_inv->valuestring, ',');
+    for (int i = 0; cntcinv[i]; i++) {
+        mx_insert_cntc_list(cntcinv[i], cli, "document-revert-symbolic");
+        free(cntcinv[i]);
     }
-    free(cntcarr);
-    free(cntcstate);
+    free(cntcinv);
 }

@@ -16,6 +16,8 @@ void mx_add_new_cntc_responce(cJSON *j_responce, client_t *cli) {
             mx_sending_invite_dialog(cli, 'u');
         else if (!strcmp(j_reason->valuestring, "user_exist"))
             mx_sending_invite_dialog(cli, 'e');
+        else if (!strcmp(j_reason->valuestring, "invite_exist"))
+            mx_sending_invite_dialog(cli, 'f');
     }
     free(username);
 }

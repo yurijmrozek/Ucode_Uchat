@@ -5,46 +5,14 @@ void destroy(client_t *cli) {
     gtk_main_quit();
 }
 
-void on_reg_btn_clicked_log(GtkWidget *button, gpointer data) {
-    client_t *cli = (client_t *)data;
-    GtkStack *stk = GTK_STACK(gtk_builder_get_object///////////////////
-                              (cli->builder, "authoriz_stack"));
-    GtkEntry *log_entry = GTK_ENTRY(gtk_builder_get_object/////////////
-                                    (cli->builder, "lgn_entry_log"));
-    GtkEntry *pass_entry = GTK_ENTRY(gtk_builder_get_object////////////
-                                    (cli->builder, "pass_entry_log"));
-    GtkLabel *err_label = GTK_LABEL(gtk_builder_get_object/////////////
-                                    (cli->builder, "err_label_log"));
-    gtk_label_set_text(err_label, "");
-    gtk_entry_set_text(log_entry, "");
-    gtk_entry_set_text(pass_entry, "");
-    gtk_stack_set_visible_child_name(stk, "register_page");
-}
-
-void on_back_btn_clicked_reg(GtkWidget *button, gpointer data) {
-    client_t *cli = (client_t *)data;
-    GtkStack *stk = GTK_STACK(gtk_builder_get_object///////////////////
-                              (cli->builder, "authoriz_stack"));
-    GtkEntry *log_entry = GTK_ENTRY(gtk_builder_get_object/////////////
-                                    (cli->builder, "lgn_entry_reg"));
-    GtkEntry *pass_entry = GTK_ENTRY(gtk_builder_get_object////////////
-                                    (cli->builder, "pass_entry_reg"));
-    GtkLabel *err_label = GTK_LABEL(gtk_builder_get_object/////////////
-                                    (cli->builder, "err_label_reg"));
-    gtk_label_set_text(err_label, "");
-    gtk_entry_set_text(log_entry, "");
-    gtk_entry_set_text(pass_entry, "");
-    gtk_stack_set_visible_child_name(stk, "login_page");
-}
-
-void on_reg_btn_clicked_reg(GtkWidget *button, gpointer data) {
+void on_signup_btn_log_clicked(GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
 
-    if (mx_valid_reg_creden(cli))
+    if (mx_valid_log_creden(cli))
         mx_register_request(cli);
 }
 
-void on_lgn_btn_clicked_log(GtkWidget *button, gpointer data) {
+void on_signin_btn_log_clicked(GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
 
     if (mx_valid_log_creden(cli))
@@ -64,6 +32,80 @@ void on_log_out_btn_clicked(GtkWidget *button, gpointer data) {
     mx_clear_chat(cli);
     gtk_widget_hide(cli->cwindow);
     gtk_widget_show(cli->awindow);
+}
+
+void on_cntc_incoming_allow_btn_clicked(GtkWidget *button, gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
+                                         (cli->builder, "cntc_incoming_list"));
+    GtkListBoxRow *row = gtk_list_box_get_selected_row(cntc_list);
+    GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
+    GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
+    GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
+    char *login = (char *)gtk_label_get_text(lbl);
+    
+    gtk_widget_hide(GTK_WIDGET(row));
+    mx_accept_cntc_request(cli, login);
+}
+
+void on_cntc_incoming_decline_btn_clicked(GtkWidget *button, gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
+                                         (cli->builder, "cntc_incoming_list"));
+    GtkListBoxRow *row = gtk_list_box_get_selected_row(cntc_list);
+    GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
+    GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
+    GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
+    char *login = (char *)gtk_label_get_text(lbl);
+    
+    gtk_widget_hide(GTK_WIDGET(row));
+    // mx_decline_cntc_request(cli, login);
+}
+
+void on_cntc_outgoing_remove_btn_clicked(GtkWidget *button, gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
+                                         (cli->builder, "cntc_outgoing_list"));
+    GtkListBoxRow *row = gtk_list_box_get_selected_row(cntc_list);
+    GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
+    GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
+    GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
+    char *login = (char *)gtk_label_get_text(lbl);
+    
+    gtk_widget_hide(GTK_WIDGET(row));
+    // mx_remove_cntc_request(cli, login);
+}
+
+void on_cntc_remove_btn_clicked(GtkWidget *button, gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
+                                         (cli->builder, "cntc_list"));
+    GtkWidget *lgnlbl = GTK_WIDGET(gtk_builder_get_object///////////////
+                                   (cli->builder,///////////////////////
+                                   "remove_cntc_dialog_lgn_label"));
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object///////////////
+                                   (cli->builder, "remove_cntc_dialog"));
+    GtkListBoxRow *row = gtk_list_box_get_selected_row(cntc_list);
+    GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
+    GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
+    GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
+    char *login = (char *)gtk_label_get_text(lbl);
+    gtk_label_set_text(GTK_LABEL(lgnlbl), login);
+
+    gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(cli->cwindow));
+    gtk_widget_show_all(dialog);
+
+    int responce = gtk_dialog_run(GTK_DIALOG(dialog));
+    if (responce == 1) {
+        gtk_widget_hide(GTK_WIDGET(row));
+        // mx_remove_cntc_request(cli, login);
+        gtk_label_set_text(GTK_LABEL(lgnlbl), "");
+        gtk_widget_hide(dialog);
+    }
+    else {
+        gtk_label_set_text(GTK_LABEL(lgnlbl), "");
+        gtk_widget_hide(dialog);
+    }
 }
 
 void on_cntc_add_btn_clicked(GtkWidget *button, gpointer data) {
@@ -93,10 +135,8 @@ void on_cntc_add_btn_clicked(GtkWidget *button, gpointer data) {
         }
         if (valid)
             mx_add_cntc_request(cli, username);
-        if (!valid) {
-            printf("false\n");
+        if (!valid)
             mx_sending_invite_dialog(cli, 'i');
-        }
         free(username);
         gtk_entry_set_text(log_entry, "");
         gtk_widget_hide(dialog);

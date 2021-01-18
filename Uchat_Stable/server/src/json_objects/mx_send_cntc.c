@@ -75,6 +75,48 @@ static char *get_states(sqlite3 *db, int connfd) {
     return state;
 }
 
+static char *get_request_invites(sqlite3 *db, int connfd) {
+    char **invitearr = (char **)malloc(sizeof(char *) * 10);
+    char *invites = NULL;
+    int j = -1;
+    sqlite3_stmt *stmt;
+    int rv = 0;
+
+    int uid = mx_get_id_socket(db, connfd);
+
+    rv = sqlite3_prepare_v2(db, "SELECT * FROM contact WHERE CONT = ?1"  \
+                                "AND STATE = 0", -1, &stmt, NULL);////////
+    sqlite3_bind_int(stmt, 1, uid);
+    while ((rv = sqlite3_step(stmt)) == SQLITE_ROW) {
+        invitearr[++j] = strdup(mx_get_login_id(db,////////////
+                                sqlite3_column_int64(stmt, 0)));
+        invites = strjoin(invites, invitearr[j]);
+        invites = strjoin(invites, ",");
+        free(invitearr[j]);
+    }
+    free(invitearr);
+    return invites;
+}
+
+void send_inv(sqlite3 *db, int connfd) {
+    cJSON *j_responce = cJSON_CreateObject();
+    
+    cJSON_AddItemToObject(j_responce, "action",
+                          cJSON_CreateString("getup_inv"));
+    char *cntcinv = get_request_invites(db, connfd);
+
+    if (cntcinv) {
+        cJSON_AddItemToObject(j_responce, "cntc_inv_list",
+                              cJSON_CreateString(cntcinv));
+        char *jdata = cJSON_Print(j_responce);
+        printf("\n\nTo responce:\n\n%s\n\n", jdata);
+        send_message_self(jdata, connfd);
+        free(jdata);
+    }
+    free(cntcinv);
+    cJSON_Delete(j_responce);
+}
+
 void mx_send_cntc(sqlite3 *db, int connfd) {
     cJSON *j_responce = cJSON_CreateObject();
     
@@ -83,16 +125,22 @@ void mx_send_cntc(sqlite3 *db, int connfd) {
                           cJSON_CreateString("getup_cntc"));
     char *cntc = get_contacts(db, connfd);
     char *cntcstate = get_states(db, connfd);
+    char *cntcinv = get_request_invites(db, connfd);
+
     if (cntc) {
         cJSON_AddItemToObject(j_responce, "cntc_list",
                               cJSON_CreateString(cntc));
         cJSON_AddItemToObject(j_responce, "cntc_list_state",
                               cJSON_CreateString(cntcstate));
+        cJSON_AddItemToObject(j_responce, "cntc_inv_list",
+                              cJSON_CreateString(cntcinv));
         char *jdata = cJSON_Print(j_responce);
         printf("\n\nTo responce:\n\n%s\n\n", jdata);
         send_message_self(jdata, connfd);
         free(jdata);
     }
     free(cntc);
+    free(cntcstate);
     cJSON_Delete(j_responce);
+    send_inv(db, connfd);
 }

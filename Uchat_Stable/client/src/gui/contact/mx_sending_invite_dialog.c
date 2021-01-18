@@ -1,8 +1,8 @@
 #include "client.h"
 
 void mx_sending_invite_dialog(client_t *cli, char valid) {
-    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
-                                                          "err_dialog"));
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object
+                                   (cli->builder, "notification_dialog"));
     GtkLabel *err_label = GTK_LABEL(gtk_builder_get_object/////
                                     (cli->builder, "err_lbl"));
     GtkLabel *succ_label = GTK_LABEL(gtk_builder_get_object/////
@@ -17,6 +17,8 @@ void mx_sending_invite_dialog(client_t *cli, char valid) {
         gtk_label_set_text(err_label, " User already\nin contact list");
     else if (valid == 'u')
         gtk_label_set_text(err_label, "User undefined");
+    else if (valid == 'f')
+        gtk_label_set_text(err_label, "User already send you\nfriend invite");
     gtk_widget_show_all(dialog);
 
     int responce = gtk_dialog_run(GTK_DIALOG(dialog));

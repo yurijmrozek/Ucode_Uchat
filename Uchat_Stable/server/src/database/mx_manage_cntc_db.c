@@ -1,5 +1,10 @@
 #include "server.h"
 
+// static sqlite3_stmt *remove(sqlite3 *db, sqlite3_stmt *stmt,
+//                             int uid, int cid, int state) {
+//     return stmt;
+// }
+
 static sqlite3_stmt *update(sqlite3 *db, sqlite3_stmt *stmt,
                             int uid, int cid, int state) {
     sqlite3_prepare_v2(db, "UPDATE contact "              \
@@ -7,8 +12,8 @@ static sqlite3_stmt *update(sqlite3 *db, sqlite3_stmt *stmt,
                            "WHERE ID = ?2 AND CONT = ?3",
                        -1, &stmt, 0);//////////////////////
     sqlite3_bind_int(stmt, 1, state);
-    sqlite3_bind_int(stmt, 2, uid);
-    sqlite3_bind_int(stmt, 3, cid);
+    sqlite3_bind_int(stmt, 2, cid);
+    sqlite3_bind_int(stmt, 3, uid);
     return stmt;
 }
 
@@ -35,6 +40,8 @@ int mx_manage_cntc_db(sqlite3 *db, int connfd,///////////////
         stmt = insert(db, stmt, uid, cid, state);
     else if (action == 2)
         stmt = update(db, stmt, uid, cid, state);
+    // else if (action == 3)
+        // stmt = remove(db, stmt, uid, cid, state);
 
     if ((rv = sqlite3_step(stmt)) == SQLITE_ROW) {
         sqlite3_finalize(stmt);

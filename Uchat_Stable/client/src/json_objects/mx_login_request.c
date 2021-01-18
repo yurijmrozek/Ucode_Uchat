@@ -2,9 +2,9 @@
 
 void mx_login_request(client_t *cli) {
     GtkEntry *log_entry = GTK_ENTRY(gtk_builder_get_object//////////
-                                    (cli->builder, "lgn_entry_log"));
+                                    (cli->builder, "username_log"));
     GtkEntry *pass_entry = GTK_ENTRY(gtk_builder_get_object//////////
-                                    (cli->builder, "pass_entry_log"));
+                                    (cli->builder, "password_log"));
     char *username = strdup(gtk_entry_get_text(log_entry));
     char *password = strdup(gtk_entry_get_text(pass_entry));
     for (int i = 0; username[i]; i++)

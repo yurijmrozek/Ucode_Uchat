@@ -1,7 +1,7 @@
 #include "client.h"
 
 void mx_insert_cntc_list(char *username, client_t *cli, char *icon) {
-    if (!strcmp(icon, "mail-mark-junk-symbolic")) {
+    if (!strcmp(icon, "document-revert-symbolic")) {
         GtkListBox *notf_note_list = GTK_LIST_BOX(gtk_builder_get_object
                                                   (cli->builder,////////
                                                   "cntc_incoming_list"));
@@ -16,10 +16,11 @@ void mx_insert_cntc_list(char *username, client_t *cli, char *icon) {
         img = gtk_image_new_from_icon_name((icon), size);
 
         gtk_container_add(GTK_CONTAINER(row), hbox);
-        gtk_box_pack_start(GTK_BOX(hbox), lgn, TRUE, TRUE, 0);
-        gtk_box_pack_start(GTK_BOX(hbox), img, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(hbox), lgn, FALSE, FALSE, 0);
+        gtk_widget_set_size_request(img, 35, 35);
 
-        gtk_container_add(GTK_CONTAINER(notf_note_list), row);
+        gtk_list_box_insert(notf_note_list, row, 0);
         gtk_widget_show_all(row);
         gtk_widget_show(lgn);
         gtk_widget_show(img);
@@ -40,10 +41,11 @@ void mx_insert_cntc_list(char *username, client_t *cli, char *icon) {
         img = gtk_image_new_from_icon_name((icon), size);
 
         gtk_container_add(GTK_CONTAINER(row), hbox);
-        gtk_box_pack_start(GTK_BOX(hbox), lgn, TRUE, TRUE, 0);
-        gtk_box_pack_start(GTK_BOX(hbox), img, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(hbox), lgn, FALSE, FALSE, 0);
+        gtk_widget_set_size_request(img, 35, 35);
 
-        gtk_container_add(GTK_CONTAINER(inv_list), row);
+        gtk_list_box_insert(inv_list, row, 0);
         gtk_widget_show_all(row);
         gtk_widget_show(lgn);
         gtk_widget_show(img);
@@ -63,10 +65,11 @@ void mx_insert_cntc_list(char *username, client_t *cli, char *icon) {
         img = gtk_image_new_from_icon_name((icon), size);
 
         gtk_container_add(GTK_CONTAINER(row), hbox);
-        gtk_box_pack_start(GTK_BOX(hbox), lgn, TRUE, TRUE, 0);
-        gtk_box_pack_start(GTK_BOX(hbox), img, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
+        gtk_box_pack_start(GTK_BOX(hbox), lgn, FALSE, FALSE, 0);
+        gtk_widget_set_size_request(img, 35, 35);
 
-        gtk_container_add(GTK_CONTAINER(cntc_list), row);
+        gtk_list_box_insert(cntc_list, row, 0);
         gtk_widget_show_all(row);
         gtk_widget_show(lgn);
         gtk_widget_show(img);
