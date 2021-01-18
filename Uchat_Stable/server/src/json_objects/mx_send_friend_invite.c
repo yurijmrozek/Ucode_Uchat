@@ -9,10 +9,8 @@ void mx_send_friend_invite(sqlite3 *db, char *username) {
                           cJSON_CreateString("recieved_friend_invite"));
     char *j_data = cJSON_Print(j_responce);
 
-    usleep(500);
     send_message_self(j_data, sockfd);
     mx_send_cntc(db, sockfd);
-
     free(j_data);
     cJSON_Delete(j_responce);
 }

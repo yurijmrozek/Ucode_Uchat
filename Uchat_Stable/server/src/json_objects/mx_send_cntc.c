@@ -5,7 +5,7 @@ static char *get_icon(int state) {
         return("contact-new");
     else if (state == 1)
         return("edit-copy");
-    return NULL;
+    return "none";
 }
 
 static char *strnew(const int size) {
@@ -109,7 +109,6 @@ void send_inv(sqlite3 *db, int connfd) {
         cJSON_AddItemToObject(j_responce, "cntc_inv_list",
                               cJSON_CreateString(cntcinv));
         char *jdata = cJSON_Print(j_responce);
-        printf("\n\nTo responce:\n\n%s\n\n", jdata);
         send_message_self(jdata, connfd);
         free(jdata);
     }
@@ -125,22 +124,20 @@ void mx_send_cntc(sqlite3 *db, int connfd) {
                           cJSON_CreateString("getup_cntc"));
     char *cntc = get_contacts(db, connfd);
     char *cntcstate = get_states(db, connfd);
-    char *cntcinv = get_request_invites(db, connfd);
 
     if (cntc) {
         cJSON_AddItemToObject(j_responce, "cntc_list",
                               cJSON_CreateString(cntc));
         cJSON_AddItemToObject(j_responce, "cntc_list_state",
                               cJSON_CreateString(cntcstate));
-        cJSON_AddItemToObject(j_responce, "cntc_inv_list",
-                              cJSON_CreateString(cntcinv));
         char *jdata = cJSON_Print(j_responce);
-        printf("\n\nTo responce:\n\n%s\n\n", jdata);
         send_message_self(jdata, connfd);
         free(jdata);
     }
-    free(cntc);
     free(cntcstate);
+    free(cntc);
     cJSON_Delete(j_responce);
+
+    sleep(1);
     send_inv(db, connfd);
 }

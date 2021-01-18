@@ -19,5 +19,10 @@ void mx_json_manager(char buff_in[], client_t *cli) {
         mx_invite_answer_responce(j_responce, cli);
     if (!strcmp(j_action->valuestring, "recieved_friend_invite"))
         mx_notification_dialog(cli, NULL, 'i');
+    if (!strcmp(j_action->valuestring, "remove_friend")) {
+        cJSON *j_username = cJSON_GetObjectItemCaseSensitive(j_responce,
+                                                             "username");
+        mx_notification_dialog(cli, j_username->valuestring, 'r');
+    }
     cJSON_Delete(j_responce);
 }

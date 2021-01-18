@@ -23,7 +23,6 @@ void mx_register_responce(cJSON *j_request, int connfd, sqlite3 *db) {
         send_message_self(jdata, connfd);
         free(jdata);
     }
-    // mx_init_client_db(server->t_db, socket1);
     free(username);
     free(password);
     cJSON_Delete(j_responce);

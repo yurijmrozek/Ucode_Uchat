@@ -15,5 +15,9 @@ void mx_json_manager(char buff_in[], int connfd, client_t *cli) {
         mx_add_new_cntc_responce(j_request, connfd, cli->db);
     else if (!strcmp(action->valuestring, "accept_cntc_invite"))
         mx_accept_friend_invite(j_request, connfd, cli->db);
+    else if (!strcmp(action->valuestring, "decline_cntc_invite"))
+        mx_decline_friend_invite(j_request, connfd, cli->db);
+    else if (!strcmp(action->valuestring, "remove_cntc_request"))
+        mx_remove_cntc_responce(j_request, connfd, cli->db);
     cJSON_Delete(j_request);
 }
