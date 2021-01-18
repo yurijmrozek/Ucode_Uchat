@@ -8,6 +8,7 @@
     <property name="height_request">480</property>
     <property name="can_focus">False</property>
     <property name="resizable">False</property>
+    <property name="window_position">center</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -557,8 +558,9 @@
   </object>
   <object class="GtkDialog" id="cntc_add_dialog">
     <property name="can_focus">False</property>
+    <property name="type">popup</property>
     <property name="resizable">False</property>
-    <property name="window_position">center</property>
+    <property name="window_position">mouse</property>
     <property name="type_hint">dialog</property>
     <child type="titlebar">
       <placeholder/>
@@ -678,8 +680,9 @@
   </object>
   <object class="GtkDialog" id="invite_dialog">
     <property name="can_focus">False</property>
+    <property name="type">popup</property>
     <property name="resizable">False</property>
-    <property name="window_position">center</property>
+    <property name="window_position">mouse</property>
     <property name="type_hint">dialog</property>
     <child type="titlebar">
       <placeholder/>
@@ -766,6 +769,9 @@
   </object>
   <object class="GtkDialog" id="remove_cntc_dialog">
     <property name="can_focus">False</property>
+    <property name="type">popup</property>
+    <property name="resizable">False</property>
+    <property name="window_position">mouse</property>
     <property name="type_hint">dialog</property>
     <child type="titlebar">
       <placeholder/>
@@ -872,6 +878,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="resizable">False</property>
+    <property name="window_position">center</property>
     <child type="titlebar">
       <placeholder/>
     </child>
@@ -1002,6 +1009,9 @@
   </object>
   <object class="GtkDialog" id="user_do_dialog">
     <property name="can_focus">False</property>
+    <property name="type">popup</property>
+    <property name="resizable">False</property>
+    <property name="window_position">mouse</property>
     <property name="type_hint">dialog</property>
     <child type="titlebar">
       <placeholder/>
@@ -1019,7 +1029,7 @@
             <property name="margin_bottom">10</property>
             <property name="layout_style">end</property>
             <child>
-              <object class="GtkButton" id="button1">
+              <object class="GtkButton" id="user_do_btn">
                 <property name="label" translatable="yes">Ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -1074,6 +1084,9 @@
         </child>
       </object>
     </child>
+    <action-widgets>
+      <action-widget response="1">user_do_btn</action-widget>
+    </action-widgets>
     <style>
       <class name="chat_window"/>
     </style>

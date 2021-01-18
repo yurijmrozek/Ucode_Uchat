@@ -26,6 +26,7 @@ void on_log_out_btn_clicked(GtkWidget *button, gpointer data) {
     cJSON_AddItemToObject(j_request, "action",//////////////
                           cJSON_CreateString("logout_user"));
     char *jdata = cJSON_Print(j_request);
+    
     send_message_self(jdata, cli->sockfd);
     free(jdata);
     cJSON_Delete(j_request);
@@ -62,6 +63,7 @@ void on_cntc_incoming_decline_btn_clicked(GtkWidget *button, gpointer data) {
         char *login = (char *)gtk_label_get_text(lbl);
         
         gtk_widget_hide(GTK_WIDGET(row));
+        mx_decline_cntc_request(cli, login);
     }
 }
 
@@ -77,7 +79,7 @@ void on_cntc_outgoing_remove_btn_clicked(GtkWidget *button, gpointer data) {
         char *login = (char *)gtk_label_get_text(lbl);
         
         gtk_widget_hide(GTK_WIDGET(row));
-        // mx_remove_cntc_request(cli, login);
+        mx_remove_cntc_request(cli, login);
     }
 }
 
@@ -106,7 +108,7 @@ void on_cntc_remove_btn_clicked(GtkWidget *button, gpointer data) {
             gtk_widget_hide(GTK_WIDGET(row));
             gtk_label_set_text(GTK_LABEL(lgnlbl), "");
             gtk_widget_hide(dialog);
-            // mx_remove_cntc_request(cli, login);
+            mx_remove_cntc_request(cli, login);
         }
         else {
             gtk_label_set_text(GTK_LABEL(lgnlbl), "");

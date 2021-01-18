@@ -67,6 +67,8 @@ void mx_send_cntc(sqlite3 *db, int connfd);
 void mx_init_client_db(sqlite3 *db, int connfd);
 void mx_accept_friend_invite(cJSON *j_request, int connfd, sqlite3 *db);
 int mx_find_invite(sqlite3 *db, char *username, int connfd);
+void mx_decline_friend_invite(cJSON *j_request, int connfd, sqlite3 *db);
+void mx_remove_cntc_responce(cJSON *j_request, int connfd, sqlite3 *db);
 
 /* Net Lib */
 void print_client_addr(struct sockaddr_in addr);

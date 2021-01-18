@@ -71,7 +71,6 @@ void send_message_all(char *s) {
 void send_message_self(const char *s, int connfd) {
     if (write(connfd, s, strlen(s)) < 0) {
         perror("Write to descriptor failed");
-        exit(-1);
     }
 }
 

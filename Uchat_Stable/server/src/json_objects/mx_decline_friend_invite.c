@@ -1,6 +1,6 @@
 #include "server.h"
 
-void mx_accept_friend_invite(cJSON *j_request, int connfd, sqlite3 *db) {
+void mx_decline_friend_invite(cJSON *j_request, int connfd, sqlite3 *db) {
     cJSON *j_username = cJSON_GetObjectItemCaseSensitive(j_request, "username");
     char *username = strdup(j_username->valuestring);
 
@@ -11,8 +11,7 @@ void mx_accept_friend_invite(cJSON *j_request, int connfd, sqlite3 *db) {
     int cid = mx_get_id_socket(db, connfd);
     char *ulogin = mx_get_login_id(db, cid);
 
-    mx_manage_cntc_db(db, connfd, username, 1, 2);
-    mx_manage_cntc_db(db, connfd, username, 1, 1);
+    mx_manage_cntc_db(db, connfd, username, 3, 3);
 
     mx_send_cntc(db, sockfd);
     mx_send_cntc(db, connfd);
@@ -22,7 +21,7 @@ void mx_accept_friend_invite(cJSON *j_request, int connfd, sqlite3 *db) {
     cJSON_AddItemToObject(j_responce, "username",//////////////
                           cJSON_CreateString(ulogin));/////////
     cJSON_AddItemToObject(j_responce, "valid",/////////////////
-                          cJSON_CreateString("true"));/////////
+                          cJSON_CreateString("false"));////////
     char *jdata = cJSON_Print(j_responce);
 
     send_message_self(jdata, sockfd);

@@ -17,6 +17,7 @@ void mx_login_request(client_t *cli) {
     cJSON_AddItemToObject(j_request, "password",//////////////
                           cJSON_CreateString(password));
     char *jdata = cJSON_Print(j_request);
+
     send_message_self(jdata, cli->sockfd);
     gtk_entry_set_text(log_entry, "");
     gtk_entry_set_text(pass_entry, "");
