@@ -13,7 +13,7 @@ void mx_remove_cntc_responce(cJSON *j_request, int connfd, sqlite3 *db) {
     char *ulogin = mx_get_login_id(db, cid);
 
     mx_manage_cntc_db(db, connfd, username, 3, 3);
-    mx_manage_cntc_db(db, sockfd, ulogin, 3, 3);
+    mx_manage_cntc_db(db, connfd, username, 3, 4);
 
     mx_send_cntc(db, sockfd);
     mx_send_cntc(db, connfd);

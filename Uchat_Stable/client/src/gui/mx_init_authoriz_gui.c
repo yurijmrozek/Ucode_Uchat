@@ -1,7 +1,6 @@
 #include "client.h"
 
 void mx_init_authoriz_gui(client_t *cli) {
-    gdk_threads_enter();
     cli->builder = gtk_builder_new();
     gtk_builder_add_from_file(cli->builder, "client/src/gui/glade"///////////
                                             "/chat.ui", NULL);///////////////

@@ -35,6 +35,21 @@ void on_log_out_btn_clicked(GtkWidget *button, gpointer data) {
     gtk_widget_show(cli->awindow);
 }
 
+// void on_cntc_list_row_selected(GtkWidget *button, gpointer data) {
+//     client_t *cli = (client_t *)data;
+//     GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
+//                                          (cli->builder, "cntc_list"));
+//     GtkListBoxRow *row = gtk_list_box_get_selected_row(cntc_list);
+//     if (row) {
+//         GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
+//         GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
+//         GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
+//         char *login = (char *)gtk_label_get_text(lbl);
+        
+//         printf("%s\n", login);
+//     }
+// }
+
 void on_cntc_incoming_allow_btn_clicked(GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
     GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
@@ -46,7 +61,6 @@ void on_cntc_incoming_allow_btn_clicked(GtkWidget *button, gpointer data) {
         GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
         char *login = (char *)gtk_label_get_text(lbl);
         
-        gtk_widget_hide(GTK_WIDGET(row));
         mx_accept_cntc_request(cli, login);
     }
 }
@@ -62,7 +76,6 @@ void on_cntc_incoming_decline_btn_clicked(GtkWidget *button, gpointer data) {
         GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
         char *login = (char *)gtk_label_get_text(lbl);
         
-        gtk_widget_hide(GTK_WIDGET(row));
         mx_decline_cntc_request(cli, login);
     }
 }
@@ -78,7 +91,6 @@ void on_cntc_outgoing_remove_btn_clicked(GtkWidget *button, gpointer data) {
         GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
         char *login = (char *)gtk_label_get_text(lbl);
         
-        gtk_widget_hide(GTK_WIDGET(row));
         mx_remove_cntc_request(cli, login, "outgoing_list");
     }
 }
@@ -105,7 +117,6 @@ void on_cntc_remove_btn_clicked(GtkWidget *button, gpointer data) {
 
         int responce = gtk_dialog_run(GTK_DIALOG(dialog));
         if (responce == 1) {
-            gtk_widget_hide(GTK_WIDGET(row));
             gtk_label_set_text(GTK_LABEL(lgnlbl), "");
             gtk_widget_hide(dialog);
             mx_remove_cntc_request(cli, login, "cntc_list");

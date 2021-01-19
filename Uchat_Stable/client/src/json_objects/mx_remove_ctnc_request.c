@@ -11,6 +11,7 @@ void mx_remove_cntc_request(client_t *cli, char *username, char *type) {
     char *jdata = cJSON_Print(j_request);
     
     send_message_self(jdata, cli->sockfd);
+    
     free(jdata);
     cJSON_Delete(j_request);
 }

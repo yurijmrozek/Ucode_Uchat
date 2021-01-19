@@ -69,7 +69,6 @@ static char *get_states(sqlite3 *db, int connfd) {
         statearr[++j] = strdup(get_icon(sqlite3_column_int64(stmt, 2)));
         state = strjoin(state, statearr[j]);
         state = strjoin(state, ",");
-        free(statearr[j]);
     }
     free(statearr);
     return state;
@@ -92,7 +91,6 @@ static char *get_request_invites(sqlite3 *db, int connfd) {
                                 sqlite3_column_int64(stmt, 0)));
         invites = strjoin(invites, invitearr[j]);
         invites = strjoin(invites, ",");
-        free(invitearr[j]);
     }
     free(invitearr);
     return invites;
@@ -109,7 +107,7 @@ void send_inv(sqlite3 *db, int connfd) {
         cJSON_AddItemToObject(j_responce, "cntc_inv_list",
                               cJSON_CreateString(cntcinv));
         char *jdata = cJSON_Print(j_responce);
-        sleep(1);
+
         send_message_self(jdata, connfd);
         free(jdata);
     }
@@ -132,13 +130,13 @@ void mx_send_cntc(sqlite3 *db, int connfd) {
         cJSON_AddItemToObject(j_responce, "cntc_list_state",
                               cJSON_CreateString(cntcstate));
         char *jdata = cJSON_Print(j_responce);
+
         send_message_self(jdata, connfd);
         free(jdata);
     }
-    free(cntcstate);
-    free(cntc);
     cJSON_Delete(j_responce);
 
-    sleep(1);
     send_inv(db, connfd);
+    free(cntcstate);
+    free(cntc);
 }

@@ -40,7 +40,6 @@ void mx_login_responce(cJSON *j_request, int connfd, sqlite3 *db) {
     free(password);
     cJSON_Delete(j_responce);
 
-    sleep(1);
     if (valid)
         mx_init_client_db(db, connfd);  
 }

@@ -99,7 +99,11 @@ void send_message_all(char *s){
 }
 
 /* Send message to sender */
-void send_message_self(const char *s, int connfd){
+void send_message_self(const char *s, int connfd) {
+
+    int size = strlen(s);
+    write(connfd, (void *)&size, 4);
+
     if (write(connfd, s, strlen(s)) < 0) {
         perror("Write to descriptor failed");
         exit(-1);

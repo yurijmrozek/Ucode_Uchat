@@ -12,15 +12,7 @@ void *mx_handle_client(void *arg) {
     printf("<< accept ");
     print_client_addr(cli->addr);
     printf(" referenced by %d\n", cli->uid);
-
-    pthread_mutex_lock(&topic_mutex);
-    if (strlen(topic)) {
-        buff_out[0] = '\0';
-        sprintf(buff_out, "<< topic: %s\r\n", topic);
-        send_message_self(buff_out, cli->connfd);
-    }
-    pthread_mutex_unlock(&topic_mutex);
-
+    
     /* Receive input from client */
 
     while ((rlen = read(cli->connfd, buff_in, sizeof(buff_in) - 1)) > 0) {

@@ -1,9 +1,9 @@
 .signin_window {
-    background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(17, 78, 75), rgb(0, 255, 255));
+    background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(78, 17, 75), rgb(204, 0, 255));
 }
 
 .chat_window {
-    background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(17, 78, 75), rgb(0, 255, 255));  
+    background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(76, 17, 78), rgb(204, 0, 255));  
 }
 
 *:active, *:focus {
@@ -17,12 +17,12 @@ label {
 /* message */
 
 .message_list {
-    border-color: cyan;
+    border-color: rgb(255, 0, 234);
     border-width: 3px;
 }
 
 .message_entry {
-    border-color: cyan;
+    border-color: rgb(255, 0, 242);
     border-width: 3px;
 }
 
@@ -32,15 +32,15 @@ label {
 
 .message_entry text {
     background-color: black;
-    color: cyan;
+    color: rgb(212, 0, 255);
     font-weight: bold;
 }
 
 .message_lbl {
-    color:cyan;
+    color:rgb(212, 0, 255);
     padding-top: 10px;
     padding-bottom: 10px;
-    box-shadow: 0px 0px 0px 3px cyan inset;
+    box-shadow: 0px 0px 0px 3px rgb(255, 0, 255) inset;
 }
 
 .message_list {
@@ -55,7 +55,7 @@ scrollbar.trough, scrollbar.trough.vertical {
 }
 
 .scrolled_window {
-    border-color: cyan;
+    border-color: rgb(234, 0, 255);
     border-width: 3px;
 }
 
@@ -67,31 +67,31 @@ scrollbar.trough, scrollbar.trough.vertical {
 .cntc_list row {
     background-color: transparent;
     background-image: none;
-    box-shadow: 0px -3px darkcyan inset;
-    color: darkcyan;
+    box-shadow: 0px -3px rgb(123, 0, 139) inset;
+    color: rgb(134, 0, 139);
 }
 
 .cntc_list row:hover {
-    box-shadow: 0px -3px darkcyan inset;
+    box-shadow: 0px -3px rgb(139, 0, 109) inset;
     margin-right: 15px;
-    color: rgb(1, 179, 179);
-    text-shadow: 0px 0px 10px rgb(1, 179, 179);
+    color: rgb(173, 1, 179);
+    text-shadow: 0px 0px 10px rgb(179, 1, 164);
 }
 
 .cntc_list row:active {
     background-color: transparent;
     background-image: none;
     margin-right: 15px;
-    color:cyan;
-    text-shadow: 0px 0px 10px cyan;
+    color:rgb(255, 0, 255);
+    text-shadow: 0px 0px 10px rgb(247, 0, 255);
 }
 
 .cntc_list row:focus {
     background-color: transparent;
     background-image: none;
-    box-shadow: 0px -3px rgb(0, 255, 255) inset; 
-    color:cyan;
-    text-shadow: 0px 0px 10px cyan;
+    box-shadow: 0px -3px rgb(247, 0, 255) inset; 
+    color:rgb(255, 0, 242);
+    text-shadow: 0px 0px 10px rgb(255, 0, 128);
 }
 
 /* notebook */
@@ -99,12 +99,12 @@ scrollbar.trough, scrollbar.trough.vertical {
 .cntc_notebook {
     background-color: black;
     border-width: 3px;
-    border-color: cyan;
+    border-color: rgb(255, 0, 242);
 }
 
 .cntc_notebook1 {
     background-color: black;
-    border-top: 2px solid cyan;
+    border-top: 2px solid rgb(255, 0, 242);
     border-bottom: 0px;
     border-left: 0px;
     border-right: 0px;
@@ -115,13 +115,13 @@ scrollbar.trough, scrollbar.trough.vertical {
 }
 
 .cntc_notebook tab:hover {
-    box-shadow: 0 -3px rgb(8, 150, 140) inset;
-    color:darkcyan;
+    box-shadow: 0 -3px rgb(150, 8, 143) inset;
+    color:rgb(134, 0, 139);
 }
 
 .cntc_notebook tab:checked {
-	box-shadow: 0 -3px rgb(0, 255, 255) inset;
-    color:cyan;
+	box-shadow: 0 -3px rgb(234, 0, 255) inset;
+    color:rgb(255, 0, 255);
     margin-top: 5px;
 }
 
@@ -129,25 +129,25 @@ scrollbar.trough, scrollbar.trough.vertical {
 
 .chat_btn {
     border-radius: 0%;
-    border-color: darkcyan;
+    border-color: rgb(139, 0, 109);
     border-width: 3px;
     background-color: black;
-    color: darkcyan;
+    color: rgb(139, 0, 116);
 }
 
 .chat_btn:hover, active:hover {
-    box-shadow: 0 0 10px cyan;
+    box-shadow: 0 0 10px rgb(234, 0, 255);
     border-radius: 0%;
-    border-color: cyan;
+    border-color: rgb(255, 0, 242);
     border-width: 3px;
-    color:cyan;
+    color:rgb(247, 0, 255);
     background-image: none;
 }
 
 .chat_btn:active {
-    border-color: rgb(50, 200, 200);
-    background: rgba(0, 255, 255, 0.5);
-    color:cyan;
+    border-color: rgb(200, 50, 175);
+    background: rgba(255, 0, 212, 0.5);
+    color:rgb(255, 0, 179);
 }
 
 /* widget */
@@ -163,48 +163,48 @@ box {
 /* dialog */
 
 .dialog_err_lbl {
-    color: red;
-    text-shadow: 0px 0px 3px red;
+    color: rgb(255, 0, 0);
+    text-shadow: 0px 0px 3px rgb(255, 0, 0);
 }
 
 .dialog_lbl {
-    color: cyan;
-    text-shadow: 0px 0px 3px cyan;
+    color: rgb(255, 0, 234);
+    text-shadow: 0px 0px 3px rgb(255, 0, 255);
 }
 
 .dialog_entry {
     border-radius: 0%;
-    border-color: rgb(0, 32, 32);
+    border-color: rgb(31, 0, 32);
     border-width: 3px;
 }
 
 .dialog_entry:focus {
     font-weight: bold;
     border-radius: 0%;
-    box-shadow: 0px 0px 5px cyan;
+    box-shadow: 0px 0px 5px rgb(234, 0, 255);
 }
 
 .dialog_btn {
     border-radius: 0%;
-    border-color: rgb(0, 32, 32);
+    border-color: rgb(32, 0, 27);
     border-width: 3px;
     color: rgb(0, 0, 0);
     font-weight: bold;
 }
 
 .dialog_btn:hover, active:hover {
-    box-shadow: 0 0 10px cyan;
+    box-shadow: 0 0 10px rgb(255, 0, 255);
     border-radius: 0%;
-    border-color: cyan;
+    border-color: rgb(255, 0, 242);
     border-width: 3px;
-    color:cyan;
+    color:rgb(255, 0, 255);
     background-image: none;
 }
 
 .dialog_btn:active {
-    border-color: rgb(50, 200, 200);
-    background-color: rgba(0, 255, 255, 0.5);
-    color:cyan;
+    border-color: rgb(200, 50, 175);
+    background-color: rgba(212, 0, 255, 0.5);
+    color:rgb(255, 0, 255);
 }
 
 /* login */
@@ -216,24 +216,24 @@ box {
 }
 
 .log_btn:hover, active:hover {
-    box-shadow: 0 0 10px rgb(50, 200, 200);
+    box-shadow: 0 0 10px rgb(182, 50, 200);
     border-radius: 0%;
-    border-color: rgb(55, 200, 205);
+    border-color: rgb(205, 55, 193);
     border-width: 3px;
-    color:rgb(50, 200, 200);
+    color:rgb(182, 50, 200);
     background-image: none;
     margin-top: 5px;
 }
 
 .log_btn:active {
-    border-color: rgb(50, 200, 200);
-    background-color: rgba(0, 255, 255, 0.5);
-    color:cyan;
+    border-color: rgb(175, 50, 200);
+    background-color: rgba(255, 0, 242, 0.5);
+    color:rgb(255, 0, 255);
 }
 
 .err_lbl_log {
-    text-shadow: 1px 1px 10px red;
-    color:red;
+    text-shadow: 1px 1px 10px rgb(255, 0, 0);
+    color:rgb(255, 0, 0);
 }
 
 .signin_entry {
