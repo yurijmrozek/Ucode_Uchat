@@ -63,6 +63,8 @@ int mx_get_socket_id(sqlite3 *db, int id);
 int mx_finde_invite_rev(sqlite3 *db, char *username, int connfd);
 int mx_manage_cntc_db(sqlite3 *db, int connfd,//////////////
                       char *username, int state, int action);
+int mx_manage_message_db(sqlite3 *db, int uid, int cid, char *message,
+                          int action);
 void mx_init_client_db(sqlite3 *db, int connfd);
 void mx_send_cntc(sqlite3 *db, int connfd);
 void mx_init_client_db(sqlite3 *db, int connfd);
@@ -70,6 +72,8 @@ void mx_accept_friend_invite(cJSON *j_request, int connfd, sqlite3 *db);
 int mx_find_invite(sqlite3 *db, char *username, int connfd);
 void mx_decline_friend_invite(cJSON *j_request, int connfd, sqlite3 *db);
 void mx_remove_cntc_responce(cJSON *j_request, int connfd, sqlite3 *db);
+void mx_insert_new_message(cJSON *j_request, int connfd, sqlite3 *db);
+void mx_getup_messages(cJSON *j_request, int connfd, sqlite3 *db);
 
 /* Net Lib */
 void print_client_addr(struct sockaddr_in addr);

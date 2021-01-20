@@ -1,5 +1,13 @@
 #include "server.h"
 
+static void message_table(sqlite3 *tmp_db) {
+    sqlite3_exec(tmp_db,   "CREATE TABLE IF NOT EXISTS message("             \
+                           "ID         INTEGER      NOT NULL, "               \
+                           "CONT       INTEGER      NOT NULL, "
+                           "MESSAGE    TEXT         NOT NULL);",
+                 0, 0, 0);//////////////////////////////////////
+}
+
 static void contact_table(sqlite3 *tmp_db) {
     sqlite3_exec(tmp_db,   "CREATE TABLE IF NOT EXISTS contact("             \
                            "ID          INTEGER      NOT NULL, "             \
@@ -28,4 +36,5 @@ static void user_table(sqlite3 *tmp_db) {
 void mx_create_table(sqlite3 *tmp_db) {
     user_table(tmp_db);
     contact_table(tmp_db);
+    message_table(tmp_db);
 }

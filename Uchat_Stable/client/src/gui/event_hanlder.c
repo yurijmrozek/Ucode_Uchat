@@ -35,20 +35,6 @@ void on_log_out_btn_clicked(GtkWidget *button, gpointer data) {
     gtk_widget_show(cli->awindow);
 }
 
-// void on_cntc_list_row_selected(GtkWidget *button, gpointer data) {
-//     client_t *cli = (client_t *)data;
-//     GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
-//                                          (cli->builder, "cntc_list"));
-//     GtkListBoxRow *row = gtk_list_box_get_selected_row(cntc_list);
-//     if (row) {
-//         GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
-//         GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
-//         GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
-//         char *login = (char *)gtk_label_get_text(lbl);
-        
-//         printf("%s\n", login);
-//     }
-// }
 
 void on_cntc_incoming_allow_btn_clicked(GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
@@ -92,6 +78,46 @@ void on_cntc_outgoing_remove_btn_clicked(GtkWidget *button, gpointer data) {
         char *login = (char *)gtk_label_get_text(lbl);
         
         mx_remove_cntc_request(cli, login, "outgoing_list");
+    }
+}
+
+void on_send_msg_btn_clicked(GtkWidget *button, gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkTextIter start, end;
+    gchar *message;
+    GtkTextView *entry = GTK_TEXT_VIEW(gtk_builder_get_object///////////
+                                   (cli->builder,///////////////////////
+                                   "msg_entry"));
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+
+    GtkTextBuffer *buffer = gtk_text_view_get_buffer(entry);
+    gtk_text_buffer_get_bounds(buffer, &start, &end);
+    message = gtk_text_buffer_get_text(buffer, &start, &end, FALSE);
+
+    char *login = (char *)gtk_label_get_text(current_user);
+    if (mx_valid_msg(message, cli)) {
+        mx_send_message_request(message, login, cli);
+        mx_insert_msg(message, cli, 0);
+    }
+}
+
+void on_cntc_list_selected_rows_changed(GtkWidget *button, gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
+                                         (cli->builder, "cntc_list"));
+    GtkLabel *current_user_lbl = GTK_LABEL(gtk_builder_get_object
+                                           (cli->builder, "current_user_lbl"));
+    GtkListBoxRow *row = gtk_list_box_get_selected_row(cntc_list);
+    if (row) {
+        GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
+        GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
+        GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
+        char *login = (char *)gtk_label_get_text(lbl);
+        
+        mx_clear_msg_list(cli);
+        mx_recieve_message_list_request(login, cli);
+        gtk_label_set_text(current_user_lbl, login);
     }
 }
 

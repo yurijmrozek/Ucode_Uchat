@@ -189,8 +189,7 @@
                               <object class="GtkListBox" id="cntc_list">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <signal name="activate-cursor-row" handler="on_cntc_list_activate_cursor_row" swapped="no"/>
-                                <signal name="row-selected" handler="on_cntc_list_row_selected" swapped="no"/>
+                                <signal name="selected-rows-changed" handler="on_cntc_list_selected_rows_changed" swapped="no"/>
                                 <style>
                                   <class name="cntc_list"/>
                                 </style>
@@ -560,7 +559,7 @@
             </child>
             <child>
               <object class="GtkBox">
-                <property name="width_request">570</property>
+                <property name="width_request">600</property>
                 <property name="height_request">470</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
@@ -570,7 +569,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="margin_left">10</property>
-                    <property name="margin_right">10</property>
+                    <property name="margin_right">20</property>
                     <property name="label" translatable="yes">Select contact to start chatting</property>
                     <style>
                       <class name="message_lbl"/>
@@ -595,7 +594,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkListBox">
+                          <object class="GtkListBox" id="msg_list">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <style>
@@ -628,8 +627,9 @@
                         <property name="overlay_scrolling">False</property>
                         <property name="max_content_width">70</property>
                         <property name="max_content_height">20</property>
+                        <property name="propagate_natural_height">True</property>
                         <child>
-                          <object class="GtkTextView">
+                          <object class="GtkTextView" id="msg_entry">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="left_margin">5</property>
@@ -652,7 +652,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="margin_left">5</property>
-                        <property name="margin_right">5</property>
+                        <property name="margin_right">10</property>
                         <property name="margin_top">5</property>
                         <property name="margin_bottom">5</property>
                         <property name="layout_style">start</property>
@@ -683,13 +683,14 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkButton">
+                          <object class="GtkButton" id="send_msg_btn">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="margin_left">10</property>
                             <property name="margin_right">10</property>
                             <property name="relief">none</property>
+                            <signal name="clicked" handler="on_send_msg_btn_clicked" swapped="no"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>

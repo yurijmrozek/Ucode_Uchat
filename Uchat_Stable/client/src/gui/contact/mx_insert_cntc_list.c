@@ -69,6 +69,7 @@ void mx_insert_cntc_list(char *username, client_t *cli, char *icon) {
         gtk_box_pack_start(GTK_BOX(hbox), lgn, FALSE, FALSE, 0);
         gtk_widget_set_size_request(img, 35, 35);
 
+
         gtk_list_box_insert(cntc_list, row, 0);
         gtk_widget_show_all(row);
         gtk_widget_show(lgn);

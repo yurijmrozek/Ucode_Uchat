@@ -3,7 +3,7 @@
 }
 
 .chat_window {
-    background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(17, 78, 75), rgb(0, 255, 255));  
+    background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(17, 78, 75), rgb(2, 190, 190));  
 }
 
 *:active, *:focus {
@@ -45,6 +45,31 @@ label {
 
 .message_list {
     background-color: black;
+    margin-top: 15px;
+    margin-right: 10px;
+    color: rgb(1, 179, 179);
+}
+
+.message_list row {
+    box-shadow: 0px 0px 0px 3px cyan inset;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.msg_outext {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: cyan;
+}
+
+.msg_intext {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: darkcyan;
 }
 
 /* listbox */

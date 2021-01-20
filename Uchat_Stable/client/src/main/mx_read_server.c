@@ -5,8 +5,7 @@ void *mx_read_server(void *arg) {
     char buff_in[1024];
     int rlen = 0;
 
-    while(1) {
-        read(cli->sockfd, &rlen, 4);
+    while(read(cli->sockfd, &rlen, 4) > 0) {
         read(cli->sockfd, buff_in, rlen);
         
         if (!strlen(buff_in))
