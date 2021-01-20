@@ -63,7 +63,7 @@ static char *get_messages(sqlite3 *db, int uid, int cid) {
     while ((rv = sqlite3_step(stmt)) == SQLITE_ROW) {
         msgarr[++j] = strdup((char *)sqlite3_column_text(stmt, 0));
         messages = strjoin(messages, msgarr[j]);
-        messages = strjoin(messages, ",");
+        messages = strjoin(messages, "~");
     }
     free(msgarr);
     return messages;
@@ -76,7 +76,7 @@ void mx_getup_messages(cJSON *j_request, int connfd, sqlite3 *db) {
                           cJSON_CreateString("getup_msgs"));
     int uid = mx_get_id_socket(db, connfd);
     int cid = mx_get_id_login(db, j_username->valuestring);
-
+    char *username = mx_get_login_id(db, uid);
     char *message = get_messages(db, uid, cid);
     char *sender = get_sender(db, uid, cid);
     if (message) {
@@ -84,6 +84,8 @@ void mx_getup_messages(cJSON *j_request, int connfd, sqlite3 *db) {
                               cJSON_CreateString(message));
         cJSON_AddItemToObject(j_responce, "message_sender",
                               cJSON_CreateString(sender));
+        cJSON_AddItemToObject(j_responce, "username",
+                              cJSON_CreateString(username));
         char *jdata = cJSON_Print(j_responce);
 
         send_message_self(jdata, connfd);
