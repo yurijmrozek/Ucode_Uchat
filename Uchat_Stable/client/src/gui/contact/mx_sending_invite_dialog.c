@@ -14,7 +14,7 @@ void mx_sending_invite_dialog(client_t *cli, char valid) {
     else if (valid == 'i')
         gtk_label_set_text(err_label, "    Invalid syntax\n[abc123][6ch min]");
     else if (valid == 'm')
-        gtk_label_set_text(err_label, "\tInvalid syntax\n "
+        gtk_label_set_text(err_label, "  Invalid syntax\n "
                                       "[6ch min - 255ch max]");
     else if (valid == 'e')
         gtk_label_set_text(err_label, " User already\nin contact list");
@@ -22,6 +22,9 @@ void mx_sending_invite_dialog(client_t *cli, char valid) {
         gtk_label_set_text(err_label, "User undefined");
     else if (valid == 'f')
         gtk_label_set_text(err_label, "Invite already exist ");
+    else if (valid == 'c')
+        gtk_label_set_text(err_label, "Choose contact first"
+                                      "\n   to start chatting");
     gtk_widget_show_all(dialog);
 
     int responce = gtk_dialog_run(GTK_DIALOG(dialog));

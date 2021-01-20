@@ -59,7 +59,7 @@ void mx_decline_cntc_request(client_t *cli, char *username);
 void mx_remove_cntc_request(client_t *cli, char *username, char *type);
 void mx_insert_msg(gchar *message, client_t *cli, int pos);
 void mx_clear_msg_list(client_t *cli);
-bool mx_valid_msg(gchar *msg, client_t *cli);
+bool mx_valid_msg(gchar *message, char *login, client_t *cli);
 void mx_send_message_request(gchar *message, char *username, client_t *cli);
 void mx_recieve_message_list_request(char *login, client_t *cli);
 void mx_getup_msgs(cJSON *j_responce, client_t *cli);

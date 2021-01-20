@@ -96,9 +96,10 @@ void on_send_msg_btn_clicked(GtkWidget *button, gpointer data) {
     message = gtk_text_buffer_get_text(buffer, &start, &end, FALSE);
 
     char *login = (char *)gtk_label_get_text(current_user);
-    if (mx_valid_msg(message, cli)) {
+    if (mx_valid_msg(message, login, cli)) {
         mx_send_message_request(message, login, cli);
         mx_insert_msg(message, cli, 0);
+        gtk_text_buffer_set_text(buffer, "", 1);
     }
 }
 
