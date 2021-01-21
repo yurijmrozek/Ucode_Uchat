@@ -147,7 +147,13 @@ void on_cntc_remove_btn_clicked(GtkWidget *button, gpointer data) {
         if (responce == 1) {
             gtk_label_set_text(GTK_LABEL(lgnlbl), "");
             gtk_widget_hide(dialog);
+            mx_clear_msg_list(cli);
             mx_remove_cntc_request(cli, login, "cntc_list");
+            GtkLabel *current_user_lbl = GTK_LABEL//////////////////////////
+                                         (gtk_builder_get_object////////////
+                                         (cli->builder, "current_user_lbl"));
+            gtk_label_set_text(current_user_lbl,//////////////////
+                               "Select contact to start chatting");
         }
         else {
             gtk_label_set_text(GTK_LABEL(lgnlbl), "");

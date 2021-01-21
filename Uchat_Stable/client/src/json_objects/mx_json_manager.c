@@ -22,6 +22,11 @@ void mx_json_manager(char buff_in[], client_t *cli) {
     else if (!strcmp(j_action->valuestring, "remove_friend")) {
         cJSON *j_username = cJSON_GetObjectItemCaseSensitive(j_responce,
                                                              "username");
+        mx_clear_msg_list(cli);
+        GtkLabel *current_user_lbl = GTK_LABEL(gtk_builder_get_object/////////
+                                           (cli->builder, "current_user_lbl"));
+        gtk_label_set_text(current_user_lbl,/////////////////
+                           "Select contact to start chatting");
         mx_notification_dialog(cli, j_username->valuestring, 'r');
     }
     else if (!strcmp(j_action->valuestring, "getup_msgs"))
