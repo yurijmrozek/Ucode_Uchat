@@ -74,7 +74,8 @@ void mx_decline_friend_invite(cJSON *j_request, int connfd, sqlite3 *db);
 void mx_remove_cntc_responce(cJSON *j_request, int connfd, sqlite3 *db);
 void mx_insert_new_message(cJSON *j_request, int connfd, sqlite3 *db);
 void mx_getup_messages(cJSON *j_request, int connfd, sqlite3 *db);
-void mx_getup_new_message(int uid, cJSON *j_message, int sockfd, sqlite3 *db);
+void mx_getup_new_message(int uid, cJSON *j_message, cJSON *j_username, 
+                          int sockfd, sqlite3 *db);
 
 /* Net Lib */
 void print_client_addr(struct sockaddr_in addr);

@@ -11,6 +11,6 @@ void mx_insert_new_message(cJSON *j_request, int connfd, sqlite3 *db) {
     
     if (mx_check_uonline_status(db, j_username->valuestring) != 1) {
         int sockfd = mx_get_socket_id(db, cid);
-        mx_getup_new_message(uid, j_message, sockfd, db);
+        mx_getup_new_message(uid, j_message, j_username, sockfd, db);
     }
 }
