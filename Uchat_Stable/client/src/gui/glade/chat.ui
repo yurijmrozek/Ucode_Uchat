@@ -588,6 +588,7 @@
                     <property name="margin_left">5</property>
                     <property name="margin_right">5</property>
                     <property name="border_width">5</property>
+                    <property name="hscrollbar_policy">never</property>
                     <property name="shadow_type">in</property>
                     <child>
                       <object class="GtkViewport">
@@ -597,6 +598,8 @@
                           <object class="GtkListBox" id="msg_list">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">baseline</property>
+                            <property name="margin_bottom">10</property>
                             <style>
                               <class name="message_list"/>
                             </style>
@@ -632,9 +635,12 @@
                           <object class="GtkTextView" id="msg_entry">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="pixels_inside_wrap">3</property>
+                            <property name="wrap_mode">word-char</property>
                             <property name="left_margin">5</property>
-                            <property name="right_margin">5</property>
+                            <property name="right_margin">200</property>
                             <property name="top_margin">5</property>
+                            <property name="bottom_margin">5</property>
                           </object>
                         </child>
                         <style>

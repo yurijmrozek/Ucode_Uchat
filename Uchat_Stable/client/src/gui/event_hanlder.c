@@ -62,6 +62,7 @@ void on_cntc_incoming_decline_btn_clicked(GtkWidget *button, gpointer data) {
         GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
         char *login = (char *)gtk_label_get_text(lbl);
         
+        gtk_widget_hide(GTK_WIDGET(row));
         mx_decline_cntc_request(cli, login);
     }
 }

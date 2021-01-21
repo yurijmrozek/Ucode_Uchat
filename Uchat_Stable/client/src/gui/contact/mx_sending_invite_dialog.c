@@ -25,6 +25,9 @@ void mx_sending_invite_dialog(client_t *cli, char valid) {
     else if (valid == 'c')
         gtk_label_set_text(err_label, "Choose contact first"
                                       "\n   to start chatting");
+    else if (valid == '~')
+        gtk_label_set_text(err_label, "  ~~~ Please dont ~~~  "  \
+                                      "\n\tuse this [~] char  ");
     gtk_widget_show_all(dialog);
 
     int responce = gtk_dialog_run(GTK_DIALOG(dialog));

@@ -26,6 +26,8 @@ void mx_json_manager(char buff_in[], client_t *cli) {
     }
     else if (!strcmp(j_action->valuestring, "getup_msgs"))
         mx_getup_msgs(j_responce, cli);
+    else if (!strcmp(j_action->valuestring, "getup_new_msg"))
+        mx_getup_new_msg(j_responce, cli);
 
     cJSON_Delete(j_responce);
 }

@@ -63,3 +63,5 @@ bool mx_valid_msg(gchar *message, char *login, client_t *cli);
 void mx_send_message_request(gchar *message, char *username, client_t *cli);
 void mx_recieve_message_list_request(char *login, client_t *cli);
 void mx_getup_msgs(cJSON *j_responce, client_t *cli);
+void mx_scroll_to_down(client_t *cli);
+void mx_getup_new_msg(cJSON *j_responce, client_t *cli);

@@ -32,9 +32,14 @@ static char **strsplit(const char *s, char c) {
 }
 
 void mx_getup_msgs(cJSON *j_responce, client_t *cli) {
+    GtkLabel *current_user_lbl = GTK_LABEL(gtk_builder_get_object
+                                           (cli->builder, "current_user_lbl"));
+
     char **msgarr = NULL;
     char **msgsender = NULL;
     int pos = 0;
+    bool valid = false;
+    char *cur_uslbl = strdup(gtk_label_get_text(current_user_lbl));
 
     cJSON *j_msg = cJSON_GetObjectItemCaseSensitive(j_responce, "message_list");
     cJSON *j_msg_sender = cJSON_GetObjectItemCaseSensitive(j_responce,///////
@@ -46,14 +51,24 @@ void mx_getup_msgs(cJSON *j_responce, client_t *cli) {
     msgsender = strsplit(j_msg_sender->valuestring, ',');
 
     for (int i = 0; msgarr[i]; i++) {
-        if (!strcmp(j_username->valuestring, msgsender[i]))
-            pos = 0;
-        else
-            pos = 1;
-        mx_insert_msg(msgarr[i], cli, pos);
-        free(msgarr[i]);
-        free(msgsender[i]);
+        if (strcmp(j_username->valuestring, msgsender[i]) != 0
+            && !strcmp(msgsender[i], cur_uslbl)) {
+                valid = true;
+                break;
+            }
     }
+    if (valid) {
+        for (int i = 0; msgarr[i]; i++) {
+            if (!strcmp(j_username->valuestring, msgsender[i]))
+                pos = 0;
+            else
+                pos = 1;
+            mx_insert_msg(msgarr[i], cli, pos);
+            free(msgarr[i]);
+            free(msgsender[i]);
+        }
+    }
+
     free(msgarr);
     free(msgsender);
 }
