@@ -24,6 +24,28 @@ static char *strjoin(const char *s1, const char *s2) {
     return result;
 }
 
+static char *get_id_msg(sqlite3 *db, int uid, int cid) {
+    char **idarr = (char **)malloc(sizeof(char *) * 10);
+    char *id = NULL;
+    int j = -1;
+    sqlite3_stmt *stmt;
+    int rv = 0;
+
+    rv = sqlite3_prepare_v2(db, "SELECT * FROM message WHERE ID = ?1 "  \
+                                "AND CONT = ?2 OR ID = ?2 AND CONT = ?1",
+                            -1, &stmt, NULL);
+    sqlite3_bind_int(stmt, 1, uid);
+    sqlite3_bind_int(stmt, 2, cid);
+    
+    while ((rv = sqlite3_step(stmt)) == SQLITE_ROW) {
+        idarr[++j] = strdup((char *)sqlite3_column_text(stmt, 3));
+        id = strjoin(id, idarr[j]);
+        id = strjoin(id, ",");
+    }
+    free(idarr);
+    return id;
+}
+
 static char *get_sender(sqlite3 *db, int uid, int cid) {
     char **sendarr = (char **)malloc(sizeof(char *) * 10);
     char *sender = NULL;
@@ -78,12 +100,16 @@ void mx_getup_messages(cJSON *j_request, int connfd, sqlite3 *db) {
     int cid = mx_get_id_login(db, j_username->valuestring);
     char *username = mx_get_login_id(db, uid);
     char *message = get_messages(db, uid, cid);
+    char *msgid = get_id_msg(db, uid, cid);
+
     char *sender = get_sender(db, uid, cid);
     if (message) {
         cJSON_AddItemToObject(j_responce, "message_list",
                               cJSON_CreateString(message));
         cJSON_AddItemToObject(j_responce, "message_sender",
                               cJSON_CreateString(sender));
+        cJSON_AddItemToObject(j_responce, "message_id",
+                              cJSON_CreateString(msgid));
         cJSON_AddItemToObject(j_responce, "username",
                               cJSON_CreateString(username));
         char *jdata = cJSON_Print(j_responce);
@@ -96,4 +122,3 @@ void mx_getup_messages(cJSON *j_request, int connfd, sqlite3 *db) {
     free(message);
     free(sender);
 }
-

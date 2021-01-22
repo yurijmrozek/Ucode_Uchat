@@ -35,28 +35,33 @@ void mx_getup_msgs(cJSON *j_responce, client_t *cli) {
 
     char **msgarr = NULL;
     char **msgsender = NULL;
+    char **msgid = NULL;
     int pos = 0;
 
     cJSON *j_msg = cJSON_GetObjectItemCaseSensitive(j_responce, "message_list");
     cJSON *j_msg_sender = cJSON_GetObjectItemCaseSensitive(j_responce,///////
                                                            "message_sender");
+    cJSON *j_id = cJSON_GetObjectItemCaseSensitive(j_responce, "message_id");
     cJSON *j_username = cJSON_GetObjectItemCaseSensitive(j_responce,
                                                          "username");
 
     msgarr = strsplit(j_msg->valuestring, '~');
     msgsender = strsplit(j_msg_sender->valuestring, ',');
+    msgid = strsplit(j_id->valuestring, ',');
 
     for (int i = 0; msgarr[i]; i++) {
         if (!strcmp(j_username->valuestring, msgsender[i]))
             pos = 0;
         else
             pos = 1;
-        mx_insert_msg(msgarr[i], cli, pos);
+        mx_insert_msg(msgarr[i], cli, pos, msgsender[i], msgid[i]);
         free(msgarr[i]);
         free(msgsender[i]);
+        free(msgid[i]);
     }
     free(msgarr);
     free(msgsender);
+    free(msgid);
 }
 
     // GtkLabel *current_user_lbl = GTK_LABEL(gtk_builder_get_object

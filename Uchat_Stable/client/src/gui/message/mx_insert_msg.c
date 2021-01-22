@@ -5,16 +5,20 @@ static void on_size(GtkWidget *label, GtkAllocation *alloc, gpointer data) {
     gtk_widget_set_size_request(label, alloc->width - 2, -1);
 }
 
-void mx_insert_msg(gchar *message, client_t *cli, int pos) {
+void mx_insert_msg(gchar *message, client_t *cli, int pos, char *msgsender,
+                   char *msgid) {
     GtkListBox *msg_list = GTK_LIST_BOX(gtk_builder_get_object/////
                                         (cli->builder, "msg_list"));
     GtkStyleContext *context;
-    GtkWidget *row, *hbox, *msg;
+    GtkWidget *row, *hbox, *msg, *snd, *id;
 
     row = gtk_list_box_row_new();
     hbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
 
     msg = gtk_label_new(message);
+    snd = gtk_label_new(msgsender);
+    id = gtk_label_new(msgid);
+
     gtk_misc_set_alignment(GTK_MISC(msg), 0, 0.5);
     g_signal_connect(G_OBJECT(msg), "size-allocate",
                      G_CALLBACK(on_size), NULL);
@@ -40,9 +44,13 @@ void mx_insert_msg(gchar *message, client_t *cli, int pos) {
 
     gtk_container_add(GTK_CONTAINER(row), hbox);
     gtk_box_pack_start(GTK_BOX(hbox), msg, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), snd, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), id, FALSE, FALSE, 0);
     gtk_container_add(GTK_CONTAINER(msg_list), row);
 
     gtk_widget_show_all(row);
     gtk_widget_show(msg);
+    gtk_widget_hide(snd);
+    gtk_widget_hide(id);
     mx_scroll_to_down(cli);
 }

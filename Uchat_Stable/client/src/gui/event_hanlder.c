@@ -46,11 +46,20 @@ void on_btn_delete_msg_clicked(GtkWidget *buttom, gpointer data) {
         GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
         GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
         GtkLabel *lbl = GTK_LABEL(gl_box->data);
+        GtkLabel *snd = GTK_LABEL(gl_box->next->data);
+        GtkLabel *id = GTK_LABEL(gl_box->next->next->data);
+
         char *message = (char *)gtk_label_get_text(lbl);
         char *username = (char *)gtk_label_get_text(current_user);
+        char *sndr = (char *)gtk_label_get_text(snd);
+        char *msgid = (char *)gtk_label_get_text(id);
         
-        gtk_widget_hide(GTK_WIDGET(row));
-        mx_delete_message_request(cli, message, username);
+        if (strcmp(username, sndr) != 0) {
+            gtk_widget_hide(GTK_WIDGET(row));
+            mx_delete_message_request(cli, msgid);
+        }
+        else
+            mx_sending_invite_dialog(cli, 'd');
     }
 }
 
@@ -117,7 +126,8 @@ void on_send_msg_btn_clicked(GtkWidget *button, gpointer data) {
     char *login = (char *)gtk_label_get_text(current_user);
     if (mx_valid_msg(message, login, cli)) {
         mx_send_message_request(message, login, cli);
-        mx_insert_msg(message, cli, 0);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
         gtk_text_buffer_set_text(buffer, "", 1);
     }
 }
@@ -175,7 +185,8 @@ void on_cntc_remove_btn_clicked(GtkWidget *button, gpointer data) {
         char *login = (char *)gtk_label_get_text(lbl);
         gtk_label_set_text(GTK_LABEL(lgnlbl), login);
 
-        gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(cli->cwindow));
+        gtk_window_set_transient_for(GTK_WINDOW(dialog),
+                                     GTK_WINDOW(cli->cwindow));
         gtk_widget_show_all(dialog);
 
         int responce = gtk_dialog_run(GTK_DIALOG(dialog));

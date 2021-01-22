@@ -57,7 +57,8 @@ void mx_invite_answer_responce(cJSON *j_responce, client_t *cli);
 void mx_notification_dialog(client_t *cli, char *username, char flag);
 void mx_decline_cntc_request(client_t *cli, char *username);
 void mx_remove_cntc_request(client_t *cli, char *username, char *type);
-void mx_insert_msg(gchar *message, client_t *cli, int pos);
+void mx_insert_msg(gchar *message, client_t *cli, int pos, char *msgsender,
+                   char *msgid);
 void mx_clear_msg_list(client_t *cli);
 bool mx_valid_msg(gchar *message, char *login, client_t *cli);
 void mx_send_message_request(gchar *message, char *username, client_t *cli);
@@ -65,7 +66,7 @@ void mx_recieve_message_list_request(char *login, client_t *cli);
 void mx_getup_msgs(cJSON *j_responce, client_t *cli);
 void mx_scroll_to_down(client_t *cli);
 void mx_getup_new_msg(cJSON *j_responce, client_t *cli);
-void mx_delete_message_request(client_t *cli, char *message, char *username);
+void mx_delete_message_request(client_t *cli, char *msgid);
 void mx_getup_new_chnl_msg(cJSON *j_responce, client_t *cli);
 void mx_insert_chnl_msg(char *sender, char *message, client_t *cli, int pos);
 void mx_recieve_message_chnl_request(client_t *cli);

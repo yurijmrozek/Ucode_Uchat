@@ -19,7 +19,7 @@
 
 #define MAX_CLIENTS 100
 #define BUFFER_SZ 2048
-
+#define ARRLEN(s) (sizeof(s) / sizeof(*s))
 
 static _Atomic unsigned int cli_count = 0;
 static int uid = 10;
@@ -64,7 +64,7 @@ int mx_finde_invite_rev(sqlite3 *db, char *username, int connfd);
 int mx_manage_cntc_db(sqlite3 *db, int connfd,//////////////
                       char *username, int state, int action);
 int mx_manage_message_db(sqlite3 *db, int uid, int cid, char *message,
-                          int action);
+                         char *msgid, int action);
 void mx_init_client_db(sqlite3 *db, int connfd);
 void mx_send_cntc(sqlite3 *db, int connfd);
 void mx_init_client_db(sqlite3 *db, int connfd);
@@ -74,12 +74,13 @@ void mx_decline_friend_invite(cJSON *j_request, int connfd, sqlite3 *db);
 void mx_remove_cntc_responce(cJSON *j_request, int connfd, sqlite3 *db);
 void mx_insert_new_message(cJSON *j_request, int connfd, sqlite3 *db);
 void mx_getup_messages(cJSON *j_request, int connfd, sqlite3 *db);
-void mx_getup_new_message(int uid, cJSON *j_message, cJSON *j_username, 
-                          int sockfd, sqlite3 *db);
-void mx_remove_message(cJSON *j_request, int connfd, sqlite3 *db);
+void mx_getup_new_message(int uid, char *message, char *username, 
+                          int sockfd, sqlite3 *db, char *state);
+void mx_remove_message(cJSON *j_request, sqlite3 *db);
 int mx_manage_chnl_db(sqlite3 *db, int uid, char *message, int action);
 void mx_getup_new_chnl_message(int uid, cJSON *j_message, sqlite3 *db);
 void mx_getup_chnl_messages(int connfd, sqlite3 *db);
+char *mx_return_id_msg(sqlite3 *db, int uid, int cid, char *message);
 
 /* Net Lib */
 void print_client_addr(struct sockaddr_in addr);

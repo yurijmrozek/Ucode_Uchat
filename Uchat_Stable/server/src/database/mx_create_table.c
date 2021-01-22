@@ -1,17 +1,19 @@
 #include "server.h"
 
 static void chnl_tabel(sqlite3 *tmp_db) {
-    sqlite3_exec(tmp_db,   "CREATE TABLE IF NOT EXISTS general("             \
-                           "ID         INTEGER      NOT NULL, "              \
-                           "MESSAGE    TEXT         NOT NULL);",
+    sqlite3_exec(tmp_db,   "CREATE TABLE IF NOT EXISTS general(       "      \
+                           "ID         INTEGER             NOT NULL,  "      \
+                           "MESSAGE    TEXT                NOT NULL,  "
+                           "MSGID      INTEGER PRIMARY KEY NOT NULL );",
                  0, 0, 0);//////////////////////////////////////
 }
 
 static void message_table(sqlite3 *tmp_db) {
-    sqlite3_exec(tmp_db,   "CREATE TABLE IF NOT EXISTS message("             \
-                           "ID         INTEGER      NOT NULL, "              \
-                           "CONT       INTEGER      NOT NULL, "
-                           "MESSAGE    TEXT         NOT NULL);",
+    sqlite3_exec(tmp_db,   "CREATE TABLE IF NOT EXISTS message(      "       \
+                           "ID         INTEGER             NOT NULL, "       \
+                           "CONT       INTEGER             NOT NULL, "
+                           "MESSAGE    TEXT                NOT NULL, "
+                           "MSGID      INTEGER PRIMARY KEY NOT NULL);",
                  0, 0, 0);//////////////////////////////////////
 }
 

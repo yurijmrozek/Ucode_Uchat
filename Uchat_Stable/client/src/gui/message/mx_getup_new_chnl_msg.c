@@ -20,4 +20,5 @@ void mx_getup_new_chnl_msg(cJSON *j_responce, client_t *cli) {
     if (valid)
         mx_insert_chnl_msg(j_msg_sender->valuestring,
                            j_msg->valuestring, cli, pos);
+    free(cur_uslbl);
 }
