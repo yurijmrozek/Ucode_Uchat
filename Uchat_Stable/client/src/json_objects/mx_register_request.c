@@ -7,6 +7,8 @@ void mx_register_request(client_t *cli) {
                                     (cli->builder, "password_log"));
     char *username = strdup(gtk_entry_get_text(log_entry));
     char *password = strdup(gtk_entry_get_text(pass_entry));
+    char *hashpass = g_compute_checksum_for_string(G_CHECKSUM_SHA256, password,
+                                                   strlen(password));
     for (int i = 0; username[i]; i++)
         username[i] = tolower(username[i]);
     cJSON *j_request = cJSON_CreateObject();
@@ -15,7 +17,7 @@ void mx_register_request(client_t *cli) {
     cJSON_AddItemToObject(j_request, "username",//////////////
                           cJSON_CreateString(username));
     cJSON_AddItemToObject(j_request, "password",//////////////
-                          cJSON_CreateString(password));
+                          cJSON_CreateString(hashpass));
     char *jdata = cJSON_Print(j_request);
     send_message_self(jdata, cli->sockfd);
     gtk_entry_set_text(log_entry, "");
@@ -23,5 +25,6 @@ void mx_register_request(client_t *cli) {
     free(jdata);
     free(username);
     free(password);
+    g_free(hashpass);
     cJSON_Delete(j_request);
 }

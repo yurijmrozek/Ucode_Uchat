@@ -54,14 +54,23 @@ void send_message(char *s, int uid) {
 }
 
 /* Send message to all clients */
-void send_message_all(char *s) {
+void send_message_all(cJSON *j_responce, sqlite3 *db, int connfd) {
     pthread_mutex_lock(&clients_mutex);
     for (int i = 0; i < MAX_CLIENTS; ++i){
-        if (clients[i]) {
+        if (clients[i] && clients[i]->connfd != connfd) {
+            int uid = mx_get_id_socket(db, clients[i]->connfd);
+            char *username = mx_get_login_id(db, uid);
+            cJSON_AddItemToObject(j_responce, "username",
+                                  cJSON_CreateString(username));
+            char *s = cJSON_Print(j_responce);
+            int size = strlen(s);
+            write(clients[i]->connfd, (void *)&size, 4);
+
             if (write(clients[i]->connfd, s, strlen(s)) < 0) {
                 perror("Write to descriptor failed");
                 break;
             }
+            free(s);
         }
     }
     pthread_mutex_unlock(&clients_mutex);

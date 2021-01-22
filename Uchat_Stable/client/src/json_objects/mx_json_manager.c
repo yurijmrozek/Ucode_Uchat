@@ -33,6 +33,10 @@ void mx_json_manager(char buff_in[], client_t *cli) {
         mx_getup_msgs(j_responce, cli);
     else if (!strcmp(j_action->valuestring, "getup_new_msg"))
         mx_getup_new_msg(j_responce, cli);
+    else if (!strcmp(j_action->valuestring, "getup_new_chnl_msg"))
+        mx_getup_new_chnl_msg(j_responce, cli);
+    else if (!strcmp(j_action->valuestring, "getup_chnl_msgs"))
+        mx_getup_chnl_msgs(j_responce, cli);
 
     cJSON_Delete(j_responce);
 }

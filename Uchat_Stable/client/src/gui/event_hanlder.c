@@ -35,6 +35,24 @@ void on_log_out_btn_clicked(GtkWidget *button, gpointer data) {
     gtk_widget_show(cli->awindow);
 }
 
+void on_btn_delete_msg_clicked(GtkWidget *buttom, gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkListBox *msg_list = GTK_LIST_BOX(gtk_builder_get_object/////////
+                                        (cli->builder, "msg_list"));
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    GtkListBoxRow *row = gtk_list_box_get_selected_row(msg_list);
+    if (row) {
+        GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
+        GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
+        GtkLabel *lbl = GTK_LABEL(gl_box->data);
+        char *message = (char *)gtk_label_get_text(lbl);
+        char *username = (char *)gtk_label_get_text(current_user);
+        
+        gtk_widget_hide(GTK_WIDGET(row));
+        mx_delete_message_request(cli, message, username);
+    }
+}
 
 void on_cntc_incoming_allow_btn_clicked(GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
@@ -111,16 +129,33 @@ void on_cntc_list_selected_rows_changed(GtkWidget *button, gpointer data) {
     GtkLabel *current_user_lbl = GTK_LABEL(gtk_builder_get_object
                                            (cli->builder, "current_user_lbl"));
     GtkListBoxRow *row = gtk_list_box_get_selected_row(cntc_list);
+    GtkWidget *btn_del = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                           "btn_delete_msg"));
+    
     if (row) {
         GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
         GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
         GtkLabel *lbl = GTK_LABEL(gl_box->next->data);
         char *login = (char *)gtk_label_get_text(lbl);
         
+        gtk_widget_show(btn_del);
         mx_clear_msg_list(cli);
         mx_recieve_message_list_request(login, cli);
         gtk_label_set_text(current_user_lbl, login);
     }
+}
+
+void on_chnl_list_selected_rows_changed(GtkWidget *button, gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *btn_del = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                           "btn_delete_msg"));
+
+    GtkLabel *current_user_lbl = GTK_LABEL(gtk_builder_get_object
+                                           (cli->builder, "current_user_lbl"));
+    gtk_widget_hide(btn_del);
+    mx_clear_msg_list(cli);
+    mx_recieve_message_chnl_request(cli);
+    gtk_label_set_text(current_user_lbl, "#Paradise");
 }
 
 void on_cntc_remove_btn_clicked(GtkWidget *button, gpointer data) {

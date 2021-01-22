@@ -65,3 +65,8 @@ void mx_recieve_message_list_request(char *login, client_t *cli);
 void mx_getup_msgs(cJSON *j_responce, client_t *cli);
 void mx_scroll_to_down(client_t *cli);
 void mx_getup_new_msg(cJSON *j_responce, client_t *cli);
+void mx_delete_message_request(client_t *cli, char *message, char *username);
+void mx_getup_new_chnl_msg(cJSON *j_responce, client_t *cli);
+void mx_insert_chnl_msg(char *sender, char *message, client_t *cli, int pos);
+void mx_recieve_message_chnl_request(client_t *cli);
+void mx_getup_chnl_msgs(cJSON *j_responce, client_t *cli);

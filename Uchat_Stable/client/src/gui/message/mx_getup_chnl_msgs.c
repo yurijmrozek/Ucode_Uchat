@@ -31,43 +31,39 @@ static char **strsplit(const char *s, char c) {
     return split;
 }
 
-void mx_getup_msgs(cJSON *j_responce, client_t *cli) {
-
+void mx_getup_chnl_msgs(cJSON *j_responce, client_t *cli) {
     char **msgarr = NULL;
     char **msgsender = NULL;
     int pos = 0;
+    bool valid = false;
+
+    GtkLabel *current_user_lbl = GTK_LABEL(gtk_builder_get_object
+                                           (cli->builder, "current_user_lbl"));
 
     cJSON *j_msg = cJSON_GetObjectItemCaseSensitive(j_responce, "message_list");
     cJSON *j_msg_sender = cJSON_GetObjectItemCaseSensitive(j_responce,///////
                                                            "message_sender");
     cJSON *j_username = cJSON_GetObjectItemCaseSensitive(j_responce,
                                                          "username");
+    char *cur_uslbl = strdup(gtk_label_get_text(current_user_lbl));
 
     msgarr = strsplit(j_msg->valuestring, '~');
     msgsender = strsplit(j_msg_sender->valuestring, ',');
 
-    for (int i = 0; msgarr[i]; i++) {
-        if (!strcmp(j_username->valuestring, msgsender[i]))
-            pos = 0;
-        else
-            pos = 1;
-        mx_insert_msg(msgarr[i], cli, pos);
-        free(msgarr[i]);
-        free(msgsender[i]);
+    if (!strcmp(cur_uslbl, "#Paradise"))
+        valid = true;
+    if (valid) {
+        for (int i = 0; msgarr[i]; i++) {
+            if (!strcmp(j_username->valuestring, msgsender[i]))
+                pos = 0;
+            else
+                pos = 1;
+            mx_insert_chnl_msg(msgsender[i], msgarr[i], cli, pos);
+            free(msgarr[i]);
+            free(msgsender[i]);
+        }
     }
+    free(cur_uslbl);
     free(msgarr);
     free(msgsender);
 }
-
-    // GtkLabel *current_user_lbl = GTK_LABEL(gtk_builder_get_object
-    //                                        (cli->builder, "current_user_lbl"));
-
-    // char *cur_uslbl = strdup(gtk_label_get_text(current_user_lbl));
-
-    // for (int i = 0; msgarr[i]; i++) {
-    //     if (strcmp(j_username->valuestring, msgsender[i]) != 0
-    //         && !strcmp(msgsender[i], cur_uslbl)) {
-    //             valid = true;
-    //             break;
-    //         }
-    // }

@@ -14,7 +14,7 @@ void mx_sending_invite_dialog(client_t *cli, char valid) {
     else if (valid == 'i')
         gtk_label_set_text(err_label, "    Invalid syntax\n[abc123][6ch min]");
     else if (valid == 'm')
-        gtk_label_set_text(err_label, "  Invalid syntax\n "
+        gtk_label_set_text(err_label, "\tInvalid syntax\n "
                                       "[6ch min - 255ch max]");
     else if (valid == 'e')
         gtk_label_set_text(err_label, " User already\nin contact list");

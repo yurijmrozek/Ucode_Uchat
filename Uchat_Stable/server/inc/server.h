@@ -76,6 +76,10 @@ void mx_insert_new_message(cJSON *j_request, int connfd, sqlite3 *db);
 void mx_getup_messages(cJSON *j_request, int connfd, sqlite3 *db);
 void mx_getup_new_message(int uid, cJSON *j_message, cJSON *j_username, 
                           int sockfd, sqlite3 *db);
+void mx_remove_message(cJSON *j_request, int connfd, sqlite3 *db);
+int mx_manage_chnl_db(sqlite3 *db, int uid, char *message, int action);
+void mx_getup_new_chnl_message(int uid, cJSON *j_message, sqlite3 *db);
+void mx_getup_chnl_messages(int connfd, sqlite3 *db);
 
 /* Net Lib */
 void print_client_addr(struct sockaddr_in addr);
@@ -83,8 +87,9 @@ void strip_newline(char *s);
 void send_active_clients(int connfd);
 void send_message_client(char *s, int uid);
 void send_message_self(const char *s, int connfd);
-void send_message_all(char *s);
+void send_message_all(cJSON *j_responce, sqlite3 *db, int connfd);
 void send_message(char *s, int uid);
 void queue_delete(int uid);
 void queue_add(client_t *cl);
 char *_strdup(const char *s);
+void mx_daemon(void);

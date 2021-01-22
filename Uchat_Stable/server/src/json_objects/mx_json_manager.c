@@ -23,5 +23,9 @@ void mx_json_manager(char buff_in[], int connfd, client_t *cli) {
         mx_insert_new_message(j_request, connfd, cli->db);
     else if (!strcmp(action->valuestring, "get_message"))
         mx_getup_messages(j_request, connfd, cli->db);
+    else if (!strcmp(action->valuestring, "remove_msg_request"))
+        mx_remove_message(j_request, connfd, cli->db);
+    else if (!strcmp(action->valuestring, "get_chnl_message"))
+        mx_getup_chnl_messages(connfd, cli->db);
     cJSON_Delete(j_request);
 }

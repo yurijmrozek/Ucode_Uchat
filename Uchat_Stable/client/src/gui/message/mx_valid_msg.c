@@ -15,7 +15,7 @@ bool mx_valid_msg(gchar *message, char *login, client_t *cli) {
             mx_sending_invite_dialog(cli, '~');
             return false;
         }
-        if (isalpha(message[i]) || isdigit(message[i]))
+        if (!isspace(message[i]))
             c++;
     }
     if (c < 3)
