@@ -30,7 +30,6 @@ void mx_insert_chnl_msg(char *sender, char *message, client_t *cli, int pos) {
         context = gtk_widget_get_style_context(GTK_WIDGET(msg));
         context1 = gtk_widget_get_style_context(GTK_WIDGET(sndr));
         gtk_style_context_add_class(context, "msg_intext");
-        gtk_style_context_add_class(context1, "sndr_intext");
 
         gtk_widget_set_margin_start(row, 300);
         gtk_widget_set_margin_end(msg, 10);
