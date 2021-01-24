@@ -44,8 +44,9 @@ void mx_insert_chnl_msg(char *sender, char *message, client_t *cli, int pos) {
     if (message[0] == '^') {
         char *img_path = "client/src/gui/glade/assets/";
         img_path = strjoin(img_path, message);
-        img_path = strjoin(img_path, ".png");
-        GtkWidget *img = gtk_image_new_from_file(img_path);
+        char *res = strjoin(img_path, ".png");
+        free(img_path);
+        GtkWidget *img = gtk_image_new_from_file(res);
 
         gtk_container_add(GTK_CONTAINER(row), hbox);
 
@@ -78,7 +79,7 @@ void mx_insert_chnl_msg(char *sender, char *message, client_t *cli, int pos) {
         if (pos == 1)
             gtk_widget_show(sndr);
         mx_scroll_to_down(cli);
-        free(img_path);
+        free(res);
     }
     else {
         msg = gtk_label_new(message);

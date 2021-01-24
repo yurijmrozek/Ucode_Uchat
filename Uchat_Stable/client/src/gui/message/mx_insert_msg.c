@@ -44,8 +44,9 @@ void mx_insert_msg(gchar *message, client_t *cli, int pos, char *msgsender,
     if (message[0] == '^') {
         char *img_path = "client/src/gui/glade/assets/";
         img_path = strjoin(img_path, message);
-        img_path = strjoin(img_path, ".png");
-        GtkWidget *img = gtk_image_new_from_file(img_path);
+        char *res = strjoin(img_path, ".png");
+        free(img_path);
+        GtkWidget *img = gtk_image_new_from_file(res);
 
         gtk_container_add(GTK_CONTAINER(row), hbox);
 
@@ -72,7 +73,7 @@ void mx_insert_msg(gchar *message, client_t *cli, int pos, char *msgsender,
         gtk_widget_hide(snd);
         gtk_widget_hide(id);
         mx_scroll_to_down(cli);
-        free(img_path);
+        free(res);
     }
     else {    
         msg = gtk_label_new(message);
