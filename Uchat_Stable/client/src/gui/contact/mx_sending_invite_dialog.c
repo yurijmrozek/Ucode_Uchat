@@ -26,8 +26,8 @@ void mx_sending_invite_dialog(client_t *cli, char valid) {
         gtk_label_set_text(err_label, "Choose contact first"
                                       "\n   to start chatting");
     else if (valid == '~')
-        gtk_label_set_text(err_label, "  ~~~ Please dont ~~~  "  \
-                                      "\n\tuse this [~] char  ");
+        gtk_label_set_text(err_label, "  ~^~ Please dont ~^~  "  \
+                                      "\n\tuse this [~ ^] chars  ");
     else if (valid == 'd')
         gtk_label_set_text(err_label, "  You can delete \nonly your message");
     else if (valid == '6')
@@ -40,4 +40,7 @@ void mx_sending_invite_dialog(client_t *cli, char valid) {
         gtk_label_set_text(succ_label, "");
         gtk_widget_hide(dialog);
     }
+    gtk_label_set_text(err_label, "");
+    gtk_label_set_text(succ_label, "");
+    gtk_widget_hide(dialog);
 }
