@@ -10,6 +10,10 @@
     background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(0, 0, 0), rgb(0, 0, 0)); 
 }
 
+.chng_lbl {
+    color: rgb(255, 178, 35);
+    text-shadow: 0px 0px 10px rgb(255, 205, 111);
+}
 
 .pink_btn {
     border-radius: 0%;

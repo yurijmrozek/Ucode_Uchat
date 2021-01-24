@@ -51,11 +51,15 @@ void mx_insert_msg(gchar *message, client_t *cli, int pos, char *msgsender,
 
         if (pos == 0) {
             gtk_widget_set_margin_start(row, 300);
+            gtk_widget_set_margin_top(img, 10);
+            gtk_widget_set_margin_bottom(img, 10);
         }
 
         else if (pos == 1) {
             gtk_widget_set_margin_end(row, 300);
             gtk_widget_set_margin_start(row, 10);
+            gtk_widget_set_margin_top(img, 10);
+            gtk_widget_set_margin_bottom(img, 10);
         }
 
         gtk_box_pack_start(GTK_BOX(hbox), img, FALSE, FALSE, 0);
@@ -68,6 +72,7 @@ void mx_insert_msg(gchar *message, client_t *cli, int pos, char *msgsender,
         gtk_widget_hide(snd);
         gtk_widget_hide(id);
         mx_scroll_to_down(cli);
+        free(img_path);
     }
     else {    
         msg = gtk_label_new(message);

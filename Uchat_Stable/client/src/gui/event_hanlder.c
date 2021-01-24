@@ -35,7 +35,9 @@ void on_log_out_btn_clicked(__attribute__((unused)) GtkWidget *button,
     gtk_image_set_from_file (GTK_IMAGE(gtk_builder_get_object(cli->builder,
                              "set_img")),
                              "client/src/gui/glade/assets/settings.png");                                           
-
+    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
+                            "cntc_invader")),
+                            "client/src/gui/glade/assets/invader.png");
 
     cJSON_AddItemToObject(j_request, "action",//////////////
                           cJSON_CreateString("logout_user"));
@@ -74,6 +76,216 @@ void on_back_to_chat(__attribute__((unused)) GtkWidget *button, gpointer data) {
     gtk_widget_hide(cli->set_window);
 }
 
+void stickers_clicked(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    
+    gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(cli->cwindow));
+    gtk_widget_show_all(dialog);
+
+    int responce = gtk_dialog_run(GTK_DIALOG(dialog));
+
+    if (responce == 1) {
+        gtk_widget_hide(dialog);
+    }
+    gtk_widget_hide(dialog);
+}
+
+void sticker_1(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    gtk_widget_hide(dialog);
+    gchar *message = "^s1^";
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    char *login = (char *)gtk_label_get_text(current_user);
+
+    mx_send_message_request(message, login, cli);
+    if (!strcmp(login, "#Paradise"))
+        mx_insert_msg(message, cli, 0, NULL, NULL);
+}
+
+void sticker_2(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    gtk_widget_hide(dialog);
+    gchar *message = "^s2^";
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    char *login = (char *)gtk_label_get_text(current_user);
+    
+    mx_send_message_request(message, login, cli);
+    if (!strcmp(login, "#Paradise"))
+        mx_insert_msg(message, cli, 0, NULL, NULL);
+}
+
+void sticker_3(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    gtk_widget_hide(dialog);
+    gchar *message = "^s3^";
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    char *login = (char *)gtk_label_get_text(current_user);
+    
+    mx_send_message_request(message, login, cli);
+    if (!strcmp(login, "#Paradise"))
+        mx_insert_msg(message, cli, 0, NULL, NULL);
+}
+
+void sticker_4(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    gtk_widget_hide(dialog);
+    gchar *message = "^s4^";
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    char *login = (char *)gtk_label_get_text(current_user);
+    
+    mx_send_message_request(message, login, cli);
+    if (!strcmp(login, "#Paradise"))
+        mx_insert_msg(message, cli, 0, NULL, NULL);
+}
+
+void sticker_5(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    gtk_widget_hide(dialog);
+    gchar *message = "^s5^";
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    char *login = (char *)gtk_label_get_text(current_user);
+    
+    mx_send_message_request(message, login, cli);
+    if (!strcmp(login, "#Paradise"))
+        mx_insert_msg(message, cli, 0, NULL, NULL);
+}
+
+void sticker_6(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    gtk_widget_hide(dialog);
+    gchar *message = "^s6^";
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    char *login = (char *)gtk_label_get_text(current_user);
+    
+    mx_send_message_request(message, login, cli);
+    if (!strcmp(login, "#Paradise"))
+        mx_insert_msg(message, cli, 0, NULL, NULL);
+}
+
+void sticker_7(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    gtk_widget_hide(dialog);
+    gchar *message = "^s7^";
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    char *login = (char *)gtk_label_get_text(current_user);
+    
+    mx_send_message_request(message, login, cli);
+    if (!strcmp(login, "#Paradise"))
+        mx_insert_msg(message, cli, 0, NULL, NULL);
+}
+
+void sticker_8(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    gtk_widget_hide(dialog);
+    gchar *message = "^s8^";
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    char *login = (char *)gtk_label_get_text(current_user);
+    
+    mx_send_message_request(message, login, cli);
+    if (!strcmp(login, "#Paradise"))
+        mx_insert_msg(message, cli, 0, NULL, NULL);
+}
+
+void sticker_9(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    gtk_widget_hide(dialog);
+    gchar *message = "^s9^";
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    char *login = (char *)gtk_label_get_text(current_user);
+    
+    mx_send_message_request(message, login, cli);
+    if (!strcmp(login, "#Paradise"))
+        mx_insert_msg(message, cli, 0, NULL, NULL);
+}
+
+void sticker_10(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    gtk_widget_hide(dialog);
+    gchar *message = "^s10^";
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    char *login = (char *)gtk_label_get_text(current_user);
+    
+    mx_send_message_request(message, login, cli);
+    if (!strcmp(login, "#Paradise"))
+        mx_insert_msg(message, cli, 0, NULL, NULL);
+}
+
+void sticker_11(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    gtk_widget_hide(dialog);
+    gchar *message = "^s11^";
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    char *login = (char *)gtk_label_get_text(current_user);
+    
+    mx_send_message_request(message, login, cli);
+    if (!strcmp(login, "#Paradise"))
+        mx_insert_msg(message, cli, 0, NULL, NULL);
+}
+
+void sticker_12(__attribute__((unused)) GtkWidget *button,
+                      gpointer data) {
+    client_t *cli = (client_t *)data;
+    GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                          "sticker_dialog"));
+    gtk_widget_hide(dialog);
+    gchar *message = "^s12^";
+    GtkLabel *current_user = GTK_LABEL(gtk_builder_get_object
+                                       (cli->builder, "current_user_lbl"));
+    char *login = (char *)gtk_label_get_text(current_user);
+    
+    mx_send_message_request(message, login, cli);
+    if (!strcmp(login, "#Paradise"))
+        mx_insert_msg(message, cli, 0, NULL, NULL);
+}
+
 void mx_theme_1(__attribute__((unused)) GtkWidget *button, void *data) {
     client_t *cli = (client_t *)data;
     GtkCssProvider *provider = gtk_css_provider_new ();
@@ -88,6 +300,9 @@ void mx_theme_1(__attribute__((unused)) GtkWidget *button, void *data) {
     gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
                             "set_img")),
                             "client/src/gui/glade/assets/set2.png");
+    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
+                            "cntc_invader")),
+                            "client/src/gui/glade/assets/invader_v.png");
 }
 
 void mx_theme_2(__attribute__((unused)) GtkWidget *button, void *data) {
@@ -104,6 +319,9 @@ void mx_theme_2(__attribute__((unused)) GtkWidget *button, void *data) {
     gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
                             "set_img")),//////////////////////////////////
                             "client/src/gui/glade/assets/set3.png");
+    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
+                            "cntc_invader")),
+                            "client/src/gui/glade/assets/invader_g.png");
 }
 
 void mx_theme_3(__attribute__((unused)) GtkWidget *button, void *data) {
@@ -119,6 +337,9 @@ void mx_theme_3(__attribute__((unused)) GtkWidget *button, void *data) {
     gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
                             "set_img")),///////////////////////////
                             "client/src/gui/glade/assets/set4.png");
+    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
+                            "cntc_invader")),
+                            "client/src/gui/glade/assets/invader_o.png");
 }
 
 void mx_theme_4(__attribute__((unused)) GtkWidget *button, void *data) {
@@ -134,6 +355,9 @@ void mx_theme_4(__attribute__((unused)) GtkWidget *button, void *data) {
     gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
                             "set_img")),//////////////////////////////
                             "client/src/gui/glade/assets/settings.png");
+    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
+                            "cntc_invader")),
+                            "client/src/gui/glade/assets/invader.png");
 }
 
 

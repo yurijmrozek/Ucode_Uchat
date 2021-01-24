@@ -10,6 +10,10 @@
     background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(0, 0, 0), rgb(0, 0, 0)); 
 }
 
+.chng_lbl {
+    color: cyan;
+    text-shadow: 0px 0px 10px rgb(118, 255, 255);
+}
 
 .pink_btn {
     border-radius: 0%;
@@ -157,6 +161,13 @@
     border-color: rgba(50, 200, 200, 0);
     background: rgba(0, 255, 255, 0);
     color:cyan;
+}
+
+.stck_btn {
+    border-radius: 0%;
+    border-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    background-color: transparent;
 }
 
 *:active, *:focus {

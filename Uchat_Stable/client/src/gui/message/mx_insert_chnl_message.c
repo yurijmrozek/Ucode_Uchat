@@ -52,6 +52,8 @@ void mx_insert_chnl_msg(char *sender, char *message, client_t *cli, int pos) {
         if (pos == 0) {
             context1 = gtk_widget_get_style_context(GTK_WIDGET(sndr));
 
+            gtk_widget_set_margin_top(img, 10);
+            gtk_widget_set_margin_bottom(img, 10);
             gtk_widget_set_margin_start(row, 300);
             gtk_widget_set_margin_end(sndr, 20);
         }
@@ -61,6 +63,8 @@ void mx_insert_chnl_msg(char *sender, char *message, client_t *cli, int pos) {
             gtk_style_context_add_class(context1, "sndr_intext");
 
             gtk_widget_set_margin_end(row, 300);
+            gtk_widget_set_margin_top(img, 10);
+            gtk_widget_set_margin_bottom(img, 10);
             gtk_widget_set_margin_start(row, 10);
             gtk_widget_set_margin_end(sndr, 20);
             gtk_box_pack_start(GTK_BOX(hbox), sndr, FALSE, FALSE, 0);
@@ -74,6 +78,7 @@ void mx_insert_chnl_msg(char *sender, char *message, client_t *cli, int pos) {
         if (pos == 1)
             gtk_widget_show(sndr);
         mx_scroll_to_down(cli);
+        free(img_path);
     }
     else {
         msg = gtk_label_new(message);
