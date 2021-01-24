@@ -5,37 +5,140 @@ void destroy(client_t *cli) {
     gtk_main_quit();
 }
 
-void on_signup_btn_log_clicked(GtkWidget *button, gpointer data) {
+void on_signup_btn_log_clicked(__attribute__((unused)) GtkWidget *button,
+                               gpointer data) {
     client_t *cli = (client_t *)data;
 
     if (mx_valid_log_creden(cli))
         mx_register_request(cli);
 }
 
-void on_signin_btn_log_clicked(GtkWidget *button, gpointer data) {
+void on_signin_btn_log_clicked(__attribute__((unused))GtkWidget *button,
+                               gpointer data) {
     client_t *cli = (client_t *)data;
 
     if (mx_valid_log_creden(cli))
         mx_login_request(cli);
 }
 
-void on_log_out_btn_clicked(GtkWidget *button, gpointer data) {
+void on_log_out_btn_clicked(__attribute__((unused)) GtkWidget *button,
+                            gpointer data) {
     client_t *cli = (client_t *)data;
     cJSON *j_request = cJSON_CreateObject();
-    
+
+    GtkCssProvider *provider = gtk_css_provider_new();
+    gtk_css_provider_load_from_path(provider,
+                                    "client/src/gui/glade/style.css", NULL);
+    gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
+                                              GTK_STYLE_PROVIDER(provider),
+                                              GTK_STYLE_PROVIDER_PRIORITY_USER);
+    gtk_image_set_from_file (GTK_IMAGE(gtk_builder_get_object(cli->builder,
+                             "set_img")),
+                             "client/src/gui/glade/assets/settings.png");                                           
+
+
     cJSON_AddItemToObject(j_request, "action",//////////////
                           cJSON_CreateString("logout_user"));
     char *jdata = cJSON_Print(j_request);
     
+    cli->set_window = GTK_WIDGET(gtk_builder_get_object(cli->builder,///////
+                                                     "set_window"));////////
+    g_signal_connect(G_OBJECT(cli->builder),////////////////////////////////
+                                "clicked", G_CALLBACK(destroy), cli);
+
     send_message_self(jdata, cli->sockfd);
     free(jdata);
     cJSON_Delete(j_request);
     mx_clear_chat(cli);
     gtk_widget_hide(cli->cwindow);
+    gtk_widget_hide(cli->set_window);
     gtk_widget_show(cli->awindow);
 }
 
-void on_btn_delete_msg_clicked(GtkWidget *buttom, gpointer data) {
+void on_clicked_settings(__attribute__((unused))GtkWidget *button, void *data) {
+    client_t *cli = (client_t *)data;
+
+    cli->set_window = GTK_WIDGET(gtk_builder_get_object(cli->builder,
+                                                        "set_window"));
+    gtk_widget_show_all(cli->set_window); 
+    cli->set_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);                                         
+}
+
+void on_back_to_chat(__attribute__((unused)) GtkWidget *button, gpointer data) {
+    client_t *cli = (client_t *)data;
+
+    cli->set_window = GTK_WIDGET(gtk_builder_get_object(cli->builder,///////
+                                                     "set_window"));////////
+    g_signal_connect(G_OBJECT(cli->builder),////////////////////////////////
+                                "clicked", G_CALLBACK(destroy), cli);
+    gtk_widget_hide(cli->set_window);
+}
+
+void mx_theme_1(__attribute__((unused)) GtkWidget *button, void *data) {
+    client_t *cli = (client_t *)data;
+    GtkCssProvider *provider = gtk_css_provider_new ();
+
+    gtk_css_provider_load_from_path(provider,////////////////////////////
+                                    "client/src/gui/glade/pink_thm.css",
+                                    NULL);////////////////////////////////
+    gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
+                                              GTK_STYLE_PROVIDER(provider),
+                                              GTK_STYLE_PROVIDER_PRIORITY_USER);
+
+    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
+                            "set_img")),
+                            "client/src/gui/glade/assets/set2.png");
+}
+
+void mx_theme_2(__attribute__((unused)) GtkWidget *button, void *data) {
+    client_t *cli = (client_t *)data;
+    GtkCssProvider *provider = gtk_css_provider_new ();
+
+    gtk_css_provider_load_from_path(provider,/////////////////////////////
+                                    "client/src/gui/glade/green_thm.css",
+                                    NULL);////////////////////////////////
+    gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
+                                              GTK_STYLE_PROVIDER(provider),
+                                              GTK_STYLE_PROVIDER_PRIORITY_USER);
+
+    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
+                            "set_img")),//////////////////////////////////
+                            "client/src/gui/glade/assets/set3.png");
+}
+
+void mx_theme_3(__attribute__((unused)) GtkWidget *button, void *data) {
+    client_t *cli = (client_t *)data;
+    GtkCssProvider *provider = gtk_css_provider_new ();
+
+    gtk_css_provider_load_from_path(provider,//////////////////////////////
+                                    "client/src/gui/glade/orange_thm.css",
+                                    NULL);/////////////////////////////////
+    gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
+                                              GTK_STYLE_PROVIDER(provider),
+                                              GTK_STYLE_PROVIDER_PRIORITY_USER);
+    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
+                            "set_img")),///////////////////////////
+                            "client/src/gui/glade/assets/set4.png");
+}
+
+void mx_theme_4(__attribute__((unused)) GtkWidget *button, void *data) {
+    client_t *cli = (client_t *)data;
+    GtkCssProvider *provider = gtk_css_provider_new ();
+
+    gtk_css_provider_load_from_path(provider,///////////////////////
+                                    "client/src/gui/glade/style.css",
+                                    NULL);//////////////////////////
+    gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
+                                              GTK_STYLE_PROVIDER(provider),
+                                              GTK_STYLE_PROVIDER_PRIORITY_USER);
+    gtk_image_set_from_file(GTK_IMAGE(gtk_builder_get_object(cli->builder,
+                            "set_img")),//////////////////////////////
+                            "client/src/gui/glade/assets/settings.png");
+}
+
+
+void on_btn_delete_msg_clicked(__attribute__((unused)) GtkWidget *button,
+                               gpointer data) {
     client_t *cli = (client_t *)data;
     GtkListBox *msg_list = GTK_LIST_BOX(gtk_builder_get_object/////////
                                         (cli->builder, "msg_list"));
@@ -45,11 +148,9 @@ void on_btn_delete_msg_clicked(GtkWidget *buttom, gpointer data) {
     if (row) {
         GList *gl_row = gtk_container_get_children(GTK_CONTAINER(row));
         GList *gl_box = gtk_container_get_children(GTK_CONTAINER(gl_row->data));
-        GtkLabel *lbl = GTK_LABEL(gl_box->data);
         GtkLabel *snd = GTK_LABEL(gl_box->next->data);
         GtkLabel *id = GTK_LABEL(gl_box->next->next->data);
 
-        char *message = (char *)gtk_label_get_text(lbl);
         char *username = (char *)gtk_label_get_text(current_user);
         char *sndr = (char *)gtk_label_get_text(snd);
         char *msgid = (char *)gtk_label_get_text(id);
@@ -63,7 +164,8 @@ void on_btn_delete_msg_clicked(GtkWidget *buttom, gpointer data) {
     }
 }
 
-void on_cntc_incoming_allow_btn_clicked(GtkWidget *button, gpointer data) {
+void on_cntc_incoming_allow_btn_clicked(__attribute__((unused))
+                                        GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
     GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
                                          (cli->builder, "cntc_incoming_list"));
@@ -78,7 +180,8 @@ void on_cntc_incoming_allow_btn_clicked(GtkWidget *button, gpointer data) {
     }
 }
 
-void on_cntc_incoming_decline_btn_clicked(GtkWidget *button, gpointer data) {
+void on_cntc_incoming_decline_btn_clicked(__attribute__((unused))
+                                          GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
     GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
                                          (cli->builder, "cntc_incoming_list"));
@@ -94,7 +197,8 @@ void on_cntc_incoming_decline_btn_clicked(GtkWidget *button, gpointer data) {
     }
 }
 
-void on_cntc_outgoing_remove_btn_clicked(GtkWidget *button, gpointer data) {
+void on_cntc_outgoing_remove_btn_clicked(__attribute__((unused))
+                                         GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
     GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
                                          (cli->builder, "cntc_outgoing_list"));
@@ -109,7 +213,8 @@ void on_cntc_outgoing_remove_btn_clicked(GtkWidget *button, gpointer data) {
     }
 }
 
-void on_send_msg_btn_clicked(GtkWidget *button, gpointer data) {
+void on_send_msg_btn_clicked(__attribute__((unused))
+                             GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
     GtkTextIter start, end;
     gchar *message;
@@ -132,7 +237,8 @@ void on_send_msg_btn_clicked(GtkWidget *button, gpointer data) {
     }
 }
 
-void on_cntc_list_selected_rows_changed(GtkWidget *button, gpointer data) {
+void on_cntc_list_selected_rows_changed(__attribute__((unused))
+                                        GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
     GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
                                          (cli->builder, "cntc_list"));
@@ -155,7 +261,8 @@ void on_cntc_list_selected_rows_changed(GtkWidget *button, gpointer data) {
     }
 }
 
-void on_chnl_list_selected_rows_changed(GtkWidget *button, gpointer data) {
+void on_chnl_list_selected_rows_changed(__attribute__((unused))
+                                        GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
     GtkWidget *btn_del = GTK_WIDGET(gtk_builder_get_object(cli->builder,
                                                            "btn_delete_msg"));
@@ -168,7 +275,8 @@ void on_chnl_list_selected_rows_changed(GtkWidget *button, gpointer data) {
     gtk_label_set_text(current_user_lbl, "#Paradise");
 }
 
-void on_cntc_remove_btn_clicked(GtkWidget *button, gpointer data) {
+void on_cntc_remove_btn_clicked(__attribute__((unused))
+                                GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
     GtkListBox *cntc_list = GTK_LIST_BOX(gtk_builder_get_object/////////
                                          (cli->builder, "cntc_list"));
@@ -208,7 +316,8 @@ void on_cntc_remove_btn_clicked(GtkWidget *button, gpointer data) {
     }
 }
 
-void on_cntc_add_btn_clicked(GtkWidget *button, gpointer data) {
+void on_cntc_add_btn_clicked(__attribute__((unused))
+                            GtkWidget *button, gpointer data) {
     client_t *cli = (client_t *)data;
     char *username;
     bool valid = true;

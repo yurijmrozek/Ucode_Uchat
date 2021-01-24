@@ -26,6 +26,7 @@ typedef struct {
     char *con_ip;
     GtkWidget *awindow;
     GtkWidget *cwindow;
+    GtkWidget *set_window;
     GtkBuilder *builder;    
 }               client_t;
 

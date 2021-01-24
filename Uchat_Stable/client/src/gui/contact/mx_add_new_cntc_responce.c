@@ -18,6 +18,8 @@ void mx_add_new_cntc_responce(cJSON *j_responce, client_t *cli) {
             mx_sending_invite_dialog(cli, 'e');
         else if (!strcmp(j_reason->valuestring, "invite_exist"))
             mx_sending_invite_dialog(cli, 'f');
+        else if (!strcmp(j_reason->valuestring, "SHIZA"))
+            mx_sending_invite_dialog(cli, '6');
     }
     free(username);
 }

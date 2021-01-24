@@ -21,7 +21,7 @@ OBJTEST = $(OBJS)
 
 CC = clang
 
-CFLAGS = -std=c11 $(addprefix -W, all extra pedantic )
+CFLAGS = -std=c11 $(addprefix -W, error no-deprecated all extra pedantic)
 CPPFLAGS = -DMX_CLIENT='"$(CLIENT_WD)"' $(INCD_CLIENT) -D_GNU_SOURCE \
 $(UTILS_INC) $(GTK_INC) $(INCD_LIBS) -I/usr/local/opt/openssl/include
 LIBS = $(GTK_LIBS) $(LIBD_LIBS) -L/usr/local/opt/openssl/lib \

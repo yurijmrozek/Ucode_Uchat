@@ -17,7 +17,7 @@ INCS = $(foreach dir, $(INCD), $(wildcard $(dir)/*.h))
 
 CC = clang
 
-CFLAGS = -std=c11 $(addprefix -W, all error extra pedantic)
+CFLAGS = -std=c11 $(addprefix -W, error no-deprecated all extra pedantic)
 CPPFLAGS = -DMX_SERVER='"$(SERVER_WD)"' $(UTILS_INC) \
 $(INCD_SERVER) -D_GNU_SOURCE $(INCD_LIBS) -I/usr/local/opt/openssl/include
 LIBS = $(LIBD_LIBS) -L/usr/local/opt/openssl/lib \

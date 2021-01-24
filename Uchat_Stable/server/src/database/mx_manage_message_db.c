@@ -1,13 +1,13 @@
 #include "server.h"
 
 static sqlite3_stmt *delete(sqlite3 *db, sqlite3_stmt *stmt, char *msgid) {
-        sqlite3_prepare_v2(db, "UPDATE message              "           \
-                               "SET ID = 0,                 "           \
-                               "CONT = 0                    "           \
-                               "WHERE MSGID = ?1            ",
-                           -1, &stmt, 0);//////////////////////
-        sqlite3_bind_text(stmt, 1, msgid, -1, SQLITE_STATIC);
-        return stmt;
+    sqlite3_prepare_v2(db, "UPDATE message              "           \
+                           "SET ID = 0,                 "           \
+                           "CONT = 0                    "           \
+                           "WHERE MSGID = ?1            ",
+                       -1, &stmt, 0);//////////////////////
+    sqlite3_bind_text(stmt, 1, msgid, -1, SQLITE_STATIC);
+    return stmt;
 }
 
 static sqlite3_stmt *insert(sqlite3 *db, sqlite3_stmt *stmt,

@@ -80,7 +80,7 @@ void mx_remove_message(cJSON *j_request, sqlite3 *db);
 int mx_manage_chnl_db(sqlite3 *db, int uid, char *message, int action);
 void mx_getup_new_chnl_message(int uid, cJSON *j_message, sqlite3 *db);
 void mx_getup_chnl_messages(int connfd, sqlite3 *db);
-char *mx_return_id_msg(sqlite3 *db, int uid, int cid, char *message);
+char *mx_return_id_msg(sqlite3 *db, int uid, int cid, char *message);   
 
 /* Net Lib */
 void print_client_addr(struct sockaddr_in addr);

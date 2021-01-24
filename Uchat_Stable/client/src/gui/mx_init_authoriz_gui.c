@@ -9,7 +9,7 @@ void mx_init_authoriz_gui(client_t *cli) {
                                                      "signin_window"));////
     GtkCssProvider *cssProvider = gtk_css_provider_new();
     gtk_css_provider_load_from_path(cssProvider,/////////////////////////////
-                                    "client/src/gui/glade/standart.css",
+                                    "client/src/gui/glade/style.css",
                                     NULL);///////////////////////////////////
     gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
                                               GTK_STYLE_PROVIDER(cssProvider),
