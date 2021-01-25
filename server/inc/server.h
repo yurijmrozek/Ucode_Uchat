@@ -17,7 +17,7 @@
 #include "../../libraries/include/cJSON.h"
 #include <sqlite3.h>
 
-#define MAX_CLIENTS 100
+#define MAX_CLIENTS 128
 #define BUFFER_SZ 2048
 #define ARRLEN(s) (sizeof(s) / sizeof(*s))
 
@@ -93,4 +93,4 @@ void send_message(char *s, int uid);
 void queue_delete(int uid);
 void queue_add(client_t *cl);
 char *_strdup(const char *s);
-void mx_daemon(void);
+int mx_daemon(void);
