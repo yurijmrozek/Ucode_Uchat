@@ -5,7 +5,6 @@ int main(int argc, char *argv[]) {
         printf("Usage: ./uchat_server [port]\n");
         exit(1);
     }
-    mx_daemon();
     mx_create_server(argv);
     exit(1);
 }

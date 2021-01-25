@@ -23,7 +23,7 @@ void mx_sending_invite_dialog(client_t *cli, char valid) {
     else if (valid == 'f')
         gtk_label_set_text(err_label, "Invite already exist ");
     else if (valid == 'c')
-        gtk_label_set_text(err_label, "Choose contact first"
+        gtk_label_set_text(err_label, "First, choose contact"
                                       "\n   to start chatting");
     else if (valid == '~')
         gtk_label_set_text(err_label, "~^~ Please dont ~^~  "  \
