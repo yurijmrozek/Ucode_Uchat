@@ -52,6 +52,4 @@ void mx_valid_argv(int argc, char **argv, client_t *cli) {
         err();
     cli->con_ip = check_ip(argv);
     cli->con_port = atoi(check_port(argv));
-    printf("ip: %s\n", cli->con_ip);
-    printf("port: %d\n", cli->con_port);
 }

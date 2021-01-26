@@ -61,7 +61,6 @@ void mx_add_new_cntc_responce(cJSON *j_request, int connfd, sqlite3 *db) {
                               cJSON_CreateString("SHIZA"));
     }
     char *jdata = cJSON_Print(j_responce);
-    printf("To responce:\n\n %s\n\n", jdata);
 
     send_message_self(jdata, connfd);
     free(jdata);

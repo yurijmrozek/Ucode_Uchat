@@ -105,9 +105,14 @@ void sticker_1(__attribute__((unused)) GtkWidget *button,
                                        (cli->builder, "current_user_lbl"));
     char *login = (char *)gtk_label_get_text(current_user);
 
-    mx_send_message_request(message, login, cli);
-    if (!strcmp(login, "#Paradise"))
-        mx_insert_msg(message, cli, 0, NULL, NULL);
+    if (strlen(login) > 11) {
+        mx_sending_invite_dialog(cli, 'c');
+    }
+    else {
+        mx_send_message_request(message, login, cli);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
+    }
 }
 
 void sticker_2(__attribute__((unused)) GtkWidget *button,
@@ -121,9 +126,14 @@ void sticker_2(__attribute__((unused)) GtkWidget *button,
                                        (cli->builder, "current_user_lbl"));
     char *login = (char *)gtk_label_get_text(current_user);
     
-    mx_send_message_request(message, login, cli);
-    if (!strcmp(login, "#Paradise"))
-        mx_insert_msg(message, cli, 0, NULL, NULL);
+    if (strlen(login) > 11) {
+        mx_sending_invite_dialog(cli, 'c');
+    }
+    else {
+        mx_send_message_request(message, login, cli);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
+    }
 }
 
 void sticker_3(__attribute__((unused)) GtkWidget *button,
@@ -137,9 +147,14 @@ void sticker_3(__attribute__((unused)) GtkWidget *button,
                                        (cli->builder, "current_user_lbl"));
     char *login = (char *)gtk_label_get_text(current_user);
     
-    mx_send_message_request(message, login, cli);
-    if (!strcmp(login, "#Paradise"))
-        mx_insert_msg(message, cli, 0, NULL, NULL);
+    if (strlen(login) > 11) {
+        mx_sending_invite_dialog(cli, 'c');
+    }
+    else {
+        mx_send_message_request(message, login, cli);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
+    }
 }
 
 void sticker_4(__attribute__((unused)) GtkWidget *button,
@@ -153,9 +168,14 @@ void sticker_4(__attribute__((unused)) GtkWidget *button,
                                        (cli->builder, "current_user_lbl"));
     char *login = (char *)gtk_label_get_text(current_user);
     
-    mx_send_message_request(message, login, cli);
-    if (!strcmp(login, "#Paradise"))
-        mx_insert_msg(message, cli, 0, NULL, NULL);
+    if (strlen(login) > 11) {
+        mx_sending_invite_dialog(cli, 'c');
+    }
+    else {
+        mx_send_message_request(message, login, cli);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
+    }
 }
 
 void sticker_5(__attribute__((unused)) GtkWidget *button,
@@ -169,9 +189,14 @@ void sticker_5(__attribute__((unused)) GtkWidget *button,
                                        (cli->builder, "current_user_lbl"));
     char *login = (char *)gtk_label_get_text(current_user);
     
-    mx_send_message_request(message, login, cli);
-    if (!strcmp(login, "#Paradise"))
-        mx_insert_msg(message, cli, 0, NULL, NULL);
+    if (strlen(login) > 11) {
+        mx_sending_invite_dialog(cli, 'c');
+    }
+    else {
+        mx_send_message_request(message, login, cli);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
+    }
 }
 
 void sticker_6(__attribute__((unused)) GtkWidget *button,
@@ -185,9 +210,14 @@ void sticker_6(__attribute__((unused)) GtkWidget *button,
                                        (cli->builder, "current_user_lbl"));
     char *login = (char *)gtk_label_get_text(current_user);
     
-    mx_send_message_request(message, login, cli);
-    if (!strcmp(login, "#Paradise"))
-        mx_insert_msg(message, cli, 0, NULL, NULL);
+    if (strlen(login) > 11) {
+        mx_sending_invite_dialog(cli, 'c');
+    }
+    else {
+        mx_send_message_request(message, login, cli);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
+    }
 }
 
 void sticker_7(__attribute__((unused)) GtkWidget *button,
@@ -201,9 +231,14 @@ void sticker_7(__attribute__((unused)) GtkWidget *button,
                                        (cli->builder, "current_user_lbl"));
     char *login = (char *)gtk_label_get_text(current_user);
     
-    mx_send_message_request(message, login, cli);
-    if (!strcmp(login, "#Paradise"))
-        mx_insert_msg(message, cli, 0, NULL, NULL);
+    if (strlen(login) > 11) {
+        mx_sending_invite_dialog(cli, 'c');
+    }
+    else {
+        mx_send_message_request(message, login, cli);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
+    }
 }
 
 void sticker_8(__attribute__((unused)) GtkWidget *button,
@@ -217,9 +252,14 @@ void sticker_8(__attribute__((unused)) GtkWidget *button,
                                        (cli->builder, "current_user_lbl"));
     char *login = (char *)gtk_label_get_text(current_user);
     
-    mx_send_message_request(message, login, cli);
-    if (!strcmp(login, "#Paradise"))
-        mx_insert_msg(message, cli, 0, NULL, NULL);
+    if (strlen(login) > 11) {
+        mx_sending_invite_dialog(cli, 'c');
+    }
+    else {
+        mx_send_message_request(message, login, cli);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
+    }
 }
 
 void sticker_9(__attribute__((unused)) GtkWidget *button,
@@ -233,9 +273,14 @@ void sticker_9(__attribute__((unused)) GtkWidget *button,
                                        (cli->builder, "current_user_lbl"));
     char *login = (char *)gtk_label_get_text(current_user);
     
-    mx_send_message_request(message, login, cli);
-    if (!strcmp(login, "#Paradise"))
-        mx_insert_msg(message, cli, 0, NULL, NULL);
+    if (strlen(login) > 11) {
+        mx_sending_invite_dialog(cli, 'c');
+    }
+    else {
+        mx_send_message_request(message, login, cli);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
+    }
 }
 
 void sticker_10(__attribute__((unused)) GtkWidget *button,
@@ -249,9 +294,14 @@ void sticker_10(__attribute__((unused)) GtkWidget *button,
                                        (cli->builder, "current_user_lbl"));
     char *login = (char *)gtk_label_get_text(current_user);
     
-    mx_send_message_request(message, login, cli);
-    if (!strcmp(login, "#Paradise"))
-        mx_insert_msg(message, cli, 0, NULL, NULL);
+    if (strlen(login) > 11) {
+        mx_sending_invite_dialog(cli, 'c');
+    }
+    else {
+        mx_send_message_request(message, login, cli);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
+    }
 }
 
 void sticker_11(__attribute__((unused)) GtkWidget *button,
@@ -265,9 +315,14 @@ void sticker_11(__attribute__((unused)) GtkWidget *button,
                                        (cli->builder, "current_user_lbl"));
     char *login = (char *)gtk_label_get_text(current_user);
     
-    mx_send_message_request(message, login, cli);
-    if (!strcmp(login, "#Paradise"))
-        mx_insert_msg(message, cli, 0, NULL, NULL);
+    if (strlen(login) > 11) {
+        mx_sending_invite_dialog(cli, 'c');
+    }
+    else {
+        mx_send_message_request(message, login, cli);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
+    }
 }
 
 void sticker_12(__attribute__((unused)) GtkWidget *button,
@@ -281,9 +336,14 @@ void sticker_12(__attribute__((unused)) GtkWidget *button,
                                        (cli->builder, "current_user_lbl"));
     char *login = (char *)gtk_label_get_text(current_user);
     
-    mx_send_message_request(message, login, cli);
-    if (!strcmp(login, "#Paradise"))
-        mx_insert_msg(message, cli, 0, NULL, NULL);
+    if (strlen(login) > 11) {
+        mx_sending_invite_dialog(cli, 'c');
+    }
+    else {
+        mx_send_message_request(message, login, cli);
+        if (!strcmp(login, "#Paradise"))
+            mx_insert_msg(message, cli, 0, NULL, NULL);
+    }
 }
 
 void mx_theme_1(__attribute__((unused)) GtkWidget *button, void *data) {

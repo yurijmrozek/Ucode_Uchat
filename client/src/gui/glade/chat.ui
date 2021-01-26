@@ -1064,7 +1064,7 @@
             <property name="can_focus">False</property>
             <property name="margin_bottom">50</property>
             <property name="label" translatable="yes">are you sure you want to remove
-	him from your friend-list?</property>
+  this user from your friend-list?</property>
             <style>
               <class name="dialog_lbl"/>
             </style>

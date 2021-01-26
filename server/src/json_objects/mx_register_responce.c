@@ -19,7 +19,6 @@ void mx_register_responce(cJSON *j_request, int connfd, sqlite3 *db) {
         cJSON_AddItemToObject(j_responce, "reason",/////////////////
                               cJSON_CreateString("user_exist"));///
         char *jdata = cJSON_Print(j_responce);
-        printf("To responce:\n\n %s\n\n", jdata);
 
         send_message_self(jdata, connfd);
         free(jdata);

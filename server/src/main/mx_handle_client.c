@@ -25,7 +25,6 @@ void *mx_handle_client(void *arg) {
 
         /* Special options */
         pthread_mutex_lock(&topic_mutex);
-        printf("\n\n<< Recieved %d bytes:\n\n%s\n\n<<", rlen, buff_in);
         mx_json_manager(buff_in, cli->connfd, cli);
         pthread_mutex_unlock(&topic_mutex);
     }

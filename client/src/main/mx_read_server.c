@@ -14,7 +14,6 @@ void *mx_read_server(void *arg) {
 
         /* Special options */
         gdk_threads_enter();
-        printf("\n\n<< Recieved %d bytes:\n\n%s\n\n<<", rlen, buff_in);
         mx_json_manager(buff_in, cli);
         gdk_threads_leave();
     }
