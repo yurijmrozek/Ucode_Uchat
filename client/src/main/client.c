@@ -1,12 +1,8 @@
 #include "client.h"
 
 int main(int argc, char *argv[]) {
-    t_chat *chat = (t_chat *)malloc(sizeof(t_chat));
-    mx_valid_argv(argc, argv, chat);
-    if (mx_create_conn(chat) == 1) {
-        printf("Connection estabilished\n");
-        mx_start_chat(chat);
-    }
-    close(chat->sockfd);
+    client_t *cli = (client_t *)malloc(sizeof(client_t));
+    mx_valid_argv(argc, argv, cli);
+    mx_create_connection(cli);
     return 0;
 }

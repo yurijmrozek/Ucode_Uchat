@@ -11,7 +11,7 @@ INCD_CLIENT = -Iinc/
 GTK_LIBS = -rdynamic `pkg-config --cflags --libs gtk+-3.0`
 GTK_INC = `pkg-config --cflags gtk+-3.0`
 
-SRCD = src src/gui src/main src/json src/autorization
+SRCD = src src/main src/gui src/gui/authorization src/json_objects src/gui/contact src/gui/message
 INCD = inc
 SRCS = $(foreach dir, $(SRCD), $(wildcard $(dir)/*.c))
 OBJS = $(addprefix $(OBJD)/, $(notdir $(SRCS:%.c=%.o)))
@@ -21,11 +21,11 @@ OBJTEST = $(OBJS)
 
 CC = clang
 
-CFLAGS = -std=c11 $(addprefix -W, all extra pedantic )
+CFLAGS = -std=c11 $(addprefix -W, error no-deprecated all extra pedantic)
 CPPFLAGS = -DMX_CLIENT='"$(CLIENT_WD)"' $(INCD_CLIENT) -D_GNU_SOURCE \
 $(UTILS_INC) $(GTK_INC) $(INCD_LIBS) -I/usr/local/opt/openssl/include
 LIBS = $(GTK_LIBS) $(LIBD_LIBS) -L/usr/local/opt/openssl/lib \
--lssl -lcjson -lcrypto -lsqlite3 -lpthread
+-lcjson -lsqlite3 -lpthread -rdynamic
 
 all: $(CLIENT)
 

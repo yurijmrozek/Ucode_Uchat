@@ -1,0 +1,479 @@
+.signin_window {
+    background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(17, 78, 75), rgb(0, 255, 255));
+}
+
+.chat_window {
+    background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(75, 42, 15), orange);  
+}
+
+.set_window {
+    background-image: linear-gradient(145deg,rgb(0, 0, 0) 55%, rgb(0, 0, 0), rgb(0, 0, 0)); 
+}
+
+.chng_lbl {
+    color: rgb(255, 178, 35);
+    text-shadow: 0px 0px 10px rgb(255, 205, 111);
+}
+
+.pink_btn {
+    border-radius: 0%;
+    border-color: rgb(238, 45, 255);
+    border-width: 3px;
+    color: rgb(220, 107, 235);
+    background-image: none;
+    background-color: transparent;
+}
+
+.pink_btn:hover, active:hover {
+    box-shadow: 0 0 10px rgb(238, 45, 255);
+    border-radius: 0%;
+    border-color: rgb(238, 45, 255);
+    border-width: 3px;
+    color:rgb(0, 0, 0);
+    background-image: none;
+    background-color: rgb(238, 45, 255);
+}
+
+.pink_btn:active {
+    border-color: rgb(220, 107, 235);
+    background: rgba(237, 45, 255, 0.596);
+    color:rgb(220, 107, 235);
+}
+
+.green_btn {
+    border-radius: 0%;
+    border-color: greenyellow;
+    border-width: 3px;
+    color: rgb(193, 255, 101);
+    background-image: none;
+    background-color: transparent;
+}
+
+.green_btn:hover, active:hover {
+    box-shadow: 0 0 10px greenyellow;
+    border-radius: 0%;
+    border-color: greenyellow;
+    border-width: 3px;
+    color:rgb(0, 0, 0);
+    background-image: none;
+    background-color: greenyellow;
+}
+
+.green_btn:active {
+    border-color: rgb(193, 255, 101);
+    background: rgba(172, 255, 47, 0.753);
+    color:rgb(193, 255, 101);
+}
+
+.orange_btn {
+    border-radius: 0%;
+    border-color: rgb(255, 178, 35);
+    border-width: 3px;
+    color: rgb(252, 200, 105);
+    background-image: none;
+    background-color: transparent;
+}
+
+.orange_btn:hover, active:hover {
+    box-shadow: 0 0 10px rgb(255, 178, 35);
+    border-radius: 0%;
+    border-color: rgb(255, 178, 35);;
+    border-width: 3px;
+    color:rgb(0, 0, 0);
+    background-image: none;
+    background-color: orange;
+}
+
+.orange_btn:active {
+    border-color: rgb(252, 200, 105);
+    background: rgba(255, 178, 35, 0.589);
+    color:rgb(252, 200, 105);
+}
+
+.back_btn {
+    border-radius: 0%;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 3px;
+    color: rgb(241, 241, 241);
+    background-image: none;
+    background-color: transparent;
+}
+
+.back_btn:hover, active:hover {
+    box-shadow: 0 0 10px rgb(238, 238, 238);
+    border-radius: 0%;
+    border-color: rgb(206, 205, 205);
+    border-width: 3px;
+    color:rgb(238, 238, 238);
+    background-image: none;
+}
+
+.back_btn:active {
+    border-color: rgb(87, 87, 87);
+    background: rgb(238, 238, 238);
+    color:rgb(87, 87, 87);
+}
+
+.stndrt_btn {
+    border-radius: 0%;
+    border-color: darkcyan;
+    border-width: 3px;
+    color: rgb(50, 200, 200);
+    background-image: none;
+    background-color: transparent;
+}
+
+.stndrt_btn:hover, active:hover {
+    box-shadow: 0 0 10px cyan;
+    border-radius: 0%;
+    border-color: cyan;
+    border-width: 3px;
+    color:rgb(0, 0, 0);
+    background-image: none;
+    background-color: cyan;
+}
+
+.stndrt_btn:active {
+    border-color: rgb(50, 200, 200);
+    background: rgba(0, 255, 255, 0.5);
+    color:cyan;
+}
+
+.set_btn {
+    border-radius: 0%;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 3px;
+    color: rgb(50, 200, 200);
+    background-image: none;
+    background-color: transparent;
+}
+
+.set_btn:hover, active:hover {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0);
+    border-radius: 0%;
+    border-color: rgba(0, 255, 255, 0);
+    border-width: 3px;
+    color:rgb(47, 146, 146);
+    background-image: none;
+}
+
+.set_btn:active {
+    border-color: rgba(50, 200, 200, 0);
+    background: rgba(0, 255, 255, 0);
+    color:cyan;
+}
+
+.delete_btn {
+    border-radius: 0%;
+    border-color: rgba(197, 6, 6, 0);
+    border-width: 3px;
+    color: rgb(200, 50, 50);
+    background-image: none;
+    background-color: transparent;
+}
+
+.delete_btn:hover, active:hover {
+    box-shadow: 0 0 10px rgb(255, 0, 0);
+    border-radius: 0%;
+    border-color: rgb(255, 0, 0);
+    border-width: 3px;
+    color:rgb(255, 0, 0);
+    background-image: none;
+}
+
+.delete_btn:active {
+    border-color: rgb(200, 50, 50);
+    background: rgba(255, 0, 0, 0.5);
+    color:rgb(255, 0, 0);
+}
+
+
+*:active, *:focus {
+    outline: none;
+}
+
+label {
+    font-weight: bold;
+}
+
+/* message */
+
+.message_list {
+    border-color:rgb(255, 153, 0);
+    border-width: 3px;
+}
+
+.message_entry {
+    border-color: rgb(255, 196, 0);
+    border-width: 3px;
+}
+
+.message_box {
+    background-color: transparent;
+}
+
+.message_entry text {
+    background-color: black;
+    color: rgb(255, 166, 0);
+    font-weight: bold;
+}
+
+.message_lbl {
+    color:rgb(255, 153, 0);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0px 0px 0px 3px rgb(255, 123, 0) inset;
+}
+
+.message_list {
+    background-color: black;
+    /* scroll-margin: 20px; */
+    /* margin-top: 15px; */
+    margin-right: 10px;
+    color: rgb(179, 117, 1);
+}
+
+.message_list row {
+    box-shadow: 0px 0px 0px 3px rgb(255, 166, 0) inset;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.message_list row:active, row:focus {
+    box-shadow: 0px 0px 10px rgb(255, 0, 0) inset;
+}
+
+.msg_outext {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: rgb(255, 166, 0);
+}
+
+.sndr_intext {
+    box-shadow: 0px -3px rgb(255, 153, 0) inset;
+    font-size: 13px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: rgb(200, 0, 0);
+    text-shadow: 0px 0px 5px rgb(120, 0, 0);
+}
+
+
+.msg_outext {
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+.msg_intext {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: rgb(139, 107, 0);
+}
+
+/* listbox */
+
+scrollbar.trough, scrollbar.trough.vertical {
+    border: 0;
+    background: none;
+}
+
+.scrolled_window {
+    border-color: rgb(255, 145, 0);
+    border-width: 3px;
+}
+
+.cntc_list row label {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.cntc_list row {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: 0px -3px rgb(139, 83, 0) inset;
+    color: rgb(139, 90, 0);
+}
+
+.cntc_list row:hover {
+    box-shadow: 0px -3px rgb(139, 107, 0) inset;
+    margin-right: 15px;
+    color:  rgb(179, 123, 1);
+    text-shadow: 0px 0px 10px  rgb(179, 137, 1);
+}
+
+.cntc_list row:active {
+    background-color: transparent;
+    background-image: none;
+    margin-right: 15px;
+    color: rgb(240, 194, 95);
+    text-shadow: 0px 0px 10px  rgb(250, 215, 120);
+}
+
+.cntc_list row:focus {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: 0px -3px  rgb(233, 185, 95) inset; 
+    color:rgb(231, 177, 95);
+    text-shadow: 0px 0px 10px rgb(255, 196, 0);
+}
+
+/* notebook */
+
+.cntc_notebook {
+    background-color: black;
+    border-width: 3px;
+    border-color: rgb(243, 184, 108);
+}
+
+.cntc_notebook1 {
+    background-color: black;
+    border-top: 2px solid rgb(204, 160, 40);
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.cntc_notebook tab {
+    outline: none;
+}
+
+.cntc_notebook tab:hover {
+    box-shadow: 0 -3px rgb(204, 160, 40) inset;
+    color:rgb(207, 146, 34);
+}
+
+.cntc_notebook tab:checked {
+	box-shadow: 0 -3px rgb(224, 169, 51) inset;
+    color:rgb(216, 174, 58);
+    margin-top: 5px;
+}
+
+/* button */
+
+.chat_btn {
+    border-radius: 0%;
+    border-color: rgb(221, 181, 71);
+    border-width: 3px;
+    background-color: black;
+    color: rgb(175, 121, 39);
+}
+
+.chat_btn:hover, active:hover {
+    box-shadow: 0 0 10px rgb(206, 163, 44);
+    border-radius: 0%;
+    border-color: rgb(194, 158, 57);
+    border-width: 3px;
+    color:rgb(185, 153, 47);
+    background-image: none;
+}
+
+.chat_btn:active {
+    border-color: rgb(190, 165, 52);
+    background:  rgba(177, 156, 37, 0.5);
+    color:rgb(189, 173, 33);
+}
+
+/* widget */
+
+.cntc_list {
+    background-color: black;
+}
+
+box {
+    background-color: black;
+}
+
+/* dialog */
+
+.dialog_err_lbl {
+    color: red;
+    text-shadow: 0px 0px 3px red;
+}
+
+.dialog_lbl {
+    color: rgb(170, 127, 34);
+    text-shadow: 0px 0px 3px rgb(197, 154, 36);
+}
+
+.dialog_entry {
+    border-radius: 0%;
+    border-color:  rgb(0, 32, 32);
+    border-width: 3px;
+}
+
+.dialog_entry:focus {
+    font-weight: bold;
+    border-radius: 0%;
+    box-shadow: 0px 0px 5px rgb(214, 156, 68);
+}
+
+.dialog_btn {
+    border-radius: 0%;
+    border-color: rgb(0, 32, 32);
+    border-width: 3px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.dialog_btn:hover, active:hover {
+    box-shadow: 0 0 10px rgb(233, 193, 62);
+    border-radius: 0%;
+    border-color: rgb(223, 194, 66);
+    border-width: 3px;
+    color:rgb(219, 184, 70);
+    background-image: none;
+}
+
+.dialog_btn:active {
+    border-color:  rgb(200, 160, 50);
+    background-color: rgba(255, 187, 0, 0.5);
+    color:rgb(226, 179, 51);
+}
+
+/* login */
+
+.log_btn {
+    border-radius: 0%;
+    border-color: rgb(0, 0, 0);
+    border-width: 3px;
+}
+
+.log_btn:hover, active:hover {
+    box-shadow: 0 0 10px rgb(50, 200, 200);
+    border-radius: 0%;
+    border-color: rgb(55, 200, 205);
+    border-width: 3px;
+    color:rgb(50, 200, 200);
+    background-image: none;
+    margin-top: 5px;
+}
+
+.log_btn:active {
+    border-color: rgb(50, 200, 200);
+    background-color: rgba(0, 255, 255, 0.5);
+    color:cyan;
+}
+
+.err_lbl_log {
+    text-shadow: 1px 1px 10px red;
+    color:red;
+}
+
+.signin_entry {
+    border-radius: 0%;
+    border-color: rgb(0, 0, 0);
+    border-width: 3px;
+}
+
+.signin_entry:focus {
+    font-weight: bold;
+    border-radius: 0%;
+    margin: 3px;
+}
