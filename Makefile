@@ -43,6 +43,7 @@ uninstall: clean
 	@make -sC $(CJSOND) $@
 	@make -sC $(CLIENTD) $@
 	@make -sC $(SERVERD) $@
+	@rm -rf database.db
 	@rm -rf $(LIB_DIR)
 
 clean:

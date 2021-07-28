@@ -1,14 +1,10 @@
 #include "server.h"
 
 int main(int argc, char *argv[]) {
-    t_server *server = (t_server *)malloc(sizeof(t_server));
-    server->argc = argc;
-    server->argv = argv;
-    server->flag = 0;
-
-    mx_valid_argv(server);
-    mx_create_server(server);
-    printf("Server created\n");
-    mx_thread_create(server);
+    if (argc != 2 || strlen(argv[1]) != 4 || !atoi(argv[1])) {
+        printf("Usage: ./uchat_server [port]\n");
+        exit(1);
+    }
+    mx_create_server(argv);
+    exit(1);
 }
-

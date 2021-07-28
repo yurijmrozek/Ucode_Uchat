@@ -8,10 +8,8 @@ OBJD = obj
 INCD_LIBS = -I../libraries/include
 LIBD_LIBS = -L../libraries/lib
 INCD_SERVER = -Iinc/
-GTK_INC = `pkg-config --cflags gtk+-3.0`
-GTK_LIBS = -rdynamic `pkg-config --cflags --libs gtk+-3.0`
 
-SRCD = src src/main src/autorization src/json
+SRCD = src src/main src/json_objects src/database
 INCD = inc
 SRCS = $(foreach dir, $(SRCD), $(wildcard $(dir)/*.c))
 OBJS = $(addprefix $(OBJD)/, $(notdir $(SRCS:%.c=%.o)))
@@ -19,11 +17,11 @@ INCS = $(foreach dir, $(INCD), $(wildcard $(dir)/*.h))
 
 CC = clang
 
-CFLAGS = -std=c11 $(addprefix -W, all extra pedantic)
+CFLAGS = -std=c11 $(addprefix -W, error no-deprecated all extra pedantic)
 CPPFLAGS = -DMX_SERVER='"$(SERVER_WD)"' $(UTILS_INC) \
-$(INCD_SERVER) -D_GNU_SOURCE $(INCD_LIBS) $(GTK_INC) -I/usr/local/opt/openssl/include
-LIBS = $(LIBD_LIBS) $(GTK_LIBS) -L/usr/local/opt/openssl/lib \
--lssl -lcjson -lcrypto -lsqlite3 -lpthread -ldl
+$(INCD_SERVER) -D_GNU_SOURCE $(INCD_LIBS) -I/usr/local/opt/openssl/include
+LIBS = $(LIBD_LIBS) -L/usr/local/opt/openssl/lib \
+-lcjson -lsqlite3 -lpthread -ldl
 
 all: $(SERVER)
 
